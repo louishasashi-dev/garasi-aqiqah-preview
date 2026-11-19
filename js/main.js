@@ -19,6 +19,39 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
+  const lightbox = document.getElementById('package-lightbox');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxTrigger = document.querySelector('[data-lightbox-trigger]');
+  if (lightbox && lightboxClose && lightboxTrigger) {
+    let lastTrigger = null;
+    const openLightbox = () => {
+      lastTrigger = lightboxTrigger;
+      lightbox.hidden = false;
+      lightboxClose.focus();
+    };
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      if (lastTrigger) lastTrigger.focus();
+    };
+    lightboxTrigger.addEventListener('click', openLightbox);
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.querySelectorAll('[data-lightbox-close]').forEach((element) => {
+      element.addEventListener('click', closeLightbox);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        closeLightbox();
+      } else if (event.key === 'Tab') {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        lightboxClose.focus();
+      }
+    });
+  }
+
   const promo = document.getElementById('promo-modal');
   const promoClose = document.getElementById('promo-close');
   if (!promo || !promoClose) return;

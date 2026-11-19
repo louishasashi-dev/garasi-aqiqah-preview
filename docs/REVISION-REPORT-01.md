@@ -7,7 +7,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 
 | File | Perubahan |
 | --- | --- |
-| `index.html` | Hero: eyebrow "Welcome To", `<h1>` "Garasi Aqiqah", tagline, 2 paragraf deskripsi baru, catatan NA Group, CTA lama dipertahankan. Visual hero: badge halal, poster asli, maskot `assets/img/maskot/orang&kambing.png`, QR katalog asli sebagai tautan `https://wa.me/c/6287896102009`. |
+| `index.html` | Hero: eyebrow "Welcome To", `<h1>` "Garasi Aqiqah", tagline, 2 paragraf deskripsi baru, catatan identitas lama (sudah diganti pada Revisi 05), CTA lama dipertahankan. Visual hero: badge halal, poster asli, maskot `assets/img/maskot/orang&kambing.png`, QR katalog asli sebagai tautan `https://wa.me/c/6287896102009`. |
 | `index.html` | `#mengapa`: 5 card diganti persis dengan teks pemesan (Free Ongkir, Banyak Bonus Nya, Harga Kompetitif, Tepat Waktu, Garansi). Ejaan asli seperti "menberikan", "berkotmitmen", "di kirim", "makanan basi" sengaja dipertahankan. |
 | `index.html` | `#faq`: 2 pertanyaan baru ditambahkan; 5 pertanyaan lama tidak diubah. |
 | `index.html` | `#kontak`: kartu "Area Pengiriman" dengan teks "Area pengiriman hanya melayani wilayah Tangerang dan Jakarta." |
