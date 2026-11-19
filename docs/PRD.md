@@ -1,7 +1,7 @@
 # PRD — Garasi Aqiqah & Catering Landing Page
 
-Status: disetujui untuk implementasi (Tahap 1 selesai; revisi 06 Tentang Kami, banner, produk, dan QR katalog selesai; revisi 07 layout Menu, card Paket ke-6, dan lightbox selesai 19 November 2026)
-Tanggal audit: 19 November 2026
+Status: disetujui untuk implementasi (Tahap 1 selesai; revisi 06 Tentang Kami, banner, produk, dan QR katalog selesai; revisi 07 layout Menu, card Paket ke-6, dan lightbox selesai; revisi 08 hardening lightbox selesai 20 November 2026)
+Tanggal audit: 20 November 2026
 Penulis: Frontend / UI-UX / QA
 
 ## Catatan audit awal (batasan sumber)
@@ -122,9 +122,9 @@ Urutan section satu halaman, dengan anchor navigasi:
 - Semua CTA pemesanan memakai `https://wa.me/6287896102009?text=<encoded>`.
 - Katalog WhatsApp Business memakai tautan terpisah `https://wa.me/c/6287896102009`.
 - Promo modal muncul setelah jeda ±2 detik, slide-up, bisa ditutup (tombol, Escape, klik backdrop opsional), sessionStorage `ga_promo_dismissed`.
-- Gambar non-hero memakai `loading="lazy"`, `decoding="async"`, `width`/`height`.
+- Gambar non-hero memakai `loading="lazy"`, `decoding="async"`, `width`/`height`, kecuali gambar di dalam lightbox yang memakai `loading="eager"` agar langsung tampil saat dialog dibuka.
 - Copyright year diisi otomatis oleh JS dengan fallback statis.
-- Lightbox poster Paket Pilihan Terbaik: klik/Enter/Space pada tombol gambar membuka dialog; tutup via tombol close, backdrop, atau Escape; fokus kembali ke pemicu; Escape tidak menutup promo bila lightbox sedang aktif.
+- Lightbox poster Paket Pilihan Terbaik: klik/Enter/Space pada tombol gambar membuka dialog; tutup via tombol close, backdrop, atau Escape; fokus kembali ke pemicu; Tab dan Shift+Tab tetap di dialog; scroll background dikunci saat terbuka dan dikembalikan saat ditutup; Escape tidak menutup promo bila lightbox sedang aktif.
 
 ## 9. WhatsApp Ordering Flow
 
@@ -179,8 +179,8 @@ Urutan section satu halaman, dengan anchor navigasi:
 ## 14. Testing Requirements
 
 - Playwright + Chrome headless dengan server statis lokal.
-- Screenshot tahapan: `screenshots/01-initial-design`, `02-development`, `03-responsive`, `04-final`, `06-content-mobile-revision`, `07-mascot-faq-revision`, `08-hero-cleanup`, `09-maps-navbar-favicon`, `10-final-presentation`, `12-profile-copy-revision`, `13-client-revisions`, dan `14-menu-package-revision` (desktop, tablet, mobile).
-- Cek otomatis: HTTP 200 untuk semua aset, tidak ada broken image, tidak ada console error, tidak ada overflow horizontal (`scrollWidth <= clientWidth`), semua CTA `wa.me` benar, sessionStorage modal, nav mobile, FAQ, posisi banner, tiga logo sertifikasi, gambar produk, QR katalog, layout Menu, grid 6 card Paket, dan lightbox mouse/touch/keyboard.
+- Screenshot tahapan: `screenshots/01-initial-design`, `02-development`, `03-responsive`, `04-final`, `06-content-mobile-revision`, `07-mascot-faq-revision`, `08-hero-cleanup`, `09-maps-navbar-favicon`, `10-final-presentation`, `12-profile-copy-revision`, `13-client-revisions`, `14-menu-package-revision`, dan `15-lightbox-hardening` (desktop, tablet, mobile).
+- Cek otomatis: HTTP 200 untuk semua aset, tidak ada broken image, tidak ada console error, tidak ada overflow horizontal (`scrollWidth <= clientWidth`), semua CTA `wa.me` benar, sessionStorage modal, nav mobile, FAQ, posisi banner, tiga logo sertifikasi, gambar produk, QR katalog, layout Menu, grid 6 card Paket, dan lightbox mouse/touch/keyboard termasuk Tab/Shift+Tab, scroll lock, gambar siap saat dibuka, dan reduced motion.
 - Cek QR: decode gambar QR dan screenshot QR dengan zxing-cpp; hasil harus `https://wa.me/c/6287896102009`.
 - Cek manual: keterbacaan teks di atas gambar, konsistensi kartu, dan Maps embed.
 
@@ -200,7 +200,7 @@ Urutan section satu halaman, dengan anchor navigasi:
 12. Banner 01 berada tepat setelah Hero, Banner 02 tepat sebelum FAQ, dan keduanya tidak terpotong. Gambar produk baru tampil di Menu dan Paket tanpa menghapus gambar lama.
 13. Menu desktop menampilkan 3 card dalam satu baris dan 2 poster berdampingan di bawahnya; tablet 3 card 1 kolom dengan 2 poster berdampingan; mobile semuanya 1 kolom dengan poster maksimal 460 px. Tidak ada ruang kosong antar card dan poster.
 14. Paket terdiri dari 6 card dengan grid 3×2 desktop, 2×3 tablet, dan 1 kolom mobile; `.package-extra` tidak ada; card Pilihan Aqiqah Terbaik memakai CTA `6287896102009` dan poster tidak terpotong.
-15. Lightbox poster Pilihan Aqiqah Terbaik berfungsi dengan mouse, touch, dan keyboard; dialog berlabel ARIA; fokus kembali ke pemicu; Escape menutup lightbox lebih dulu dan promo tetap berfungsi setelahnya.
+15. Lightbox poster Pilihan Aqiqah Terbaik berfungsi dengan mouse, touch, dan keyboard; dialog berlabel ARIA; fokus kembali ke pemicu; Tab/Shift+Tab tetap di dialog; background tidak scroll saat lightbox terbuka; gambar langsung tampil saat dibuka; Escape menutup lightbox lebih dulu dan promo tetap berfungsi setelahnya.
 
 ## Informasi yang membutuhkan konfirmasi pemilik bisnis `[KONFIRMASI]`
 

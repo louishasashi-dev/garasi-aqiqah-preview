@@ -24,13 +24,17 @@
   const lightboxTrigger = document.querySelector('[data-lightbox-trigger]');
   if (lightbox && lightboxClose && lightboxTrigger) {
     let lastTrigger = null;
+    let previousOverflow = '';
     const openLightbox = () => {
       lastTrigger = lightboxTrigger;
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
       lightbox.hidden = false;
       lightboxClose.focus();
     };
     const closeLightbox = () => {
       lightbox.hidden = true;
+      document.body.style.overflow = previousOverflow;
       if (lastTrigger) lastTrigger.focus();
     };
     lightboxTrigger.addEventListener('click', openLightbox);

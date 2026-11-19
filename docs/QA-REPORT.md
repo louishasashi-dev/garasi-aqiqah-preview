@@ -1,6 +1,6 @@
 # QA Report — Garasi Aqiqah & Catering
 
-Tanggal QA: 19 November 2026
+Tanggal QA: 20 November 2026
 Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + Chrome 157 headless (executable lokal, tanpa unduhan browser).
 
 ## Ringkasan
@@ -13,7 +13,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Integrasi WhatsApp & katalog | Selesai (20 tautan: 16 CTA + 4 katalog) |
 | SEO metadata & Open Graph | Selesai |
 | Aksesibilitas dasar | Selesai |
-| Screenshot tahapan (72 file) | Selesai |
+| Screenshot tahapan (80 file) | Selesai |
 | QA browser otomatis | Lolos di 10 viewport |
 | Revisi konten hero / alasan / FAQ / area pengiriman | Selesai |
 | Maskot dipindahkan Hero → FAQ | Selesai, tidak menutupi accordion |
@@ -32,6 +32,8 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi 07: layout Menu 3 card + 2 poster | Selesai, tanpa ruang kosong |
 | Revisi 07: card Paket ke-6 & `.package-extra` dihapus | Selesai, grid 3×2 / 2×3 / 1 kolom |
 | Revisi 07: lightbox poster Pilihan Terbaik | Selesai, mouse/touch/keyboard & ARIA |
+| Revisi 08: audit hardening lightbox | Selesai, hanya scroll lock dan eager image yang diubah |
+| Revisi 08: 10 pemeriksaan hardening | Lolos: init, z-index, Tab/Shift+Tab, Escape, fokus, scroll lock, ARIA, gambar, 44 px, reduced motion |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -97,7 +99,25 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Card Pilihan Aqiqah Terbaik | Tag, judul, tagline, meta, alt, atribut gambar, dan CTA sesuai diminta; `object-fit: contain`; trigger berupa `<button>` | Ya |
 | Lightbox revisi 07 | `role=dialog`, `aria-modal=true`, label/deskripsi ARIA; buka/tutup mouse, touch, Enter/Space, Escape, backdrop; fokus masuk & kembali; Tab tetap di dialog | Ya |
 | Lightbox vs promo | Escape pertama menutup lightbox, promo tetap tampil; Escape kedua menutup promo | Ya |
+| Hardening lightbox revisi 08 | 10/10 lolos: init tanpa promo, z-index 150 > promo 100 > header 60, Tab/Shift+Tab, fokus kembali, scroll lock, ARIA, gambar `eager` siap saat dibuka, close 44×44 px, reduced motion | Ya |
 | Semantic / aksesibilitas | 1 `<h1>`, 12 `<h2>` (termasuk judul lightbox tersembunyi), 0 gambar tanpa alt, 13 section | sama |
+
+## Audit hardening lightbox revisi 08
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\revision-08-audit.json`, dijalankan dengan Playwright + Chrome headless pada `http://127.0.0.1:8000/index.html`.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Lightbox tetap init walaupun promo tidak muncul | Lolos |
+| Prioritas overlay: lightbox 150 > promo 100 > header 60 | Lolos |
+| `role=dialog`, `aria-modal=true`, `aria-labelledby`, `aria-describedby` | Lolos |
+| Tombol close 44×44 px | Lolos |
+| Tab dan Shift+Tab tetap di tombol close | Lolos |
+| Fokus kembali ke tombol pemicu setelah ditutup | Lolos |
+| Scroll background terkunci saat terbuka dan pulih saat ditutup | Lolos setelah perbaikan |
+| Gambar poster siap tampil saat dibuka | Lolos setelah perbaikan |
+| `prefers-reduced-motion: reduce` dihormati | Lolos |
+| Escape pertama menutup lightbox, Escape kedua menutup promo | Lolos |
 
 ## Bug yang ditemukan dan diperbaiki
 
@@ -115,6 +135,8 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 12. **Tentang Kami mobile menampilkan sertifikat sebelum teks (revisi 06).** Urutan visual mobile masih didominasi gambar sehingga konten revisi tidak langsung terlihat. Ditambahkan `.tentang-section .about-visual { order: 0; }`; copy kini tampil lebih dulu, lalu sertifikat dan tiga logo bertumpuk. Screenshot `mobile-about.png` diambil ulang dan OCR mengonfirmasi teks Tentang Kami.
 13. **Horizontal overflow 65 px di 901 px saat Menu 3 kolom (revisi 07).** Card Menu terlalu sempit untuk padding/icon bawah breakpoint 1100 px. Ditambahkan gaya ringkas hanya untuk 901–1100 px (padding 18 px, gap 12 px, ikon 40 px); uji ulang `scrollWidth = clientWidth = 901`.
 14. **Skrip QA revisi 07 membaca atribut setelah diubah.** Pemeriksaan awal mengubah semua `loading` menjadi `eager` sebelum membaca card baru, sehingga dilaporkan `eager`. Skrip diperbaiki dengan membaca atribut lebih dulu; hasil benar `loading="lazy"`.
+15. **Scroll background tidak terkunci saat lightbox terbuka (revisi 08).** Audit Playwright menunjukkan `scrollY` berubah dari 8352 ke 8952 setelah wheel saat dialog terbuka. `js/main.js` sekarang menyimpan `overflow` awal, mengatur `document.body.style.overflow = 'hidden'` saat buka, dan mengembalikannya saat tutup. Uji ulang: `scrollY` tetap 8352, `bodyInline = hidden` saat terbuka, dan kembali kosong setelah ditutup.
+16. **Gambar lightbox memakai `loading="lazy"` (revisi 08).** Pada satu audit, `complete = false` dan `naturalWidth = 0` tepat setelah dialog dibuka. Atribut di `index.html` diubah menjadi `loading="eager"` hanya pada gambar lightbox. Uji ulang: `complete = true`, `naturalWidth = 768`, dan `loading = eager` sebelum maupun sesudah dialog dibuka.
 
 Tidak ada bug fungsional yang tersisa pada website.
 
@@ -210,5 +232,13 @@ Tidak ada bug fungsional yang tersisa pada website.
 | `screenshots/14-menu-package-revision/` | `mobile-menu.png` | 390×1729 |
 | `screenshots/14-menu-package-revision/` | `mobile-package.png` | 390×4916 |
 | `screenshots/14-menu-package-revision/` | `mobile-package-lightbox.png` | 390×844 |
+| `screenshots/15-lightbox-hardening/` | `01-desktop-top.png` | 1440×1000 |
+| `screenshots/15-lightbox-hardening/` | `02-desktop-package.png` | 1440×2123 |
+| `screenshots/15-lightbox-hardening/` | `03-desktop-lightbox.png` | 1440×1000 |
+| `screenshots/15-lightbox-hardening/` | `04-tablet-package.png` | 768×2700 |
+| `screenshots/15-lightbox-hardening/` | `05-mobile-top.png` | 390×844 |
+| `screenshots/15-lightbox-hardening/` | `06-mobile-package.png` | 390×4916 |
+| `screenshots/15-lightbox-hardening/` | `07-mobile-lightbox.png` | 390×844 |
+| `screenshots/15-lightbox-hardening/` | `08-mobile-promo.png` | 390×844 |
 
-Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox. Total 72 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
+Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox. Total 80 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
