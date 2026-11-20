@@ -1,6 +1,6 @@
 # PRD — Garasi Aqiqah & Catering Landing Page
 
-Status: disetujui untuk implementasi (Tahap 1 selesai; revisi 06 Tentang Kami, banner, produk, dan QR katalog selesai; revisi 07 layout Menu, card Paket ke-6, dan lightbox selesai; revisi 08 hardening lightbox selesai 20 November 2026)
+Status: disetujui untuk implementasi (Tahap 1 selesai; revisi 06 Tentang Kami, banner, produk, dan QR katalog selesai; revisi 07 layout Menu, card Paket ke-6, dan lightbox selesai; revisi 08 hardening lightbox selesai; revisi 09 lightbox global dan carousel Coverflow selesai; revisi 10 carousel terpusat dan card layanan terhubung ke detail selesai; revisi 11 price list dan gambar Paket Hemat selesai 20 November 2026)
 Tanggal audit: 20 November 2026
 Penulis: Frontend / UI-UX / QA
 
@@ -35,7 +35,7 @@ Landing page statis satu halaman (single-page) untuk Garasi Aqiqah & Catering, b
 | --- | --- | --- |
 | Markup | HTML5 semantic | Sesuai syarat, tanpa framework |
 | Styling | CSS3 (custom properties, flexbox, grid, media queries) | Tanpa dependency |
-| Interaksi | Vanilla JavaScript (ES6+) | Nav mobile, promo modal, tahun footer, dan lightbox poster paket |
+| Interaksi | Vanilla JavaScript (ES6+) | Nav mobile, promo modal, tahun footer, lightbox global, dan carousel Coverflow |
 | Ikon | Inline SVG | Tanpa font/icon library, tajam di semua ukuran |
 | Font | System font stack | Tidak bergantung pada CDN / internet saat runtime |
 | Peta | Google Maps iframe embed | Berdasarkan koordinat `-6.2025117,106.6895407` dari `https://maps.app.goo.gl/VGqLYMEUFWWNDA3L8`; alamat/Plus Code tetap tampil sebagai teks |
@@ -58,13 +58,13 @@ Semua path relatif terhadap root proyek. Ukuran yang terdeteksi (lebar × tinggi
 | 5 | `assets/img/halal/sertifikat halal.jpg` | 1000×1362 | Sertifikat Halal: "ID36110081133790926", "GARASI AQIQAH & CATERING", alamat lama di Kancil, tanggal 26–27 September 2026. | Tentang, Galeri |
 | 6 | `assets/img/product_and_service/garasi_poster.jpg` | 922×1152 | Poster utama: "JADIKAN MOMENT ANDA LEBIH BERHARGA", "Berkah, Hemat, Amanah, Bahagia", hadits HR Abu Dawud 2838 / At-Tirmidzi 1552, WA 0878-9610-2009 & 0811-1030-5999. | Hero, Galeri |
 | 7 | `assets/img/product_and_service/garasi_kambing_grati_masak.jpg` | 1279×1600 | "Spesialis kambing gratis masak": gulai/sop/tongseng, sate/teriyaki/semur/rendang. | Menu, Galeri |
-| 8 | `assets/img/product_and_service/garasi_pricelist_spesialiskambing_gratismasak&potong.jpg` | 1080×1350 | Pricelist kambing: type betina/jantan, 200–700 tusuk, 50–150 porsi, "GRATIS!! biaya potong & masak", "FREE SOUVENIR Sertifikat + Bingkai, Mug Dengan Foto Ananda". | Daftar Harga Kambing |
-| 9 | `assets/img/product_and_service/garasi_best_seller_list.jpg` | 1080×1350 | Best seller + pricelist paket spesial kambing jantan, isi box. | Daftar Harga / Paket |
-| 10 | `assets/img/product_and_service/garasi_paket_aqiqah_hemat.jpg` | 1080×1350 | Poster "PAKET AQIQAH Hemat — Murahnya Dapat Semua", isi box, gratis ongkir. | Paket Hemat, Galeri |
-| 11 | `assets/img/product_and_service/garasi_paket_hemat.jpg` | 1080×1350 | Visual paket hemat: sate kambing, acar, perlengkapan makan, air mineral. | Paket Hemat (alternatif visual) |
+| 8 | `assets/img/product_and_service/garasi_pricelist_spesialiskambing_gratismasak&potong.jpg` | 1080×1350 | Pricelist kambing: type betina/jantan, 200–700 tusuk, 50–150 porsi, "GRATIS!! biaya potong & masak", "FREE SOUVENIR Sertifikat + Bingkai, Mug Dengan Foto Ananda". | Daftar Harga |
+| 9 | `assets/img/product_and_service/garasi_best_seller_list.jpg` | 1080×1350 | Best seller + pricelist paket spesial kambing jantan, isi box. | Daftar Harga (Paket Spesial) |
+| 10 | `assets/img/product_and_service/garasi_paket_aqiqah_hemat.jpg` | 1080×1350 | Poster "PAKET AQIQAH Hemat — Murahnya Dapat Semua", isi box, gratis ongkir. | Daftar Harga (Paket Hemat), Galeri |
+| 11 | `assets/img/product_and_service/garasi_paket_hemat.jpg` | 1080×1350 | Visual paket hemat: sate kambing, acar, perlengkapan makan, air mineral. | Paket Hemat (card dan lightbox) |
 | 12 | `assets/img/product_and_service/garasi_paket_aqiqah_special.jpg` | 1080×1350 | Poster paket spesial: kerupuk ikan, sate kambing, acar, pisang, fruit tea, telur rebus, perlengkapan makan, nasi putih. | Paket Spesial, Galeri |
 | 13 | `assets/img/product_and_service/garasi_paket_aqiqah_heboh.jpg` | 1080×1350 | Poster paket heboh: slogan Berkah/Hemat/Amanah/Bahagia, sate kambing, acar, pisang. | Paket Heboh |
-| 14 | `assets/img/product_and_service/garasi_paket_heboh_pricelist.jpg` | 1080×1350 | Pricetlist paket heboh: "Jaminan Paling Ekonomis", isi box, jantan +200rb free boneka domba. | Paket Heboh (pricelist) |
+| 14 | `assets/img/product_and_service/garasi_paket_heboh_pricelist.jpg` | 1080×1350 | Pricetlist paket heboh: "Jaminan Paling Ekonomis", isi box, jantan +200rb free boneka domba. | Daftar Harga (Paket Heboh) |
 | 15 | `assets/img/product_and_service/garasi_paket_ayambakar.jpg` | 1080×1350 | "Paket Ayam bakar": ayam bakar, nasi putih, sambal, acar, kerupuk, pisang, air mineral. | Paket Ayam Bakar |
 | 16 | `assets/img/product_and_service/garasi_paket_snackbox.jpg` | 1131×1600 | "Paket Snack Box", "Mulai 13Rb", isi 3 snack + air mineral + tisu, beberapa pilihan menu. | Paket Snack Box |
 | 17 | `assets/img/product_and_service/garasi_hadiah_souvenir.jpg` | 1130×1600 | Dokumentasi sertifikat aqiqah + hadiah souvenir bertuliskan "Hadiah ini indah, tapi Ibadah kamu jauh lebih berharga." | Galeri, Kenapa |
@@ -87,13 +87,13 @@ Urutan section satu halaman, dengan anchor navigasi:
 1. Header sticky — logo landscape transparan yang lebih besar tanpa teks nama terpisah, nav (Tentang, Keunggulan, Harga, Menu, Paket, Galeri, FAQ, Kontak), CTA Pesan Sekarang, hamburger mobile 44×44 px.
 2. `#beranda` Hero — banner hadits tunggal di bagian atas (langsung terlihat saat halaman dibuka), eyebrow "Welcome To", `<h1>` bold "Wujudkan Ibadah Aqiqah Penuh Berkah & Ketenangan", tagline "Jadikan Moment Anda Lebih Berharga", slogan, dua paragraf deskripsi dengan "Garasi Aqiqah" bold pada paragraf pertama, penutup italic "Berkah dalam ibadah, hangat dalam kebersamaan.", catatan "Dapur Berpengalaman lebih dari 15 tahun", tombol Pesan Aqiqah, Lihat Paket, container QR katalog terpisah di bawah CTA, tautan teks "Lihat Katalog WhatsApp Business", dan poster asli. QR katalog tidak menyatu dengan poster.
 3. `#banner-01` Banner section — `banner_01.jpeg` (1600×533) tepat setelah Hero, full width container, `object-fit: contain`, tanpa crop/stretching.
-4. `#tentang` Tentang Kami — judul "Tentang Kami" dan nama usaha "Garasi Aqiqah & Catering"; subbagian A Tentang Kami, B Logo Sertifikasi (tiga container logo baru: Halal + QR, Juleha, BNSP), C Mengapa Memilih Garasi Aqiqah & Catering? (5 poin), D Layanan & Pilihan Paket Kami (4 kartu layanan). Foto sertifikat halal lama tetap dipertahankan.
+4. `#tentang` Tentang Kami — judul "Tentang Kami" dan nama usaha "Garasi Aqiqah & Catering"; subbagian A Tentang Kami, B Logo Sertifikasi (tiga container logo baru: Halal + QR, Juleha, BNSP), C Mengapa Memilih Garasi Aqiqah & Catering? (5 poin), D Layanan & Pilihan Paket Kami (4 kartu layanan). Sejak revisi 10, keempat kartu dapat diklik/tombol keyboard dan langsung membuka lightbox Revisi 09 pada detail paket/galeri yang sesuai, bukan hanya scroll. Foto sertifikat halal lama tetap dipertahankan.
 5. `#keunggulan` Keunggulan — 4 card: Berkah, Hemat, Amanah, Bahagia.
-6. `#harga` Daftar Harga Kambing — poster pricelist asli + poin yang terbaca; tanpa tabel harga hasil tebakan.
+6. `#harga` Daftar Harga — price list kambing yang sudah ada dipertahankan dan ditambah tiga poster asli: Paket Spesial (`garasi_best_seller_list.jpg`), Paket Hemat (`garasi_paket_aqiqah_hemat.jpg`), dan Paket Heboh (`garasi_paket_heboh_pricelist.jpg`). Keempat poster berada dalam satu grid dengan caption, utuh/tidak terpotong, dapat diperbesar via lightbox, dan tidak ada tabel harga hasil tebakan.
 7. `#menu` Olahan kambing pilihan — 3 card (Sate, Tengkleng, Gulai Kambing) dalam satu baris 3 kolom di desktop; di bawahnya 2 poster (`garasi_kambing_grati_masak.jpg` dan `menu_garasi.jpeg`) berdampingan, masing-maksimal 420 px dan rata tengah. Mobile: card dan poster satu kolom, poster maksimal 460 px. Figcaption, alt, rasio asli, `loading="lazy"`, dan `object-fit: contain` dipertahankan.
-8. `#paket` Paket Aqiqah Garasi — 6 card dalam grid 3×2 desktop, 2×3 tablet, 1 kolom mobile: Hemat, Spesial, Heboh, Ayam Bakar, Snack Box, dan Pilihan Aqiqah Terbaik. `.package-extra` dihapus; poster Pilihan Aqiqah Terbaik menjadi card ke-6 dengan CTA WhatsApp `6287896102009` dan lightbox vanilla. `<p class="fine-print center-text">` tetap di bawah grid.
+8. `#paket` Paket Aqiqah Garasi — 6 card dengan urutan Hemat, Spesial, Heboh, Ayam Bakar, Snack Box, dan Pilihan Aqiqah Terbaik. Sejak revisi 09, card berada di carousel Coverflow: aktif di tengah dan terbesar, samping lebih kecil/transparan, swipe/nav, dan semua gambar bisa diperbesar. Sejak revisi 11, gambar card Paket Hemat memakai `garasi_paket_hemat.jpg`; judul, harga, deskripsi, CTA, dan info lightbox tidak berubah. `.package-extra` tetap dihapus; poster Pilihan Aqiqah Terbaik tetap menjadi card ke-6 dengan CTA WhatsApp `6287896102009`. `<p class="fine-print center-text">` tetap di bawah carousel.
 9. `#mengapa` Mengapa Memilih Garasi Aqiqah — 5 card sesuai teks revisi pemesan: Free Ongkir, Banyak Bonus Nya, Harga Kompetitif, Tepat Waktu, Garansi. Teks disalin persis (termasuk ejaan asli yang diminta).
-10. `#galeri` Galeri — dokumentasi asli, grid responsive.
+10. `#galeri` Galeri — 6 dokumentasi asli dengan urutan dipertahankan. Sejak revisi 09 memakai carousel Coverflow yang sama dengan `#paket`; caption asli dipakai sebagai info pada lightbox galeri.
 11. `#banner-02` Banner section — `banner_02.jpeg` (2560×1283) tepat sebelum FAQ, full width container, `object-fit: contain`, tanpa crop/stretching.
 12. `#faq` FAQ — 7 `<details>` native: 5 pertanyaan lama dipertahankan + 2 pertanyaan revisi (waktu pengantaran dan sumbangan daging aqiqah), dengan maskot asli sebagai visual pendukung di `.faq-intro` (samping daftar FAQ di desktop, di atas daftar di mobile).
 13. `#konsultasi` CTA Konsultasi — pesan otomatis WhatsApp.
@@ -107,8 +107,8 @@ Urutan section satu halaman, dengan anchor navigasi:
 - Hero dengan hierarki jelas: eyebrow → headline → slogan → deskripsi → CTA → QR katalog → visual.
 - Card konsisten (radius, padding, border, hover), tetapi gambar poster, banner, logo sertifikasi, dan QR tetap memakai rasio aslinya via `object-fit: contain`; tidak ada cropping/stretching yang menghilangkan informasi.
 - Menu tidak menyisakan kolom kosong: card menempati satu baris penuh, poster menempati baris terpisah yang rata tengah; mobile memakai satu kolom.
-- Grid paket selalu penuh: 6 card habis dibagi 3, 2, atau 1 kolom tanpa card menggantung.
-- Poster tinggi pada card Pilihan Aqiqah Terbaik dapat diperbesar lewat lightbox; tampilan card tetap identik dengan card lain.
+- Carousel paket dan galeri menunjukkan 6 item pada lintasan scroll-snap: saat halaman dibuka item aktif awal adalah indeks tengah dinamis `(jumlah item - 1) / 2` dan langsung terpusat, item aktif terbesar, item tetangga lebih kecil dan transparan, tanpa horizontal overflow pada halaman. Semua slide memakai lebar dasar yang sama (desktop 360 px, tablet ≤320 px, mobile 64vw) dan tinggi yang sejajar; kartu cukup ringkas untuk browser desktop zoom 100% tanpa zoom out.
+- Semua gambar konten relevan dapat diperbesar lewat lightbox; teks poster, banner, sertifikat, dan QR tetap tidak dipotong (`object-fit: contain`).
 - Heading menggunakan satu stack serif elegan, body satu stack sans; jarak dan ukuran mengikuti skala yang konsisten.
 - Sentuhan minimal: `prefers-reduced-motion` dihormati.
 - Touch target minimal 44×44 px untuk nav, tombol, dan tautan ikon.
@@ -124,7 +124,11 @@ Urutan section satu halaman, dengan anchor navigasi:
 - Promo modal muncul setelah jeda ±2 detik, slide-up, bisa ditutup (tombol, Escape, klik backdrop opsional), sessionStorage `ga_promo_dismissed`.
 - Gambar non-hero memakai `loading="lazy"`, `decoding="async"`, `width`/`height`, kecuali gambar di dalam lightbox yang memakai `loading="eager"` agar langsung tampil saat dialog dibuka.
 - Copyright year diisi otomatis oleh JS dengan fallback statis.
-- Lightbox poster Paket Pilihan Terbaik: klik/Enter/Space pada tombol gambar membuka dialog; tutup via tombol close, backdrop, atau Escape; fokus kembali ke pemicu; Tab dan Shift+Tab tetap di dialog; scroll background dikunci saat terbuka dan dikembalikan saat ditutup; Escape tidak menutup promo bila lightbox sedang aktif.
+- Lightbox global (revisi 09): klik/Enter/Space pada gambar konten yang dibungkus tombol `.image-zoom` membuka dialog; gambar di dalam tautan (QR katalog) tetap membuka tautan. Kartu layanan di `#tentang` juga menjadi pemicu lightbox (mouse/touch/Enter/Space) dan mengembalikan fokus ke kartu saat ditutup. Tutup via tombol close, backdrop, atau Escape; fokus kembali ke pemicu; Tab dan Shift+Tab tetap di dialog; scroll background dikunci saat terbuka dan dikembalikan saat ditutup; Escape tidak menutup promo bila lightbox sedang aktif.
+- Lightbox paket/galeri menampilkan panel info dua kolom di desktop (gambar kiri dominan, info kanan) dan tumpuk vertikal di mobile. Info paket berasal dari tag/judul/tagline/meta/CTA kartu; info galeri berasal dari caption; CTA memakai teks kontekstual dan nomor `6287896102009`.
+- Carousel Coverflow: tombol prev/next tampil di desktop, tersembunyi di ≤900 px; swipe native dan keyboard ArrowLeft/ArrowRight tersedia; active item dipilih otomatis dari posisi scroll terdekat; posisi scroll dihitung dari offset layout tanpa distorsi transformasi agar tombol nav tetap terpusat; `prefers-reduced-motion` menonaktifkan animasi halus.
+- Price list (revisi 11): `#harga` memuat empat poster asli dengan caption (Harga Kambing, Paket Spesial, Paket Hemat, Paket Heboh) dalam satu grid; dua kolom di ≥641 px dan satu kolom di ≤640 px; `object-fit: contain`, rasio 4:5 dipertahankan, gambar tidak dipotong, dan keempatnya menjadi pemicu lightbox global.
+- Gambar Paket Hemat (revisi 11): card pertama carousel memakai `garasi_paket_hemat.jpg`; atribut `width`/`height`, `loading="lazy"`, `decoding="async"`, alt deskriptif, CTA, dan info lightbox dari kartu tetap dipertahankan. Aset lama `garasi_paket_aqiqah_hemat.jpg` tidak dihapus karena dipakai di price list dan galeri.
 
 ## 9. WhatsApp Ordering Flow
 
@@ -134,6 +138,7 @@ Urutan section satu halaman, dengan anchor navigasi:
    - Umum: `Halo Garasi Aqiqah, saya ingin berkonsultasi mengenai paket aqiqah.`
    - Paket: `Halo Garasi Aqiqah, saya ingin bertanya tentang Paket Hemat.`
    - Promo: `Halo Garasi Aqiqah, saya tertarik dengan promo Total Gift Senilai 500K dan ingin Pesan Aqiqah.`
+   - Galeri: `Halo Garasi Aqiqah, saya ingin bertanya terkait foto <caption>.`
    - Katalog: tautan langsung ke `https://wa.me/c/6287896102009` (tanpa pesan).
 4. Nama paket selalu dimasukkan ke dalam pesan jika tombol berada di kartu paket.
 5. Harga tidak disebutkan di pesan otomatis agar tidak mengikat jika poster berubah.
@@ -142,10 +147,10 @@ Urutan section satu halaman, dengan anchor navigasi:
 
 | Breakpoint | Perilaku |
 | --- | --- |
-| ≤ 600 px | Satu kolom, hamburger nav, hero stack dengan poster utama dan QR katalog terpisah di bawah CTA; Tentang menampilkan copy lebih dulu, lalu sertifikat dan tiga logo bertumpuk; Menu 1 kolom dengan poster vertikal maksimal 460 px; Paket 1 kolom; banner full width tanpa crop; maskot tampil proporsional di atas daftar FAQ; promo modal mengambang penuh lebar dengan batas tinggi |
-| 601–900 px | Nav hamburger; Menu 3 card 1 kolom dan 2 poster berdampingan; Paket 2×3; galeri 2 kolom; kartu umum dua kolom |
-| 901–1023 px | Nav masih hamburger; Menu 3 card 3 kolom ringkas dan 2 poster berdampingan; Paket 3×2 |
-| ≥ 1024 px | Nav horizontal, hero dua kolom, kartu 3–5 kolom sesuai section, galeri 3 kolom |
+| ≤ 600 px | Satu kolom, hamburger nav, hero stack dengan poster utama dan QR katalog terpisah di bawah CTA; Tentang menampilkan copy lebih dulu, lalu sertifikat dan tiga logo bertumpuk; Menu 1 kolom dengan poster vertikal maksimal 460 px; price list 1 kolom; Paket/Galeri Coverflow swipe dengan slide `64vw`, nav disembunyikan; lightbox gambar dan info bertumpuk vertikal; banner full width tanpa crop; maskot tampil proporsional di atas daftar FAQ; promo modal mengambang penuh lebar dengan batas tinggi |
+| 601–900 px | Nav hamburger; Menu 3 card 1 kolom dan 2 poster berdampingan; price list 2 kolom; Paket/Galeri Coverflow swipe dengan nav disembunyikan; kartu umum dua kolom |
+| 901–1023 px | Nav masih hamburger; Menu 3 card 3 kolom ringkas dan 2 poster berdampingan; price list 2 kolom; Paket/Galeri Coverflow dengan tombol nav desktop |
+| ≥ 1024 px | Nav horizontal, hero dua kolom, kartu 3–5 kolom sesuai section; price list 2 kolom; Paket/Galeri Coverflow dengan slide `min(360px, 32vw)` dan tombol nav |
 | ≥ 1280 px | Container maksimal ~1200 px, ruang putih lebih lapang |
 
 ## 11. SEO Requirements
@@ -167,6 +172,7 @@ Urutan section satu halaman, dengan anchor navigasi:
 - FAQ memakai `<details>/<summary>` (native, screen-reader friendly).
 - Tidak ada yang hanya mengandalkan warna untuk menyampaikan makna.
 - Lightbox memakai `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, `aria-describedby`, tombol close 44×44 px, fokus terkelola, dan `prefers-reduced-motion`.
+- Setiap tombol pembesar gambar memiliki `aria-label` yang menyebut judul gambar; carousel memberi `role="group"` pada viewport dan `role="group"`/`aria-label` pada tiap slide, dengan tombol nav berlabel.
 
 ## 13. Performance Requirements
 
@@ -179,8 +185,8 @@ Urutan section satu halaman, dengan anchor navigasi:
 ## 14. Testing Requirements
 
 - Playwright + Chrome headless dengan server statis lokal.
-- Screenshot tahapan: `screenshots/01-initial-design`, `02-development`, `03-responsive`, `04-final`, `06-content-mobile-revision`, `07-mascot-faq-revision`, `08-hero-cleanup`, `09-maps-navbar-favicon`, `10-final-presentation`, `12-profile-copy-revision`, `13-client-revisions`, `14-menu-package-revision`, dan `15-lightbox-hardening` (desktop, tablet, mobile).
-- Cek otomatis: HTTP 200 untuk semua aset, tidak ada broken image, tidak ada console error, tidak ada overflow horizontal (`scrollWidth <= clientWidth`), semua CTA `wa.me` benar, sessionStorage modal, nav mobile, FAQ, posisi banner, tiga logo sertifikasi, gambar produk, QR katalog, layout Menu, grid 6 card Paket, dan lightbox mouse/touch/keyboard termasuk Tab/Shift+Tab, scroll lock, gambar siap saat dibuka, dan reduced motion.
+- Screenshot tahapan: `screenshots/01-initial-design`, `02-development`, `03-responsive`, `04-final`, `06-content-mobile-revision`, `07-mascot-faq-revision`, `08-hero-cleanup`, `09-maps-navbar-favicon`, `10-final-presentation`, `12-profile-copy-revision`, `13-client-revisions`, `14-menu-package-revision`, `15-lightbox-hardening`, `16-image-lightbox-coverflow`, `17-service-card-carousel`, dan `18-price-list-package-image` (desktop, tablet, mobile).
+- Cek otomatis: HTTP 200 untuk semua aset, tidak ada broken image, tidak ada console error, tidak ada overflow horizontal (`scrollWidth <= clientWidth`), semua CTA `wa.me` benar, sessionStorage modal, nav mobile, FAQ, posisi banner, tiga logo sertifikasi, gambar produk, QR katalog, layout Menu, 4 poster price list termuat/utuh/bisa diperbesar, grid 2 kolom ≥641 px dan 1 kolom ≤640 px, gambar Paket Hemat baru tampil di card dan lightbox, 6 item di tiap carousel, posisi awal indeks tengah dan terpusat, ukuran slide seragam, item samping terlihat, tombol nav desktop, swipe mobile/tablet, keyboard Arrow, lightbox global 26 trigger (23 Revisi 09 + 3 poster price list tambahan), 4 kartu layanan yang membuka target tepat, info paket/galeri, WA dinamis, mouse/touch/keyboard termasuk Tab/Shift+Tab, scroll lock, gambar siap saat dibuka, dan reduced motion.
 - Cek QR: decode gambar QR dan screenshot QR dengan zxing-cpp; hasil harus `https://wa.me/c/6287896102009`.
 - Cek manual: keterbacaan teks di atas gambar, konsistensi kartu, dan Maps embed.
 
@@ -199,8 +205,11 @@ Urutan section satu halaman, dengan anchor navigasi:
 11. Tentang Kami memuat seluruh teks revisi 06, tiga logo sertifikasi terpisah, dan foto sertifikat lama; logo halal landscape lama tidak dirender.
 12. Banner 01 berada tepat setelah Hero, Banner 02 tepat sebelum FAQ, dan keduanya tidak terpotong. Gambar produk baru tampil di Menu dan Paket tanpa menghapus gambar lama.
 13. Menu desktop menampilkan 3 card dalam satu baris dan 2 poster berdampingan di bawahnya; tablet 3 card 1 kolom dengan 2 poster berdampingan; mobile semuanya 1 kolom dengan poster maksimal 460 px. Tidak ada ruang kosong antar card dan poster.
-14. Paket terdiri dari 6 card dengan grid 3×2 desktop, 2×3 tablet, dan 1 kolom mobile; `.package-extra` tidak ada; card Pilihan Aqiqah Terbaik memakai CTA `6287896102009` dan poster tidak terpotong.
-15. Lightbox poster Pilihan Aqiqah Terbaik berfungsi dengan mouse, touch, dan keyboard; dialog berlabel ARIA; fokus kembali ke pemicu; Tab/Shift+Tab tetap di dialog; background tidak scroll saat lightbox terbuka; gambar langsung tampil saat dibuka; Escape menutup lightbox lebih dulu dan promo tetap berfungsi setelahnya.
+14. Paket terdiri dari 6 card dalam urutan asli pada carousel Coverflow; `.package-extra` tidak ada; card Pilihan Aqiqah Terbaik memakai CTA `6287896102009` dan poster tidak terpotong.
+15. Lightbox global berfungsi dengan mouse, touch, dan keyboard; dialog berlabel ARIA; fokus kembali ke pemicu; Tab/Shift+Tab tetap di dialog; background tidak scroll saat lightbox terbuka; gambar langsung tampil saat dibuka; Escape menutup lightbox lebih dulu dan promo tetap berfungsi setelahnya.
+16. Paket dan galeri sama-sama memakai Coverflow: aktif terpusat, tetangga lebih kecil/transparan, nav desktop, swipe mobile/tablet, ArrowLeft/ArrowRight, tanpa overflow. Lightbox paket/galeri menampilkan info dua kolom di desktop dan vertikal di mobile dengan CTA WhatsApp kontekstual ke `6287896102009`.
+17. Revisi 10: carousel dibuka dalam keadaan terpusat pada indeks tengah dinamis; slide berukuran seragam dan lebih ringkas; item samping tetap terlihat; keempat kartu Layanan & Pilihan Paket Kami membuka gambar/info paket atau galeri yang sesuai lewat lightbox dengan fokus dan WA kontekstual.
+18. Revisi 11: `#harga` menampilkan price list kambing plus `garasi_best_seller_list.jpg`, `garasi_paket_aqiqah_hemat.jpg`, dan `garasi_paket_heboh_pricelist.jpg` dalam satu grid yang rapi, utuh, dan dapat diperbesar; card Paket Hemat memakai `garasi_paket_hemat.jpg` tanpa mengubah judul/deskripsi/CTA/info lightbox; carousel, WA, promo, navbar, dan lightbox Revisi 09–10 tidak regresi.
 
 ## Informasi yang membutuhkan konfirmasi pemilik bisnis `[KONFIRMASI]`
 
@@ -210,3 +219,4 @@ Urutan section satu halaman, dengan anchor navigasi:
 4. Tanggal sertifikat hasil OCR (26–27 September 2026) perlu dicek kembali terhadap dokumen asli sebelum dicantumkan sebagai teks. Saat ini hanya nomor sertifikat yang ditampilkan.
 5. Teks harga pada poster sudah terbaca sebagian, tetapi tidak direproduksi sebagai tabel karena sebagian kolom tidak terbaca; konfirmasi daftar harga terbaru jika ingin ditampilkan sebagai teks.
 6. Domain final untuk `og:url`, canonical, dan sitemap.
+7. Card "Catering & Nasi Box Acara" tidak memiliki foto katering khusus di galeri. Karena kartu menyebut Ayam Bakar, saat ini kartu membuka detail "Paket Ayam Bakar" di galeri; konfirmasi jika tersedia aset katering/nasi box yang lebih tepat.
