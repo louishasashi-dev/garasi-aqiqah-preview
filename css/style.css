@@ -647,19 +647,23 @@ p {
 .about-service-card h4 {
   font-size: 1.22rem;
 }
-.about-service-card[data-detail-target] {
+.about-service-card[data-detail-target],
+.about-service-card[data-scroll-target] {
   cursor: pointer;
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
 }
 .about-service-card[data-detail-target]:hover,
-.about-service-card[data-detail-target]:focus-visible {
+.about-service-card[data-detail-target]:focus-visible,
+.about-service-card[data-scroll-target]:hover,
+.about-service-card[data-scroll-target]:focus-visible {
   border-color: var(--gold-dark);
   box-shadow: 0 14px 32px rgba(29, 23, 20, 0.12);
   outline: none;
 }
-.about-service-card[data-detail-target]:focus-visible {
+.about-service-card[data-detail-target]:focus-visible,
+.about-service-card[data-scroll-target]:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 3px;
 }
@@ -986,6 +990,11 @@ p {
 .section-gallery {
   background: var(--cream);
 }
+.catering-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 .gallery-grid {
   columns: 3;
   column-gap: 18px;
@@ -1228,6 +1237,17 @@ p {
 }
 .footer-links a:hover {
   color: var(--gold-light);
+}
+.footer-links a.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+.footer-social-link svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
 }
 .footer-bottom {
   display: flex;

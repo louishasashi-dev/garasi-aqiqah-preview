@@ -29,6 +29,7 @@
   const lightboxHeading = document.getElementById('lightbox-heading');
   const lightboxText = document.getElementById('lightbox-text');
   const lightboxWa = document.getElementById('lightbox-wa');
+  const cateringWaHref = document.querySelector('#menu-catering [data-catering-wa]')?.getAttribute('href') || '';
 
   if (lightbox && lightboxPanel && lightboxImage && lightboxClose) {
     let lastTrigger = null;
@@ -50,6 +51,18 @@
           text: parts.join(' · '),
           waHref: card.querySelector('.btn')?.getAttribute('href') || '',
           waLabel: 'Tanyakan terkait paket ini',
+        };
+      }
+      const cateringFigure = img.closest('#menu-catering figure');
+      if (cateringFigure) {
+        const caption = cateringFigure.querySelector('figcaption')?.textContent.trim() || img.alt;
+        return {
+          kicker: 'Menu Catering',
+          title: caption,
+          heading: caption,
+          text: '',
+          waHref: cateringWaHref,
+          waLabel: 'Tanya Terkait Menu Catering',
         };
       }
       const figure = img.closest('.gallery-grid figure');
@@ -131,6 +144,26 @@
       });
     });
 
+    document.querySelectorAll('[data-scroll-target]').forEach((card) => {
+      const target = document.querySelector(card.dataset.scrollTarget);
+      if (!target) return;
+      const heading = card.querySelector('h4')?.textContent.trim() || 'bagian ini';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `Lihat ${heading}`);
+      const go = () => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      };
+      card.addEventListener('click', go);
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          go();
+        }
+      });
+    });
+
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.querySelectorAll('[data-lightbox-close]').forEach((element) => {
       element.addEventListener('click', closeLightbox);
@@ -185,7 +218,7 @@
       item.setAttribute('aria-label', `${i + 1} dari ${items.length}`);
     });
 
-    let index = Math.floor((items.length - 1) / 2);
+    let index = root.closest('#menu-catering') ? 0 : Math.floor((items.length - 1) / 2);
     let frame = 0;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
