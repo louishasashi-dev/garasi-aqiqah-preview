@@ -468,7 +468,7 @@ p {
 }
 .hero-poster {
   width: 522px;
-  height: 752px;
+  height: auto;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(232, 205, 141, 0.3);
@@ -652,6 +652,8 @@ p {
 }
 .about-service-card[data-detail-target],
 .about-service-card[data-scroll-target] {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   transition:
     border-color 0.2s,
@@ -669,6 +671,23 @@ p {
 .about-service-card[data-scroll-target]:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 3px;
+}
+.about-service-card .about-card-hint {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  margin: auto 0 0;
+  padding-top: 14px;
+  color: var(--gold-dark);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+.about-card-hint svg {
+  flex: 0 0 auto;
+  pointer-events: none;
 }
 .about-list-label {
   margin-top: 14px !important;
@@ -729,6 +748,13 @@ p {
 .price-copy .btn {
   margin-top: 12px;
 }
+.price-subhead {
+  margin: 20px 0 0;
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
 .poster-frame {
   padding: 10px;
   border-radius: 16px;
@@ -745,15 +771,28 @@ p {
   border-radius: 8px;
 }
 #harga .price-grid {
-  grid-template-columns: 1fr;
+  display: flex;
+  align-items: stretch;
   gap: 32px;
+}
+#harga .price-text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+  max-width: 780px;
 }
 #harga .price-copy {
   max-width: 780px;
 }
+#harga .price-gallery {
+  flex: 0 0 min(42%, 460px);
+  align-content: start;
+}
 .price-gallery {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   align-items: start;
 }
@@ -1950,6 +1989,15 @@ p {
   }
   .site-nav a::after {
     display: none;
+  }
+  #harga .price-grid {
+    flex-direction: column;
+  }
+  #harga .price-text,
+  #harga .price-gallery {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
   }
   .hero-grid {
     grid-template-columns: 1fr;

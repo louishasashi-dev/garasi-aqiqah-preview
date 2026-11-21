@@ -1,0 +1,647 @@
+[
+  {
+    "name": "390 loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 no_bottom_gap",
+    "passed": true,
+    "detail": "gap=-1"
+  },
+  {
+    "name": "390 visual_follows_poster",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 ratio_preserved",
+    "passed": true,
+    "detail": "delta=0"
+  },
+  {
+    "name": "390 border_preserved",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "390 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "390 mobile_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 bug_before_confirmed",
+    "passed": true,
+    "detail": "before height=752px gap=-101.3"
+  },
+  {
+    "name": "1024 loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 no_bottom_gap",
+    "passed": true,
+    "detail": "gap=-1"
+  },
+  {
+    "name": "1024 visual_follows_poster",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 ratio_preserved",
+    "passed": true,
+    "detail": "delta=0"
+  },
+  {
+    "name": "1024 border_preserved",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1024 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1024 height_reduced",
+    "passed": true,
+    "detail": "752 -> 651.7"
+  },
+  {
+    "name": "1280 bug_before_confirmed",
+    "passed": true,
+    "detail": "before height=752px gap=-101.3"
+  },
+  {
+    "name": "1280 loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 no_bottom_gap",
+    "passed": true,
+    "detail": "gap=-1"
+  },
+  {
+    "name": "1280 visual_follows_poster",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 ratio_preserved",
+    "passed": true,
+    "detail": "delta=0"
+  },
+  {
+    "name": "1280 border_preserved",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1280 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1280 height_reduced",
+    "passed": true,
+    "detail": "752 -> 651.7"
+  },
+  {
+    "name": "1440 bug_before_confirmed",
+    "passed": true,
+    "detail": "before height=752px gap=-101.29"
+  },
+  {
+    "name": "1440 loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 no_bottom_gap",
+    "passed": true,
+    "detail": "gap=-1"
+  },
+  {
+    "name": "1440 visual_follows_poster",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 ratio_preserved",
+    "passed": true,
+    "detail": "delta=0"
+  },
+  {
+    "name": "1440 border_preserved",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1440 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1440 height_reduced",
+    "passed": true,
+    "detail": "752 -> 651.7"
+  },
+  {
+    "name": "320 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "320 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "320 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "320 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "320 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "360 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "360 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "360 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "360 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "390 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "390 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "390 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "390 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "430 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "430 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "430 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "430 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "640 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "640 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "640 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "640 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "768 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "768 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "768 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "768 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "901 preexisting_overflow_unchanged",
+    "passed": true,
+    "detail": "canonical overflow=33"
+  },
+  {
+    "name": "901 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "901 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "901 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "901 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "901 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "901 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "901 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "901 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1024 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1024 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "1024 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1024 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1280 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1280 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "1280 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1280 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1280 hero_loaded",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 live_no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1440 live_no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 live_no_console_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1440 nav_10",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 wa_25_valid",
+    "passed": true,
+    "detail": "count=25"
+  },
+  {
+    "name": "1440 price_posters_4",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 faq_7",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 anchors_valid",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1440 hero_loaded",
+    "passed": true,
+    "detail": ""
+  }
+]

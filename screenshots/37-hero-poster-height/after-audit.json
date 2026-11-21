@@ -1,0 +1,162 @@
+[
+  {
+    "viewport": 390,
+    "cssHeight": "399.312px",
+    "cssWidth": "320px",
+    "poster": {
+      "x": 35,
+      "y": 282.22,
+      "width": 320,
+      "height": 399.31,
+      "bottom": 681.53
+    },
+    "visual": {
+      "x": 18,
+      "y": 282.22,
+      "width": 354,
+      "height": 399.31,
+      "bottom": 681.53
+    },
+    "img": {
+      "x": 36,
+      "y": 283.22,
+      "width": 318,
+      "height": 397.31,
+      "bottom": 680.53
+    },
+    "gapPosterToImg": -1,
+    "gapVisualToImg": -1,
+    "visualHeightMatchesPoster": true,
+    "naturalRatio": 0.8,
+    "renderedRatio": 0.8,
+    "ratioDelta": 0,
+    "objectFit": "contain",
+    "loaded": true,
+    "overflow": 0,
+    "brokenImages": 0,
+    "borderColor": "rgba(232, 205, 141, 0.3)",
+    "borderRadius": "16px",
+    "boxShadow": "rgba(0, 0, 0, 0.45) 0px 30px 70px 0px",
+    "consoleErrors": []
+  },
+  {
+    "viewport": 1024,
+    "cssHeight": "651.703px",
+    "cssWidth": "522px",
+    "poster": {
+      "x": 474,
+      "y": 539.72,
+      "width": 522,
+      "height": 651.7,
+      "bottom": 1191.42
+    },
+    "visual": {
+      "x": 474,
+      "y": 539.72,
+      "width": 522,
+      "height": 651.7,
+      "bottom": 1191.42
+    },
+    "img": {
+      "x": 475,
+      "y": 540.72,
+      "width": 520,
+      "height": 649.7,
+      "bottom": 1190.42
+    },
+    "gapPosterToImg": -1,
+    "gapVisualToImg": -1,
+    "visualHeightMatchesPoster": true,
+    "naturalRatio": 0.8,
+    "renderedRatio": 0.8,
+    "ratioDelta": 0,
+    "objectFit": "contain",
+    "loaded": true,
+    "overflow": 0,
+    "brokenImages": 0,
+    "borderColor": "rgba(232, 205, 141, 0.3)",
+    "borderRadius": "16px",
+    "boxShadow": "rgba(0, 0, 0, 0.45) 0px 30px 70px 0px",
+    "consoleErrors": []
+  },
+  {
+    "viewport": 1280,
+    "cssHeight": "651.703px",
+    "cssWidth": "522px",
+    "poster": {
+      "x": 705,
+      "y": 529.03,
+      "width": 522,
+      "height": 651.7,
+      "bottom": 1180.73
+    },
+    "visual": {
+      "x": 700,
+      "y": 529.03,
+      "width": 532,
+      "height": 651.7,
+      "bottom": 1180.73
+    },
+    "img": {
+      "x": 706,
+      "y": 530.03,
+      "width": 520,
+      "height": 649.7,
+      "bottom": 1179.73
+    },
+    "gapPosterToImg": -1,
+    "gapVisualToImg": -1,
+    "visualHeightMatchesPoster": true,
+    "naturalRatio": 0.8,
+    "renderedRatio": 0.8,
+    "ratioDelta": 0,
+    "objectFit": "contain",
+    "loaded": true,
+    "overflow": 0,
+    "brokenImages": 0,
+    "borderColor": "rgba(232, 205, 141, 0.3)",
+    "borderRadius": "16px",
+    "boxShadow": "rgba(0, 0, 0, 0.45) 0px 30px 70px 0px",
+    "consoleErrors": []
+  },
+  {
+    "viewport": 1440,
+    "cssHeight": "651.703px",
+    "cssWidth": "522px",
+    "poster": {
+      "x": 785,
+      "y": 538,
+      "width": 522,
+      "height": 651.7,
+      "bottom": 1189.7
+    },
+    "visual": {
+      "x": 780,
+      "y": 538,
+      "width": 532,
+      "height": 651.7,
+      "bottom": 1189.7
+    },
+    "img": {
+      "x": 786,
+      "y": 539,
+      "width": 520,
+      "height": 649.7,
+      "bottom": 1188.7
+    },
+    "gapPosterToImg": -1,
+    "gapVisualToImg": -1,
+    "visualHeightMatchesPoster": true,
+    "naturalRatio": 0.8,
+    "renderedRatio": 0.8,
+    "ratioDelta": 0,
+    "objectFit": "contain",
+    "loaded": true,
+    "overflow": 0,
+    "brokenImages": 0,
+    "borderColor": "rgba(232, 205, 141, 0.3)",
+    "borderRadius": "16px",
+    "boxShadow": "rgba(0, 0, 0, 0.45) 0px 30px 70px 0px",
+    "consoleErrors": []
+  }
+]
