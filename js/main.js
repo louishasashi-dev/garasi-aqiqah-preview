@@ -206,6 +206,7 @@
     const items = [...root.querySelectorAll('.coverflow-track > *')];
     const prev = root.querySelector('[data-coverflow-prev]');
     const next = root.querySelector('[data-coverflow-next]');
+    const counter = root.querySelector('[data-youtube-position]');
     if (!viewport || items.length < 2) return;
 
     root.setAttribute('role', 'group');
@@ -232,6 +233,7 @@
       });
       if (prev) prev.disabled = index === 0;
       if (next) next.disabled = index === items.length - 1;
+      if (counter) counter.textContent = `${index + 1} / ${items.length}`;
     };
 
     const itemCenter = (item) => item.offsetLeft - viewport.offsetLeft + item.offsetWidth / 2;
