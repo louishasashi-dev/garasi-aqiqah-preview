@@ -80,15 +80,15 @@
       return { kicker: '', title: img.alt || 'Gambar', heading: '', text: '', waHref: '', waLabel: '' };
     };
 
-    const openLightbox = (trigger, img, focusTarget = trigger) => {
+    const openLightbox = (trigger, img, focusTarget = trigger, imageSrc = '', altText = '') => {
       lastTrigger = focusTarget;
-      const info = infoFor(img);
-      lightboxImage.src = img.currentSrc || img.src;
-      lightboxImage.alt = img.alt;
-      lightboxTitle.textContent = info.title;
-      lightboxKicker.textContent = info.kicker;
-      lightboxHeading.textContent = info.heading;
-      lightboxText.textContent = info.text;
+      const info = imageSrc ? {} : infoFor(img);
+      lightboxImage.src = imageSrc || img.currentSrc || img.src;
+      lightboxImage.alt = altText || img.alt;
+      lightboxTitle.textContent = info.title || '';
+      lightboxKicker.textContent = info.kicker || '';
+      lightboxHeading.textContent = info.heading || '';
+      lightboxText.textContent = info.text || '';
       const hasInfo = Boolean(info.kicker);
       lightboxInfo.hidden = !hasInfo;
       lightboxPanel.classList.toggle('has-info', hasInfo);
@@ -134,7 +134,14 @@
       card.setAttribute('aria-haspopup', 'dialog');
       card.setAttribute('aria-controls', 'package-lightbox');
       card.setAttribute('aria-label', `Lihat detail ${heading}`);
-      const open = () => openLightbox(img.closest('button') || card, img, card);
+      const previewSrc = card.dataset.lightboxImage;
+      const open = () => {
+        if (previewSrc) {
+          openLightbox(card, img, card, previewSrc, heading);
+          return;
+        }
+        openLightbox(img.closest('button') || card, img, card);
+      };
       card.addEventListener('click', open);
       card.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -302,6 +309,39 @@
   if (youtubeCards.length) {
     requestAnimationFrame(syncYoutubeDescriptions);
     window.addEventListener('resize', syncYoutubeDescriptions);
+  }
+
+  const reviewCards = [...document.querySelectorAll('.review-card')];
+  const syncReviewTexts = () => {
+    reviewCards.forEach((card) => {
+      const text = card.querySelector('.review-text');
+      const toggle = card.querySelector('.review-toggle');
+      if (!text || !toggle || text.classList.contains('is-expanded')) return;
+      const truncated = text.scrollHeight > text.clientHeight + 1;
+      toggle.hidden = !truncated;
+      if (!truncated) {
+        text.classList.remove('is-clamped');
+        toggle.textContent = 'Baca selengkapnya';
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+  reviewCards.forEach((card) => {
+    const text = card.querySelector('.review-text');
+    const toggle = card.querySelector('.review-toggle');
+    if (!text || !toggle) return;
+    text.classList.add('is-clamped');
+    toggle.addEventListener('click', () => {
+      const expanded = !text.classList.contains('is-expanded');
+      text.classList.toggle('is-expanded', expanded);
+      toggle.textContent = expanded ? 'Tampilkan lebih sedikit' : 'Baca selengkapnya';
+      toggle.setAttribute('aria-expanded', String(expanded));
+      if (!expanded) requestAnimationFrame(syncReviewTexts);
+    });
+  });
+  if (reviewCards.length) {
+    requestAnimationFrame(syncReviewTexts);
+    window.addEventListener('resize', syncReviewTexts);
   }
 
   const promo = document.getElementById('promo-modal');

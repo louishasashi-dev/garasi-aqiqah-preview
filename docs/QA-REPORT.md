@@ -7,13 +7,13 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 
 | Item | Status |
 | --- | --- |
-| Struktur HTML & 14 section + promo modal | Selesai |
+| Struktur HTML & 15 section + promo modal | Selesai |
 | CSS responsif desktop / tablet / mobile | Selesai |
 | JavaScript: nav mobile, promo modal, tahun footer, lightbox global, carousel Coverflow, card layanan detail, card Catering → Menu Catering | Selesai, vanilla JS tanpa library |
 | Integrasi WhatsApp & katalog | Selesai (22 tautan: 17 CTA + 4 katalog + 1 CTA lightbox) |
 | SEO metadata & Open Graph | Selesai |
 | Aksesibilitas dasar | Selesai |
-| Screenshot tahapan (166 file) | Selesai |
+| Screenshot tahapan (210 file) | Selesai |
 | QA browser otomatis | Lolos di 10 viewport |
 | Revisi konten hero / alasan / FAQ / area pengiriman | Selesai |
 | Maskot dipindahkan Hero → FAQ | Selesai, tidak menutupi accordion |
@@ -51,11 +51,15 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi 15: dua kategori Galeri | Selesai: 17/17 JPEG penyembelihan valid ditambahkan; 2 judul kategori, 26 thumbnail 4:3 `cover`, lightbox `contain`, QA 231/231 PASS |
 | Revisi 16: kategori Video YouTube | Selesai: 6/6 video sesuai Markdown, 6 thumbnail PNG lokal, card landscape, toggle deskripsi, carousel existing, QA 661/661 PASS |
 | Revisi 17: optimasi mobile Video YouTube | Selesai: kartu vertikal 508:273 `contain`, play icon, slide 84vw + peek, indikator `n / 6`, fokus ke kartu aktif, QA 770/770 PASS |
+| Revisi 18: koreksi hyperlink layanan | Selesai: 2 hyperlink teks membuka asli PNG/JPEG penuh tanpa info/CTA baru, Tutup/backdrop/Escape, QA 312/312 PASS |
+| Revisi 19: 3 video YouTube baru | Selesai: 9/9 kartu sesuai dua Markdown, 9 thumbnail PNG lokal, indikator `5 / 9`, portrait 07/09 tidak terpotong, QA 844/844 PASS |
+| Revisi 20: Ulasan Pelanggan Google Maps | Selesai: 5/5 ulasan persis sumber, 5 PNG lokal utuh, 5 short link aman, nav header/footer, grid 3/2/1 kolom, QA 317/317 PASS |
+| Revisi 21: perbaikan layout Ulasan Pelanggan | Selesai: avatar inisial terpisah dari foto bukti 4:3 `cover`, teks clamp + toggle, kontras AA, scroll offset, QA 847/847 PASS |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
 
-1. Header sticky dengan logo landscape transparan tanpa teks brand terpisah, 8 tautan navigasi, CTA Pesan Sekarang, dan hamburger mobile 44×44 px (`aria-expanded`).
+1. Header sticky dengan logo landscape transparan tanpa teks brand terpisah, 9 tautan navigasi, CTA Pesan Sekarang, dan hamburger mobile 44×44 px (`aria-expanded`).
 2. Hero dengan banner hadits tunggal di atas, eyebrow "Welcome To", `<h1>` bold "Wujudkan Ibadah Aqiqah Penuh Berkah & Ketenangan", tagline "Jadikan Moment Anda Lebih Berharga", slogan Berkah/Hemat/Amanah/Bahagia, dua paragraf deskripsi revisi dengan "Garasi Aqiqah" bold, penutup italic "Berkah dalam ibadah, hangat dalam kebersamaan.", catatan "Dapur Berpengalaman lebih dari 15 tahun", tombol Pesan Aqiqah, Lihat Paket, container QR katalog terpisah di bawah CTA, tautan teks "Lihat Katalog WhatsApp Business", dan poster asli. Badge halal lama dan maskot tidak ada di hero; QR di dalam poster tetap dipertahankan.
 3. Tentang Kami lengkap: judul dan nama usaha, subbagian A Tentang Kami, B tiga logo sertifikasi terpisah, C lima alasan, dan D empat kartu layanan; foto sertifikat halal asli tetap tampil.
 4. Empat card Keunggulan (Berkah, Hemat, Amanah, Bahagia) dengan ikon SVG konsisten.
@@ -81,12 +85,18 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 24. Revisi 15: `#galeri` tetap satu section dengan dua Coverflow dan judul kategori. Kategori pelanggan memuat 9 foto lama yang tidak diubah; kategori penyembelihan memuat 17 JPEG valid dari `assets/img/proses_sembelih_kambing/` secara natural. Semua 26 thumbnail memakai rasio 4:3 dan `object-fit: cover`; lightbox menampilkan file asli utuh dengan `object-fit: contain` untuk portrait maupun landscape.
 25. Revisi 16: `#galeri` menambahkan kategori ketiga "Dokumentasi Video YouTube" setelah dua kategori foto. Keenam entri `docs/markdown-file/REVISION-YOUTUBE.md` dipakai apa adanya (judul, deskripsi, URL, dan `thumbnail_01`–`thumbnail_06`) pada card landscape dengan thumbnail kiri, teks kanan, tombol aman ke YouTube/Shorts, dan deskripsi ringkas via CSS line-clamp yang bisa dibuka/ditutup tanpa mengubah isi teks. Tidak ada iframe dan tidak ada perubahan pada dua kategori foto.
 26. Revisi 17: pada ≤640 px, kartu video menjadi satu kolom vertikal dengan thumbnail 508:273 `object-fit: contain` (gambar utuh, tidak crop), ikon play pseudo-element di tengah, judul 0,95 rem line-clamp 3, deskripsi 0,8 rem line-clamp 3 yang tetap bisa diperluas, toggle/tombol YouTube ≥44 px, carousel video full-bleed dengan slide 84vw dan peek kartu tetangga, indikator posisi `n / 6` yang mengikuti kartu aktif, serta focus ring keyboard yang dipindahkan ke kartu aktif. Layout 768–1440 px dan dua kategori foto tidak berubah.
+27. Revisi 18 (koreksi): dua hyperlink teks kartu layanan ("2. Spesialis Kambing Masak (Mulai Rp 1,5 Jt)" dan "3. Souvenir Super Lengkap") kini membuka `#package-lightbox` dengan `assets/img/product_and_service/SPESIALIS KAMBING GRATIS MASAK.png` dan `assets/img/product_and_service/garasi_hadiah_souvenir.jpg` tampil penuh, rasio asli, dan `object-fit: contain`. Tidak ada foto pada kartu, tidak ada kicker/judul/deskripsi/CTA baru di lightbox, dan tidak ada navigasi ke `#galeri`. Kartu Paket, kartu Catering, `#galeri`, item lain, navbar, footer, dan fitur sebelumnya tidak diubah.
+28. Revisi 19: kategori "Dokumentasi Video YouTube" menerima 3 kartu baru dari `docs/markdown-file/penambahan dokumentasi youtube.md` (`thumbnail_07`–`thumbnail_09`) sehingga total 9 video. Keenam video lama, dua kategori foto, hyperlink layanan revisi 18, navbar, footer, CTA WhatsApp, dan seluruh fitur sebelumnya tidak diubah. Card tetap memakai carousel/lightbox existing tanpa iframe, indeks awal dan indikator menjadi `5 / 9`, thumbnail portrait baru memakai `contain` di desktop, dan QA 844/844 PASS di delapan viewport.
+
+29. Revisi 20: `#ulasan` ditambahkan setelah Banner 02 dan sebelum FAQ sebagai 5 kartu Ulasan Pelanggan dari `REVISION-GOOGLE-REVIEWS.md`. Foto PNG lokal, nama akun, waktu relatif, 5 bintang, isi lengkap, dan short link Google Maps identik dengan sumber; kartu memakai grid 3/2/1 kolom, foto `object-fit: contain`, tautan ≥44 px dengan `target="_blank" rel="noopener noreferrer"`, serta tautan Ulasan di navbar dan footer. Tidak ada ulasan, rating agregat, foto, atau CTA tambahan; seluruh fitur revisi 17/18/19 dipertahankan.
+
+30. Revisi 21: kelima kartu `#ulasan` sekarang memakai avatar inisial UA/VS/FA/CS/SA di samping identitas, sementara foto PNG lokal asli menjadi foto bukti tersendiri dengan rasio 4:3 dan `object-fit: cover` (lightbox tetap menampilkan file asli utuh `contain`). Isi ulasan, waktu, bintang, dan short link tidak berubah; teks panjang dibatasi ±6 baris dengan tombol **Baca selengkapnya** yang muncul hanya saat terpotong, dapat dibuka/tutup, dan memakai `aria-expanded`/`aria-controls`. Heading seimbang, kontras teks AA, `scroll-margin-top` mengikuti header sticky, dan grid 3/2/1 kolom tetap rapi.
 
 ## Hasil QA otomatis (browser nyata)
 
 | Pemeriksaan | Desktop 1440×1000 | Mobile 390×844 |
 | --- | --- | --- |
-| Gambar di DOM (36 `<img>`, termasuk banner, logo sertifikasi, produk, lightbox, maskot, dan 6 poster Menu Catering) | 36/36 hadir, 0 request gagal | 36/36 hadir, 0 request gagal |
+| Gambar di DOM (62 `<img>`, termasuk banner, logo sertifikasi, produk, lightbox, maskot, dan 6 poster Menu Catering) | 62/62 hadir, 0 gambar rusak, 0 request gagal | 62/62 hadir, 0 gambar rusak, 0 request gagal |
 | Console / page error | 0 | 0 |
 | Horizontal overflow | Tidak ada (scrollWidth 1440 = clientWidth) | Tidak ada; lolos di 320, 360, 390, 600, 601, 768, 900, 901, 1024, 1440 px |
 | Anchor internal rusak | 0 | 0 |
@@ -324,6 +334,60 @@ Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\rev17-qa.json` (Playwright Py
 | Fokus keyboard | Di 390/1440 px, `:focus-visible` pada viewport tidak menggambar ring gold (`outline: none`), sedangkan kartu aktif mendapat outline solid 3 px berwarna emas; ArrowRight/ArrowLeft tetap menggeser carousel dan indikator mengikuti |
 | Regresi | Menu Catering 6/indeks 0, Paket 6/indeks 2, galeri pelanggan 9/indeks 4, penyembelihan 17/indeks 8, dan video 6/indeks 2; nav foto masih bekerja; 768–1440 px mempertahankan card dua kolom landscape, `object-fit: cover`, slide `min(720px, 88vw)`, dan indikator tersembunyi; 0 broken image, 0 console/page error, 0 request gagal; 770/770 PASS di 8 viewport |
 
+## Revisi 18: Koreksi Hyperlink Spesialis Kambing Masak & Souvenir Super Lengkap
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\rev18-koreksi-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, device scale factor 1, lima viewport 320/390/768/1024/1440 px), pengecekan format/dimensi dengan Pillow, dan screenshot before/after di `screenshots/28-koreksi-hyperlink-layanan/`. Tidak ada build step; `node --check` dan `git diff --check` dijalankan terpisah.
+
+Catatan koreksi: interpretasi awal menambahkan `.service-photo` pada dua kartu di `#tentang` dan dibuktikan di `screenshots/27-service-photo-preview/`. Pemesan mengklarifikasi bahwa yang dimaksud adalah dua hyperlink/teks kartu yang sebelumnya membuka detail Galeri, bukan penambahan foto kartu. Implementasi final menghapus foto tersebut dan mengalihkan dua aksi kartu ke aset lokal yang ditentukan tanpa menyentuh `#galeri`.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset & format | `SPESIALIS KAMBING GRATIS MASAK.png` benar PNG 1279×1600 dan `garasi_hadiah_souvenir.jpg` benar JPEG 1130×1600. Keduanya lokal, tidak dipindah/diubah, dan termuat `naturalWidth > 0` di semua viewport saat dibuka |
+| Struktural kartu | 0 `.service-photo` dan 0 `.image-zoom` tambahan pada kartu layanan; 4/4 judul serta 4/4 deskripsi pertama identik dengan sebelum revisi; kartu kembali berisi teks seperti semula |
+| Dua hyperlink | Klik pada teks "2. Spesialis Kambing Masak (Mulai Rp 1,5 Jt)" membuka `SPESIALIS KAMBING GRATIS MASAK.png`; klik "3. Souvenir Super Lengkap" membuka `garasi_hadiah_souvenir.jpg`; keduanya memakai atribut `data-lightbox-image` pada kartu yang bersangkutan |
+| Batas perubahan | `location.hash` tetap kosong setelah klik; tidak ada perpindahan ke `#galeri`; dua `src` figure `detail-olahan-kambing` dan `detail-souvenir` tetap memakai foto dokumentasi lama; 52 tombol lightbox lama tidak bertambah |
+| Isi lightbox | Panel info tersembunyi, CTA tidak terlihat, kelas `has-info` tidak aktif, dan tidak ada teks/CTA baru pada dialog; `role="dialog"`, `aria-modal="true"`, dan `aria-controls` tetap benar |
+| Preview gambar | Rasio render terhadap rasio natural menyimpang <0,02; `object-fit: contain`; gambar sepenuhnya berada di dalam viewport; 0 overflow horizontal saat dialog terbuka di 320–1440 px |
+| Tutup & keyboard | Tombol Tutup menutup kambing, klik area luar menutup souvenir di semua viewport; Enter pada kartu ber-`tabindex` membuka aset yang tepat, Escape menutup, promo tidak ikut muncul, fokus kembali ke kartu pemicu di 390/1440 px |
+| Scroll | `body.style.overflow = hidden` saat terbuka dan kembali ke nilai semula setelah Tutup/backdrop/Escape; tidak ada scroll halaman yang terkunci |
+| Regresi | 6 paket/indeks 2, 9 galeri pelanggan/indeks 4, 17 penyembelihan/indeks 8, 6 video/indeks 2, 6 Menu Catering/indeks 0, 4 price poster, 7 FAQ, 8 tautan navbar, kartu Paket tetap membuka paket, kartu Catering tetap scroll ke `#menu-catering`, tautan navbar Galeri tetap berfungsi, dan semua tautan `wa.me` memakai `6287896102009`; 0 console/page error, 0 request gagal; 312/312 PASS di 5 viewport |
+
+## Revisi 19: Penambahan 3 Video YouTube
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\rev19-youtube-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, device scale factor 1, delapan viewport 320/360/390/430/640/768/1024/1440 px), `C:\Users\DELL\AppData\Local\Temp\opencode\rev19-verify-source.py`, pengecekan format/dimensi dengan Pillow, dan screenshot before/after di `screenshots/29-tambah-video-youtube/`. Tidak ada build step; `node --check` dan `git diff --check` dijalankan terpisah.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset & sumber | `thumbnail_07.png` 890976 byte PNG 582×943, `thumbnail_08.png` 86430 byte PNG 409×226, dan `thumbnail_09.png` 478537 byte PNG 433×663 lokal serta termuat di semua viewport. 9/9 judul, deskripsi, URL, dan thumbnail identik dengan gabungan `REVISION-YOUTUBE.md` dan `penambahan dokumentasi youtube.md`, setelah escape `\_`, `\&`, `\#` didekode dan U+200B dipertahankan. Video 8 tanpa `.youtube-description` dan tanpa `.youtube-toggle` |
+| Kartu & interaksi | 9 kartu urut `thumbnail_01`–`thumbnail_09`; 9/9 tautan YouTube/Shorts persis dengan `target="_blank" rel="noopener noreferrer"` dan `aria-label` yang benar; 8 toggle tersisa membuka/menutup deskripsi; 0 iframe di `#galeri`; tidak ada akses iframe eksternal yang dianggap request gagal |
+| Layout | 641–1440 px tetap dua kolom landscape, slide `min(720px, 88vw)`, thumbnail lama/`thumbnail_08` `cover`, `thumbnail_07`/`thumbnail_09` `contain`; ≤640 px tetap satu kolom, thumbnail 508:273 `contain`, slide 84vw dengan peek tetangga, judul 0,95 rem dan deskripsi 0,8 rem line-clamp 3; 0 overflow horizontal di delapan viewport |
+| Carousel & regresi | Indikator awal `5 / 9`, nav desktop di >900 px, swipe ≤900 px, dan keyboard Arrow tetap menggeser ke `6 / 9` lalu kembali `5 / 9`; Menu Catering 6/indeks 0, Paket 6/indeks 2, pelanggan 9/indeks 4, penyembelihan 17/indeks 8, hyperlink layanan revisi 18, FAQ, navbar, footer, dan semua CTA `6287896102009` tidak berubah; 65 gambar tanpa broken image, 0 console/page error, 0 request gagal; 844/844 PASS |
+| Screenshot | Delapan file before/after 320/390/430/1440 px dibuat dari browser sungguhan, semua ada dengan ukuran > 0; verifikasi visual langsung tidak tersedia, jadi geometri dan dimensi dicek programatis |
+
+## Revisi 20: Ulasan Pelanggan Google Maps
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\rev20-ulasan-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, delapan viewport 320/360/390/430/640/768/1024/1440 px), `docs/markdown-file/REVISION-GOOGLE-REVIEWS.md`, pengecekan format/dimensi dengan Pillow, dan screenshot before/after di `screenshots/30-ulasan-google-maps/`. Tidak ada build step; `node --check` dan `git diff --check` dijalankan terpisah.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset & sumber | 5 PNG lokal (`ululazmiulasan` 595×454, `ulasansivins` 601×450, `ulasanfarisaazzahra` 663×702, `ulasancindyayusintia` 733×556, `syifaandiniulasan` 654×525) termuat di semua viewport; 70/70 gambar di DOM tanpa broken image; 0 request gagal. Nama, waktu relatif dari 21 November 2026, 5 bintang, isi teks, URL short link, dan path foto 5/5 identik dengan Markdown, termasuk tanda baca, emoji, dan `&amp;` yang terbaca kembali sebagai `&`. |
+| Kartu & aksesibilitas | 5 kartu `.review-card` urut; `aria-label` bintang `5 dari 5 bintang`, alt foto memakai nama akun, tautan memakai `target="_blank" rel="noopener noreferrer"` dan `aria-label` yang sesuai; tinggi minimum tautan 44 px; fokus `:focus-visible` emas; tidak ada teks terpotong permanen, carousel, atau rating agregat. |
+| Layout | Grid 3 kolom >900 px, 2 kolom 641–900 px, 1 kolom ≤640 px; tiap kartu memuat profile/teks/tautan tanpa overlap; foto 64×64 px `object-fit: contain`; 0 horizontal overflow baik saat load maupun setelah interaksi di delapan viewport. |
+| Navigasi & regresi | Navbar memuat `Ulasan`, footer memuat `Ulasan Pelanggan`, keduanya menuju `#ulasan`; 18 anchor internal rusak = 0; 15 section; 22 tautan `wa.me` masih memakai `6287896102009` atau katalog `/c/`; 7 FAQ; 5 carousel; 9 kartu YouTube dengan indikator `5 / 9`; kartu Catering masih scroll ke `#menu-catering`; hyperlink layanan revisi 18, Maps lazy, dan promo/Escape tetap lolos. 0 console error dan 0 page error; 317/317 PASS. |
+| Screenshot | Delapan file before/after 320/390/430/1440 px dibuat dari browser sungguhan, semua ada dengan ukuran > 0; verifikasi visual langsung tidak tersedia, jadi geometri, teks, dan dimensi dicek programatis. |
+
+## Revisi 21: Perbaikan Layout Ulasan Pelanggan
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\rev21-ulasan-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, delapan viewport 320/360/390/430/640/768/1024/1440 px), `docs/markdown-file/REVISION-GOOGLE-REVIEWS.md`, OCR Windows untuk satu foto sertifikat, dan screenshot before/after di `screenshots/31-perbaikan-layout-ulasan/`. Tidak ada build step; `node --check` dan `git diff --check` dijalankan terpisah.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset & sumber | 5 PNG lokal tetap tidak diubah, dimensi natural benar, dan 5/5 termuat tanpa broken image; 70/70 gambar di DOM. Nama, waktu relatif, 5 bintang, isi teks, short link, dan path foto persis sumber. Alt Farisa memakai "Sertifikat aqiqah..." berdasarkan OCR; empat foto lain memakai alt provenan `Foto bukti ulasan <nama> di Google Maps` sesuai keputusan pemesan karena isi visual tidak dapat diverifikasi model. |
+| Kartu & aksesibilitas | Avatar inisial UA/VS/FA/CS/SA berukuran 46 px dan lingkaran; tidak ada lagi foto yang dipakai sebagai avatar. Foto bukti menjadi elemen tersendiri dengan rasio 4:3 dan `object-fit: cover` pada thumbnail, sementara lightbox global tetap membuka file asli `contain`. Isi panjang dibatasi 6 baris; tombol **Baca selengkapnya** hanya muncul saat `scrollHeight > clientHeight`, berubah menjadi **Tampilkan lebih sedikit**, memakai `aria-expanded`/`aria-controls`, dan bisa dibuka/tutup. Teks, tautan, dan toggle memakai `var(--muted)` dengan kontras 5,96:1 di atas kartu putih; fokus emas 3 px dan target sentuh ≥44 px tetap ada. |
+| Layout & navigasi | Grid 3/2/1 kolom (>900/641–900/≤640 px); kartu tidak lagi diregangkan `height: 100%`, foto tidak melewati kotak 4:3, dan tidak ada overlap. `#ulasan` memakai `scroll-margin-top` 94 px desktop / 84 px mobile sehingga anchor tidak tertutup header sticky; heading memakai `text-wrap: balance`. 0 horizontal overflow baik saat load, setelah toggle, maupun setelah navigasi mobile di delapan viewport. |
+| Regresi | 15 section; navbar `Ulasan` dan footer `Ulasan Pelanggan` menuju section; 18 anchor internal rusak = 0; 22 CTA WA memakai `6287896102009` atau katalog `/c/`; 7 FAQ; 5 carousel; 9 kartu YouTube dengan indikator `5 / 9`; kartu Catering scroll, hyperlink layanan revisi 18, Maps lazy, dan promo/Escape tidak berubah. 0 console error, 0 page error, 0 request gagal; 847/847 PASS. |
+| Screenshot | Delapan file before/after 320/390/430/1440 px dibuat dari browser sungguhan, semua ada dengan ukuran > 0; geometri dan dimensi dicek programatis karena verifikasi visual langsung tidak tersedia. |
+
 ## Bug yang ditemukan dan diperbaiki
 
 1. **Skrip QA: tautan katalog dianggap CTA salah.** Pemeriksaan awal menganggap `https://wa.me/c/6287896102009` sebagai nomor CTA yang salah. Ini bukan bug website; skrip QA diperbaiki dengan memisahkan pola katalog.
@@ -356,6 +420,13 @@ Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\rev17-qa.json` (Playwright Py
 28. **Thumbnail portrait revisi 15 masih mengikuti tinggi intrinsik (revisi ini).** `aspect-ratio: 4 / 3` awalnya diletakkan pada tombol `.image-zoom`, sehingga gambar portrait dengan tinggi intrinsik 456 px tetap menentukan tinggi tombol dan kartu. Diagnosis computed style menunjukkan tinggi gambar portrait 456 px vs landscape 256,5 px. Rasio dipindahkan ke `.section-gallery .gallery-grid .image-zoom img` dengan `height: auto; object-fit: cover`; tinggi kartu menjadi seragam. Skrip QA juga diperbaiki untuk ekspektasi 14 section dan perbandingan list vs tuple, serta mengecualikan font `fonts.gstatic.com` yang dimuat oleh embed Google Maps. Uji ulang 231/231 PASS.
 29. **Kartu video revisi 16 awalnya berorientasi portrait di 320 px.** Pengukuran Playwright awal memberi 294×298 px karena toggle 44 px dan tiga baris deskripsi. Ditambahkan `-webkit-line-clamp: 2` hanya pada ≤360 px sehingga menjadi 294×282 px; ukuran lain tidak berubah. Verifikasi teks sumber juga menemukan spasi indentasi tambahan pada beberapa baris deskripsi saat HTML disisipkan; semua spasi tersebut dihapus sehingga `textContent` 6/6 identik dengan Markdown. Skrip QA sempat melaporkan 2 FAIL palsu karena mengekspresikan offset tengah 0 px sebagai `0 or 999`; setelah perbaikan skrip, uji ulang 661/661 PASS.
 30. **Peek kartu video revisi 17 tidak terlihat setelah slide diubah ke 84vw (revisi ini).** Viewport carousel berada di dalam `.container` yang memiliki padding 18 px, sehingga pada 320 px lebarnya hanya 284 px; dengan slide 268,8 px, kartu tetangga seluruhnya tertutup padahal `84vw` sudah sesuai. Diagnosis geometri menunjukkan `prev.right = 9,8 px` sedangkan `viewport.left = 18 px`. Viewport carousel video dibuat full-bleed (`width: 100vw; margin-left: calc(50% - 50vw)`) hanya pada ≤640 px, sehingga peek menjadi ≈10–26 px tanpa overflow. Skrip QA juga diperbaiki dari beberapa FAIL palsu: urutan Menu Catering/Paket, pseudo-element dibandingkan dengan `offsetWidth` bukan rect yang ter-`scale`, target sentuh memakai `min-height`, popup YouTube dinormalisasi ke ID video, lazy image ditunggu benar-benar termuat, dan penantian `load state` popup YouTube dihapus karena URL sudah tersedia dari `expect_popup` sehingga tidak bergantung pada jaringan eksternal. Uji ulang 770/770 PASS.
+31. **Skrip QA revisi 18 interim: dua pemeriksaan awal salah.** Kicker lightbox dibaca dengan `inner_text()` sehingga kembali `LAYANAN`/`GALERI` karena CSS `text-transform: uppercase`, bukan teks DOM yang berubah; perbandingan diubah memakai `casefold()`. Selektor `.gallery-grid.coverflow-track` awalnya juga menghitung carousel Menu Catering, sehingga jumlah foto galeri terbaca salah; ditambahkan `:not(.menu-catering-track)`. Uji ulang interpretasi interim 328/328 PASS; implementasi tersebut kemudian diganti sesuai klarifikasi pemesan. Bukan bug website.
+32. **Skrip QA revisi 18 koreksi: pemeriksaan Enter awal salah (revisi ini).** Skrip menekan `h4` yang tidak focusable, sehingga key Event dikirim ke kartu yang masih fokus dari pemeriksaan sebelumnya; aset lightbox dan fokus setelah Escape tampak salah walaupun Website benar. Skrip diubah menekan kartu ber-`tabindex="0"` dan ditambah pemeriksaan `src` pada jalur keyboard. Sebelum koreksi Website, QA gagal 57/300 sesuai target yang salah; setelah koreksi Website dan skrip, 312/312 PASS. Bukan bug website.
+33. **Skrip QA revisi 19: tiga asumsi skrip salah (revisi ini).** Tombol nav carousel tersembunyi via CSS sampai ≤900 px, sehingga klik nav pada 320/640 px mengalami timeout; skrip diubah menjadi `width > 900`. Ekspektasi urutan kelima carousel juga tertukar, dan pemeriksaan tumpukan internal memakai urutan vertikal mobile pada desktop padahal kartu desktop dua kolom; keduanya disesuaikan dengan DOM dan CSS existing. Setelah koreksi skrip, QA 844/844 PASS. Bukan bug website.
+
+34. **Skrip QA revisi 20: dua asumsi skrip salah (revisi ini).** Pemeriksaan CTA WhatsApp mengira 4 tautan katalog `https://wa.me/c/6287896102009` sebagai nomor salah; skrip diperbaiki dengan menerima pola katalog. Pemeriksaan anchor navbar membaca posisi `#ulasan` 300 ms setelah klik, sebelum smooth scroll selesai; skrip diganti menunggu kondisi sampai `getBoundingClientRect().top` mendekati 0. Uji ulang: 317/317 PASS. Bukan bug website.
+
+35. **Foto bukti ulasan terkena gaya lightbox global (revisi ini).** Skrip lightbox global membungkus semua `main img` dengan `<button class="image-zoom">`, sehingga aturan umum `.image-zoom img` menimpa `.review-photo img`: `object-fit` kembali `contain` dan tinggi gambar melebihi kotak 4:3. Diperbaiki dengan aturan scoped `.review-photo .image-zoom` / `.review-photo .image-zoom img`; lightbox tetap berfungsi. Skrip QA awal juga salah mengukur toggle yang `hidden` (rect 0) dan membalik kondisi "no text clipped when toggle hidden"; setelah koreksi skrip, uji ulang 847/847 PASS.
 
 Tidak ada bug fungsional yang tersisa pada website.
 
@@ -363,7 +434,7 @@ Tidak ada bug fungsional yang tersisa pada website.
 
 - Teks asli WordPress untuk Tentang Kami tidak dapat dipulihkan karena folder `references/` tidak ada. Teks Tentang Kami lengkap sudah disediakan pemesan pada revisi 06.
 - `docs/VISUAL-AUDIT.md` tidak tersedia di workspace.
-- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, `23-galeri-dokumentasi`, `24-galeri-dua-kategori`, `25-dokumentasi-video-youtube`, dan `26-optimasi-mobile-youtube`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp. Pada revisi 17, OCR Windows hanya mengenali teks 4/6 thumbnail pada crop DPR 2; dua lainnya juga gagal dikenali dari file asli sehingga keterbacaan teks tersebut tidak dapat dipastikan secara OCR, hanya dipastikan tidak terpotong oleh layout.
+- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, `23-galeri-dokumentasi`, `24-galeri-dua-kategori`, `25-dokumentasi-video-youtube`, `26-optimasi-mobile-youtube`, `27-service-photo-preview` (interpretasi interim), dan `28-koreksi-hyperlink-layanan`, serta `29-tambah-video-youtube`, `30-ulasan-google-maps`, dan `31-perbaikan-layout-ulasan`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp. Pada revisi 17, OCR Windows hanya mengenali teks 4/6 thumbnail pada crop DPR 2; dua lainnya juga gagal dikenali dari file asli sehingga keterbacaan teks tersebut tidak dapat dipastikan secara OCR, hanya dipastikan tidak terpotong oleh layout.
 - Folder khusus `assets/img/menu_catering/` berisi enam poster JPEG asli. Revisi 12.1 memakai salinan bernama deskriptif (`sampul_atau_awal.jpeg`, `1.jpeg`–`5.jpeg`) yang byte-nya identik dengan enam file asli `WhatsApp Image 2026-11-20 ...`; file asli tetap dipertahankan di folder dan tidak ada byte gambar yang diubah. Kartu "Catering & Nasi Box Acara" tidak lagi membuka detail `Paket Ayam Bakar`, melainkan scroll ke section tersebut.
 - `favicon-browser.png` adalah render aset favicon asli yang dimuat langsung oleh browser, bukan screenshot tab/chrome browser (Playwright headless tidak menangkap UI browser). Identifikasi logo landscape vs icon juga dibantu OCR Windows + analisis alpha/Pillow, bukan penglihatan langsung.
 
@@ -547,5 +618,57 @@ Tidak ada bug fungsional yang tersisa pada website.
 | `screenshots/26-optimasi-mobile-youtube/` | `01-after-390px.png` | 390×1483 |
 | `screenshots/26-optimasi-mobile-youtube/` | `01-after-430px.png` | 430×1513 |
 | `screenshots/26-optimasi-mobile-youtube/` | `01-after-1440px.png` | 1440×1557 |
+| `screenshots/27-service-photo-preview/` | `00-before-320px.png` | 284×2271 |
+| `screenshots/27-service-photo-preview/` | `00-before-390px.png` | 354×1918 |
+| `screenshots/27-service-photo-preview/` | `00-before-768px.png` | 712×1094 |
+| `screenshots/27-service-photo-preview/` | `00-before-1024px.png` | 968×1024 |
+| `screenshots/27-service-photo-preview/` | `00-before-1440px.png` | 1184×952 |
+| `screenshots/27-service-photo-preview/` | `01-after-320px.png` | 284×2751 |
+| `screenshots/27-service-photo-preview/` | `01-after-390px.png` | 354×2398 |
+| `screenshots/27-service-photo-preview/` | `01-after-768px.png` | 712×1501 |
+| `screenshots/27-service-photo-preview/` | `01-after-1024px.png` | 968×1504 |
+| `screenshots/27-service-photo-preview/` | `01-after-1440px.png` | 1184×1432 |
+| `screenshots/27-service-photo-preview/` | `02-modal-kambing-390px.png` | 390×844 |
+| `screenshots/27-service-photo-preview/` | `03-modal-souvenir-390px.png` | 390×844 |
+| `screenshots/27-service-photo-preview/` | `02-modal-kambing-1440px.png` | 1440×1000 |
+| `screenshots/27-service-photo-preview/` | `03-modal-souvenir-1440px.png` | 1440×1000 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `00-before-320px.png` | 284×2751 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `00-before-390px.png` | 354×2398 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `00-before-768px.png` | 712×1501 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `00-before-1024px.png` | 968×1504 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `00-before-1440px.png` | 1184×1432 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `01-after-320px.png` | 284×2271 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `01-after-390px.png` | 354×1918 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `01-after-768px.png` | 712×1094 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `01-after-1024px.png` | 968×1024 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `01-after-1440px.png` | 1184×952 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `02-modal-kambing-390px.png` | 390×844 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `03-modal-souvenir-390px.png` | 390×844 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `02-modal-kambing-1440px.png` | 1440×1000 |
+| `screenshots/28-koreksi-hyperlink-layanan/` | `03-modal-souvenir-1440px.png` | 1440×1000 |
+| `screenshots/29-tambah-video-youtube/` | `00-before-320px.png` | 320×474 |
+| `screenshots/29-tambah-video-youtube/` | `00-before-390px.png` | 390×446 |
+| `screenshots/29-tambah-video-youtube/` | `00-before-430px.png` | 430×490 |
+| `screenshots/29-tambah-video-youtube/` | `00-before-1440px.png` | 1232×441 |
+| `screenshots/29-tambah-video-youtube/` | `01-after-320px.png` | 320×474 |
+| `screenshots/29-tambah-video-youtube/` | `01-after-390px.png` | 390×446 |
+| `screenshots/29-tambah-video-youtube/` | `01-after-430px.png` | 430×490 |
+| `screenshots/29-tambah-video-youtube/` | `01-after-1440px.png` | 1232×524 |
+| `screenshots/30-ulasan-google-maps/` | `00-before-320px.png` | 320×1376 |
+| `screenshots/30-ulasan-google-maps/` | `00-before-390px.png` | 390×1393 |
+| `screenshots/30-ulasan-google-maps/` | `00-before-430px.png` | 430×1325 |
+| `screenshots/30-ulasan-google-maps/` | `00-before-1440px.png` | 1440×861 |
+| `screenshots/30-ulasan-google-maps/` | `02-after-320px.png` | 320×2715 |
+| `screenshots/30-ulasan-google-maps/` | `02-after-390px.png` | 390×2658 |
+| `screenshots/30-ulasan-google-maps/` | `02-after-430px.png` | 430×2765 |
+| `screenshots/30-ulasan-google-maps/` | `02-after-1440px.png` | 1440×1475 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `00-before-320px.png` | 320×2715 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `00-before-390px.png` | 390×2658 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `00-before-430px.png` | 430×2765 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `00-before-1440px.png` | 1440×1475 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `02-after-320px.png` | 320×3071 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `02-after-390px.png` | 390×3118 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `02-after-430px.png` | 430×3220 |
+| `screenshots/31-perbaikan-layout-ulasan/` | `02-after-1440px.png` | 1440×1620 |
 
-Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami; folder `23` adalah kondisi setelah revisi 14 penggantian seluruh foto Galeri dengan dokumentasi asli; folder `24` adalah kondisi setelah revisi 15 penambahan kategori penyembelihan dan thumbnail 4:3 `cover`; folder `25` adalah kondisi setelah revisi 16 penambahan kategori video YouTube dengan card landscape dan deskripsi expandable; folder `26` adalah before/after revisi 17 optimasi mobile kategori video YouTube (320/390/430/1440 px). Total 166 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
+Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `30` adalah before/after revisi 20 Ulasan Pelanggan Google Maps (320/390/430/1440 px), dengan `02-after` menangkap section `#ulasan` secara penuh. Folder `31` adalah before/after revisi 21 perbaikan layout `#ulasan` (320/390/430/1440 px), dengan `02-after` menangkap section setelah avatar inisial, foto bukti 4:3, dan toggle diterapkan. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami; folder `23` adalah kondisi setelah revisi 14 penggantian seluruh foto Galeri dengan dokumentasi asli; folder `24` adalah kondisi setelah revisi 15 penambahan kategori penyembelihan dan thumbnail 4:3 `cover`; folder `25` adalah kondisi setelah revisi 16 penambahan kategori video YouTube dengan card landscape dan deskripsi expandable; folder `26` adalah before/after revisi 17 optimasi mobile kategori video YouTube (320/390/430/1440 px); folder `27` adalah bukti historis interpretasi interim revisi 18 berupa foto kartu layanan (320/390/768/1024/1440 px) dan preview lightbox 390/1440 px; folder `28` adalah before/after koreksi final revisi 18 untuk dua hyperlink teks layanan (320/390/768/1024/1440 px) serta preview lightbox tanpa info/CTA 390/1440 px; folder `29` adalah before/after revisi 19 penambahan 3 video YouTube (320/390/430/1440 px). Total 202 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
