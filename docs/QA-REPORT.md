@@ -13,7 +13,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Integrasi WhatsApp & katalog | Selesai (22 tautan: 17 CTA + 4 katalog + 1 CTA lightbox) |
 | SEO metadata & Open Graph | Selesai |
 | Aksesibilitas dasar | Selesai |
-| Screenshot tahapan (127 file) | Selesai |
+| Screenshot tahapan (158 file) | Selesai |
 | QA browser otomatis | Lolos di 10 viewport |
 | Revisi konten hero / alasan / FAQ / area pengiriman | Selesai |
 | Maskot dipindahkan Hero → FAQ | Selesai, tidak menutupi accordion |
@@ -48,6 +48,8 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi 13: card Paket | Selesai: 6/6 poster tidak overflow/overlap, CTA di dalam card, ukuran slide seragam di 320–1440 px |
 | Revisi 13 (koreksi): sosial Kontak Kami | Selesai: YouTube/TikTok dipindah dari FAQ ke Kontak, URL sama dengan footer, popup benar, FAQ bersih, target sentuh 44 px |
 | Revisi 14: foto Galeri dokumentasi | Selesai: 9/9 JPEG valid dari `assets/img/dokumentasi/` menggantikan 6 foto lama; urutan natural, tanpa caption baru, carousel/lightbox/regresi lolos |
+| Revisi 15: dua kategori Galeri | Selesai: 17/17 JPEG penyembelihan valid ditambahkan; 2 judul kategori, 26 thumbnail 4:3 `cover`, lightbox `contain`, QA 231/231 PASS |
+| Revisi 16: kategori Video YouTube | Selesai: 6/6 video sesuai Markdown, 6 thumbnail PNG lokal, card landscape, toggle deskripsi, carousel existing, QA 661/661 PASS |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -75,6 +77,8 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 21. Revisi 12.1: gambar `#menu-catering` diganti seluruhnya dengan 6 asli dari `assets/img/menu_catering/` (`sampul_atau_awal.jpeg`, `1.jpeg`–`5.jpeg`) secara berurutan; sampul menjadi posisi awal carousel. Footer kini memuat tautan bericon Instagram, Facebook, YouTube, dan TikTok dengan gaya dan konfigurasi `target="_blank" rel="noopener noreferrer"` yang seragam.
 22. Revisi 13: hero mobile memakai tinggi poster otomatis sehingga tidak ada ruang kosong besar; seluruh card Paket memakai baris grid yang membatasi poster agar tidak menimpa teks/CTA. Setelah koreksi, FAQ tidak memuat ikon sosial; YouTube dan TikTok berada di `.social-row` Kontak Kami dengan URL footer yang sama, gaya 44 px, dan pembukaan tab baru aman.
 23. Revisi 14: `#galeri` menampilkan 9 foto asli dari folder `assets/img/dokumentasi/` dengan urutan nama natural, tanpa caption baru. ID `detail-souvenir` dan `detail-olahan-kambing` dipertahankan pada dua figure pertama agar kartu layanan tetap membuka lightbox; carousel Coverflow, swipe, nav desktop, lightbox, Tutup, dan CTA WhatsApp tidak berubah.
+24. Revisi 15: `#galeri` tetap satu section dengan dua Coverflow dan judul kategori. Kategori pelanggan memuat 9 foto lama yang tidak diubah; kategori penyembelihan memuat 17 JPEG valid dari `assets/img/proses_sembelih_kambing/` secara natural. Semua 26 thumbnail memakai rasio 4:3 dan `object-fit: cover`; lightbox menampilkan file asli utuh dengan `object-fit: contain` untuk portrait maupun landscape.
+25. Revisi 16: `#galeri` menambahkan kategori ketiga "Dokumentasi Video YouTube" setelah dua kategori foto. Keenam entri `docs/markdown-file/REVISION-YOUTUBE.md` dipakai apa adanya (judul, deskripsi, URL, dan `thumbnail_01`–`thumbnail_06`) pada card landscape dengan thumbnail kiri, teks kanan, tombol aman ke YouTube/Shorts, dan deskripsi ringkas via CSS line-clamp yang bisa dibuka/ditutup tanpa mengubah isi teks. Tidak ada iframe dan tidak ada perubahan pada dua kategori foto.
 
 ## Hasil QA otomatis (browser nyata)
 
@@ -269,6 +273,37 @@ Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\inspect-dokumentasi.py` (vali
 | Kartu layanan | ID `detail-souvenir` dan `detail-olahan-kambing` tetap ada; kedua kartu layanan masih membuka lightbox |
 | Regresi | 210/210 PASS di 8 viewport; 0 overflow horizontal, 0 broken image, 0 console/page error, 0 request gagal (Maps/WA eksternal dikecualikan); Paket 6, price list 4, FAQ 7, navbar 8, WA 22, kontak sosial 2, promo/Escape, dan Maps lazy tetap lolos |
 
+## Revisi 15: dua kategori Galeri dokumentasi
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\inspect-sembelih.py` (Pillow), `C:\Users\DELL\AppData\Local\Temp\opencode\verify-gallery-categories.py` (markup), dan `C:\Users\DELL\AppData\Local\Temp\opencode\sembelih-gallery-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, device scale factor 1, 320/390/768/1440 px). Tidak ada build step; kode statis dicek dengan `node --check` dan `git diff --check`.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset baru | 17 file ditemukan di `assets/img/proses_sembelih_kambing/`; 17/17 JPEG dapat dibaca Pillow, 0 invalid, 0 non-gambar; 8 portrait dan 9 landscape |
+| Urutan & markup | 17/17 dipakai di kategori kedua dengan urutan natural `12.46.39`, `12.46.40`, `12.46.40 (1)`–`(2)`, `12.46.41`, `12.46.41 (1)`–`(2)`, `12.46.42`, `12.46.42 (1)`–`(2)`, `12.46.43`, `12.46.43 (1)`–`(2)`, `12.46.44`, `12.46.44 (1)`–`(3)`; atribut `width`/`height` cocok dengan dimensi asli |
+| Kategori | Judul tepat "Dokumentasi dari Pelanggan" lalu "Dokumentasi Proses Penyembelihan Kambing"; keduanya merupakan elemen tepat sebelum Coverflow masing-masing; tetap satu `section#galeri` |
+| Foto pelanggan | 9/9 src lama, urutan, `loading`, `decoding`, dan ID `detail-souvenir`/`detail-olahan-kambing` tidak berubah; 0 caption foto baru |
+| Thumbnail | 26/26 kartu memiliki satu `offsetWidth` dan satu `offsetHeight` per viewport; rasio gambar 4:3; `object-fit: cover`; portrait dan landscape tidak membuat tinggi card berbeda |
+| Coverflow | Kategori pelanggan mulai di indeks 4, kategori penyembelihan di indeks 8, keduanya terpusat; nav desktop next/prev bekerja; nav tersembunyi di ≤900 px; swipe bekerja di 320/390 px |
+| Lightbox | 26/26 file membuka gambar tepat di 390 dan 1440 px; kicker "Galeri", judul dari `alt`, CTA "Tanyakan terkait foto ini" ke `6287896102009`; tombol Tutup, backdrop, dan Escape menutup dialog; fokus kembali ke pemicu |
+| Lightbox utuh | Portrait dan landscape memiliki `object-fit: contain`, gambar termuat, dan rasio render terhadap rasio natural menyimpang ≤0,02; lightbox tidak memakai rasio 4:3 thumbnail |
+| Regresi | 231/231 PASS di 4 viewport; 0 overflow horizontal, 0 broken image, 0 console/page error, 0 request gagal (Google Maps/WA/fonts.gstatic.com eksternal dikecualikan); 14 section, navbar 8, WA 22, Paket 6, price list 4, FAQ 7, Maps lazy, promo/Escape tetap lolos; total pemicu lightbox 52 |
+
+## Revisi 16: Dokumentasi Video YouTube
+
+Sumber: `docs/markdown-file/REVISION-YOUTUBE.md`, `C:\Users\DELL\AppData\Local\Temp\opencode\verify-youtube-source-text.py` (perbandingan teks HTML dengan Markdown setelah escape Markdown didekode), dan `C:\Users\DELL\AppData\Local\Temp\opencode\youtube-gallery-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, device scale factor 1, 320/390/768/1024/1440 px). Tidak ada build step; JS statis dicek dengan `node --check` dan `git diff --check`.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset & data | 6/6 PNG ditemukan di `assets/img/thumbnail/` (`thumbnail_01.png`–`thumbnail_06.png`) dan dapat dibaca Pillow; 6/6 judul, deskripsi, URL, dan nama thumbnail di DOM cocok persis dengan source Markdown setelah `\_`, `\&`, dan `\#` didekode sebagai karakter tampilan |
+| Struktur | "#Dokumentasi Video YouTube" adalah judul ketiga dan berada tepat sebelum Coverflow ketiga di dalam `#galeri`; dua judul dan 26 figure foto lama tidak berubah; 0 iframe di `#galeri` |
+| Card | 6/6 card memuat thumbnail, judul, deskripsi, dan tombol **Tonton di YouTube**; thumbnail memakai `object-fit: cover` tanpa wrapper lightbox; judul/deskripsi/tombol berada di dalam batas card di semua viewport |
+| Landscape & konsistensi | Satu ukuran card per viewport: 294×282 px (320), 359×263 px (390), 676×312 px (768), dan 720×332 px (1024/1440); lebar selalu > tinggi; ≤360 px memakai 2 baris clamp, viewport lain 3 baris |
+| Hyperlink | 6/6 thumbnail anchor dan 6/6 tombol memakai URL persis, `target="_blank"`, `rel="noopener noreferrer"`, dan `aria-label` bermakna; tombol serta toggle memiliki tinggi sentuh ≥44 px |
+| Deskripsi expandable | 6/6 deskripsi awalnya terpotong dan toggle terlihat; klik menampilkan teks penuh tanpa clamp, tombol berubah menjadi "Lihat lebih sedikit" dan `aria-expanded="true"`; klik kedua kembali ringkas dengan tombol "Lihat lebih banyak" dan `aria-expanded="false"`; uji mouse dan tombol Enter di 390/1440 px; deskripsi singkat buatan menghilangkan toggle setelah resize, membuktikan tombol hanya muncul saat terpotong |
+| Carousel | Coverflow video dibuka di indeks 2 dan terpusat (offset 0 px); nav desktop next/prev, klik hingga indeks 5, ArrowLeft/ArrowRight, swipe sentuh di 320/390/768 px, dan nav tersembunyi di ≤900 px semuanya lolos |
+| Regresi | Paket 6 item/indeks 2, galeri pelanggan 9/indeks 4, penyembelihan 17/indeks 8, dan ID `detail-souvenir`/`detail-olahan-kambing` tidak berubah; 0 overflow horizontal, 0 broken image, 0 console/page error, 0 request gagal (Maps/WA/fonts eksternal dikecualikan); 661/661 PASS di 5 viewport |
+
 ## Bug yang ditemukan dan diperbaiki
 
 1. **Skrip QA: tautan katalog dianggap CTA salah.** Pemeriksaan awal menganggap `https://wa.me/c/6287896102009` sebagai nomor CTA yang salah. Ini bukan bug website; skrip QA diperbaiki dengan memisahkan pola katalog.
@@ -298,6 +333,8 @@ Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\inspect-dokumentasi.py` (vali
 25. **Skrip QA revisi 13: enam pemeriksaan awal salah (revisi ini).** Gambar lazy belum termuat saat dihitung, `ctaOverflow` memakai elemen DOM bukan rect sehingga `NaN`, jeda 500 ms belum cukup untuk smooth scroll, selector lightbox ditulis `#lightbox` bukan `#package-lightbox`, promo overlay belum dinonaktifkan, dan request Google Maps ikut dihitung. Skrip diperbaiki dengan eager loading, `r(card).bottom`, jeda 1000 ms, selector benar, `sessionStorage` promo, dan pengecualian Maps. Uji ulang: 219/219 PASS. Bukan bug website.
 26. **Salah lokasi ikon sosial pada revisi 13 (koreksi pemesan).** YouTube/TikTok awalnya ditaruh di FAQ. Blok `.faq-social` dan CSS-nya dihapus, lalu dua tautan serupa ditambahkan ke `.social-row` Kontak Kami memakai gaya `.social-link` yang sudah ada; footer, hero, Paket, dan bagian lain tidak disentuh. Skrip QA koreksi sempat mengira maskot FAQ adalah `img` dan ukuran card seragam dari rect `scale`; setelah memakai `button.image-zoom` dan `getComputedStyle`, uji ulang 174/174 PASS.
 27. **Skrip QA revisi 14: URL lightbox mengandung spasi ter-encode (revisi ini).** Pemeriksaan awal mengira 9 gambar salah karena `src` lightbox menjadi `WhatsApp%20Image...`; file yang terbuka sebenarnya tepat. Skrip dinormalisasi dengan `urllib.parse.unquote`; uji ulang 210/210 PASS. ID `detail-souvenir`/`detail-olahan-kambing` sengaja dipertahankan pada figure baru agar kartu layanan tidak kehilangan target lightbox. Bukan bug website.
+28. **Thumbnail portrait revisi 15 masih mengikuti tinggi intrinsik (revisi ini).** `aspect-ratio: 4 / 3` awalnya diletakkan pada tombol `.image-zoom`, sehingga gambar portrait dengan tinggi intrinsik 456 px tetap menentukan tinggi tombol dan kartu. Diagnosis computed style menunjukkan tinggi gambar portrait 456 px vs landscape 256,5 px. Rasio dipindahkan ke `.section-gallery .gallery-grid .image-zoom img` dengan `height: auto; object-fit: cover`; tinggi kartu menjadi seragam. Skrip QA juga diperbaiki untuk ekspektasi 14 section dan perbandingan list vs tuple, serta mengecualikan font `fonts.gstatic.com` yang dimuat oleh embed Google Maps. Uji ulang 231/231 PASS.
+29. **Kartu video revisi 16 awalnya berorientasi portrait di 320 px.** Pengukuran Playwright awal memberi 294×298 px karena toggle 44 px dan tiga baris deskripsi. Ditambahkan `-webkit-line-clamp: 2` hanya pada ≤360 px sehingga menjadi 294×282 px; ukuran lain tidak berubah. Verifikasi teks sumber juga menemukan spasi indentasi tambahan pada beberapa baris deskripsi saat HTML disisipkan; semua spasi tersebut dihapus sehingga `textContent` 6/6 identik dengan Markdown. Skrip QA sempat melaporkan 2 FAIL palsu karena mengekspresikan offset tengah 0 px sebagai `0 or 999`; setelah perbaikan skrip, uji ulang 661/661 PASS.
 
 Tidak ada bug fungsional yang tersisa pada website.
 
@@ -305,7 +342,7 @@ Tidak ada bug fungsional yang tersisa pada website.
 
 - Teks asli WordPress untuk Tentang Kami tidak dapat dipulihkan karena folder `references/` tidak ada. Teks Tentang Kami lengkap sudah disediakan pemesan pada revisi 06.
 - `docs/VISUAL-AUDIT.md` tidak tersedia di workspace.
-- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, dan `23-galeri-dokumentasi`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp.
+- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, `23-galeri-dokumentasi`, `24-galeri-dua-kategori`, dan `25-dokumentasi-video-youtube`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp.
 - Folder khusus `assets/img/menu_catering/` berisi enam poster JPEG asli. Revisi 12.1 memakai salinan bernama deskriptif (`sampul_atau_awal.jpeg`, `1.jpeg`–`5.jpeg`) yang byte-nya identik dengan enam file asli `WhatsApp Image 2026-11-20 ...`; file asli tetap dipertahankan di folder dan tidak ada byte gambar yang diubah. Kartu "Catering & Nasi Box Acara" tidak lagi membuka detail `Paket Ayam Bakar`, melainkan scroll ke section tersebut.
 - `favicon-browser.png` adalah render aset favicon asli yang dimuat langsung oleh browser, bukan screenshot tab/chrome browser (Playwright headless tidak menangkap UI browser). Identifikasi logo landscape vs icon juga dibantu OCR Windows + analisis alpha/Pillow, bukan penglihatan langsung.
 
@@ -464,5 +501,22 @@ Tidak ada bug fungsional yang tersisa pada website.
 | `screenshots/23-galeri-dokumentasi/` | `02-desktop-lightbox.png` | 1440×1000 |
 | `screenshots/23-galeri-dokumentasi/` | `03-mobile-galeri.png` | 390×844 |
 | `screenshots/23-galeri-dokumentasi/` | `04-mobile-lightbox.png` | 390×844 |
+| `screenshots/24-galeri-dua-kategori/` | `01-desktop-1440-galeri.png` | 1440×1110 |
+| `screenshots/24-galeri-dua-kategori/` | `02-desktop-1440-lightbox-landscape.png` | 1440×1000 |
+| `screenshots/24-galeri-dua-kategori/` | `03-desktop-1440-lightbox-portrait.png` | 1440×1000 |
+| `screenshots/24-galeri-dua-kategori/` | `04-tablet-768-galeri.png` | 768×1013 |
+| `screenshots/24-galeri-dua-kategori/` | `05-mobile-390-galeri.png` | 390×920 |
+| `screenshots/24-galeri-dua-kategori/` | `06-mobile-390-lightbox-landscape.png` | 390×844 |
+| `screenshots/24-galeri-dua-kategori/` | `07-mobile-390-lightbox-portrait.png` | 390×844 |
+| `screenshots/24-galeri-dua-kategori/` | `08-mobile-320-galeri.png` | 320×853 |
+| `screenshots/24-galeri-dua-kategori/` | `09-desktop-1440-lightbox-pelanggan.png` | 1440×1000 |
+| `screenshots/24-galeri-dua-kategori/` | `10-mobile-390-lightbox-pelanggan.png` | 390×844 |
+| `screenshots/25-dokumentasi-video-youtube/` | `01-desktop-1440-galeri-youtube.png` | 1440×1557 |
+| `screenshots/25-dokumentasi-video-youtube/` | `02-desktop-1024-galeri-youtube.png` | 1024×1497 |
+| `screenshots/25-dokumentasi-video-youtube/` | `03-tablet-768-galeri-youtube.png` | 768×1430 |
+| `screenshots/25-dokumentasi-video-youtube/` | `04-mobile-390-galeri-youtube.png` | 390×1289 |
+| `screenshots/25-dokumentasi-video-youtube/` | `05-mobile-320-galeri-youtube.png` | 320×1240 |
+| `screenshots/25-dokumentasi-video-youtube/` | `06-desktop-1440-deskripsi-dibuka.png` | 1440×1728 |
+| `screenshots/25-dokumentasi-video-youtube/` | `07-mobile-390-deskripsi-dibuka.png` | 390×1613 |
 
-Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami; folder `23` adalah kondisi setelah revisi 14 penggantian seluruh foto Galeri dengan dokumentasi asli. Total 141 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
+Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami; folder `23` adalah kondisi setelah revisi 14 penggantian seluruh foto Galeri dengan dokumentasi asli; folder `24` adalah kondisi setelah revisi 15 penambahan kategori penyembelihan dan thumbnail 4:3 `cover`; folder `25` adalah kondisi setelah revisi 16 penambahan kategori video YouTube dengan card landscape dan deskripsi expandable. Total 158 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.

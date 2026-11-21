@@ -272,6 +272,36 @@
     requestAnimationFrame(() => centerOn(index, false));
   });
 
+  const youtubeCards = [...document.querySelectorAll('.youtube-card')];
+  const syncYoutubeDescriptions = () => {
+    youtubeCards.forEach((card) => {
+      const description = card.querySelector('.youtube-description');
+      const toggle = card.querySelector('.youtube-toggle');
+      if (!description || !toggle || description.classList.contains('is-expanded')) return;
+      const truncated = description.scrollHeight > description.clientHeight + 1;
+      toggle.hidden = !truncated;
+      if (!truncated) {
+        toggle.textContent = 'Lihat lebih banyak';
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+  youtubeCards.forEach((card) => {
+    const description = card.querySelector('.youtube-description');
+    const toggle = card.querySelector('.youtube-toggle');
+    if (!description || !toggle) return;
+    toggle.addEventListener('click', () => {
+      const expanded = description.classList.toggle('is-expanded');
+      toggle.textContent = expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak';
+      toggle.setAttribute('aria-expanded', String(expanded));
+      if (!expanded) requestAnimationFrame(syncYoutubeDescriptions);
+    });
+  });
+  if (youtubeCards.length) {
+    requestAnimationFrame(syncYoutubeDescriptions);
+    window.addEventListener('resize', syncYoutubeDescriptions);
+  }
+
   const promo = document.getElementById('promo-modal');
   const promoClose = document.getElementById('promo-close');
   if (!promo || !promoClose) return;
