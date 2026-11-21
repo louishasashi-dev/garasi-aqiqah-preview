@@ -47,6 +47,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi 13: hero mobile | Selesai: poster mengikuti tinggi gambar di ≤900 px; blank 1 px, visual ≈ poster, banner tetap di bawah hero |
 | Revisi 13: card Paket | Selesai: 6/6 poster tidak overflow/overlap, CTA di dalam card, ukuran slide seragam di 320–1440 px |
 | Revisi 13 (koreksi): sosial Kontak Kami | Selesai: YouTube/TikTok dipindah dari FAQ ke Kontak, URL sama dengan footer, popup benar, FAQ bersih, target sentuh 44 px |
+| Revisi 14: foto Galeri dokumentasi | Selesai: 9/9 JPEG valid dari `assets/img/dokumentasi/` menggantikan 6 foto lama; urutan natural, tanpa caption baru, carousel/lightbox/regresi lolos |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -73,6 +74,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 20. Revisi 12: section `#menu-catering` tepat setelah `#menu` menampilkan poster Menu Catering dalam Coverflow; lightbox menampilkan kicker "Menu Catering" dan CTA **Tanya Terkait Menu Catering**. Kartu "Catering & Nasi Box Acara" kini melakukan smooth scroll ke section tersebut; navbar dan tiga kartu layanan lain tidak berubah.
 21. Revisi 12.1: gambar `#menu-catering` diganti seluruhnya dengan 6 asli dari `assets/img/menu_catering/` (`sampul_atau_awal.jpeg`, `1.jpeg`–`5.jpeg`) secara berurutan; sampul menjadi posisi awal carousel. Footer kini memuat tautan bericon Instagram, Facebook, YouTube, dan TikTok dengan gaya dan konfigurasi `target="_blank" rel="noopener noreferrer"` yang seragam.
 22. Revisi 13: hero mobile memakai tinggi poster otomatis sehingga tidak ada ruang kosong besar; seluruh card Paket memakai baris grid yang membatasi poster agar tidak menimpa teks/CTA. Setelah koreksi, FAQ tidak memuat ikon sosial; YouTube dan TikTok berada di `.social-row` Kontak Kami dengan URL footer yang sama, gaya 44 px, dan pembukaan tab baru aman.
+23. Revisi 14: `#galeri` menampilkan 9 foto asli dari folder `assets/img/dokumentasi/` dengan urutan nama natural, tanpa caption baru. ID `detail-souvenir` dan `detail-olahan-kambing` dipertahankan pada dua figure pertama agar kartu layanan tetap membuka lightbox; carousel Coverflow, swipe, nav desktop, lightbox, Tutup, dan CTA WhatsApp tidak berubah.
 
 ## Hasil QA otomatis (browser nyata)
 
@@ -252,6 +254,21 @@ Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\mobile-ui-ux-qa.json` untuk Q
 | Regresi | 0 horizontal overflow, 0 broken image, 0 console error, 0 page error, 0 request gagal (script eksternal Google Maps iframe dikecualikan), 22 tautan WA, 8 tautan navbar, 4 poster price list, Maps lazy, 6 item galeri, promo muncul setelah jeda dan tutup via Escape |
 | Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` lolos (hanya peringatan LF→CRLF Git) |
 
+## Revisi 14: foto Galeri dari folder dokumentasi
+
+Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\inspect-dokumentasi.py` (validasi Pillow) dan `C:\Users\DELL\AppData\Local\Temp\opencode\galeri-dokumentasi-qa.json` (Playwright Python + Chrome headless pada `http://127.0.0.1:8000/index.html`, device scale factor 1). Tidak ada build step; kode statis diperiksa dengan `node --check` dan `git diff --check`.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset | 9 file ditemukan di `assets/img/dokumentasi/`, 9/9 JPEG dapat dibaca Pillow, 0 file non-gambar, 0 gambar rusak |
+| Urutan & kelengkapan | 9/9 dipakai di `#galeri` dengan urutan natural: `12.49.46`, `12.49.47`, `12.49.47 (1)`, `12.49.47 (2)`, `12.49.48`, `12.49.49`, `12.49.49 (1)`, `12.49.50`, `12.49.50 (1)` |
+| Teks | 0 `figcaption` di galeri; tidak ada judul/deskripsi/caption baru; judul lightbox diambil dari `alt` |
+| Gambar | 9/9 termuat (`naturalWidth > 0`), rasio render terhadap rasio asli 0,98–1,02, tidak ada distorsi, semua dibungkus pemicu lightbox |
+| Coverflow | 9 item, aktif awal indeks 4 dan terpusat; nav desktop next/prev bekerja; swipe kiri/kanan bekerja di 320/360/390/600 px; nav tersembunyi di ≤900 px |
+| Lightbox | 9/9 file membuka gambar tepat di 390 dan 1440 px; tombol Tutup dan Escape menutup dialog; kicker "Galeri", judul dari `alt`, CTA "Tanyakan terkait foto ini" ke `6287896102009` |
+| Kartu layanan | ID `detail-souvenir` dan `detail-olahan-kambing` tetap ada; kedua kartu layanan masih membuka lightbox |
+| Regresi | 210/210 PASS di 8 viewport; 0 overflow horizontal, 0 broken image, 0 console/page error, 0 request gagal (Maps/WA eksternal dikecualikan); Paket 6, price list 4, FAQ 7, navbar 8, WA 22, kontak sosial 2, promo/Escape, dan Maps lazy tetap lolos |
+
 ## Bug yang ditemukan dan diperbaiki
 
 1. **Skrip QA: tautan katalog dianggap CTA salah.** Pemeriksaan awal menganggap `https://wa.me/c/6287896102009` sebagai nomor CTA yang salah. Ini bukan bug website; skrip QA diperbaiki dengan memisahkan pola katalog.
@@ -280,6 +297,7 @@ Sumber: `C:\Users\DELL\AppData\Local\Temp\opencode\mobile-ui-ux-qa.json` untuk Q
 24. **Poster Paket tinggi menimpa teks/CTA card (revisi 13).** Baris grid `.package-image` ber-auto dan gambar `height: 100%` membuat poster tertinggi keluar dari kotak gambar; pada kondisi awal `Paket Pilihan Terbaik` overlap ±100 px ke body. Diperbaiki dengan `grid-template-rows: minmax(0, 1fr)` serta `min-height: 0; max-height: 100%` pada gambar/pemicu zoom. Uji ulang: 6/6 kartu tidak overlap di 320–1440 px, CTA tetap di dalam card, dan carousel serta lightbox tidak regresi.
 25. **Skrip QA revisi 13: enam pemeriksaan awal salah (revisi ini).** Gambar lazy belum termuat saat dihitung, `ctaOverflow` memakai elemen DOM bukan rect sehingga `NaN`, jeda 500 ms belum cukup untuk smooth scroll, selector lightbox ditulis `#lightbox` bukan `#package-lightbox`, promo overlay belum dinonaktifkan, dan request Google Maps ikut dihitung. Skrip diperbaiki dengan eager loading, `r(card).bottom`, jeda 1000 ms, selector benar, `sessionStorage` promo, dan pengecualian Maps. Uji ulang: 219/219 PASS. Bukan bug website.
 26. **Salah lokasi ikon sosial pada revisi 13 (koreksi pemesan).** YouTube/TikTok awalnya ditaruh di FAQ. Blok `.faq-social` dan CSS-nya dihapus, lalu dua tautan serupa ditambahkan ke `.social-row` Kontak Kami memakai gaya `.social-link` yang sudah ada; footer, hero, Paket, dan bagian lain tidak disentuh. Skrip QA koreksi sempat mengira maskot FAQ adalah `img` dan ukuran card seragam dari rect `scale`; setelah memakai `button.image-zoom` dan `getComputedStyle`, uji ulang 174/174 PASS.
+27. **Skrip QA revisi 14: URL lightbox mengandung spasi ter-encode (revisi ini).** Pemeriksaan awal mengira 9 gambar salah karena `src` lightbox menjadi `WhatsApp%20Image...`; file yang terbuka sebenarnya tepat. Skrip dinormalisasi dengan `urllib.parse.unquote`; uji ulang 210/210 PASS. ID `detail-souvenir`/`detail-olahan-kambing` sengaja dipertahankan pada figure baru agar kartu layanan tidak kehilangan target lightbox. Bukan bug website.
 
 Tidak ada bug fungsional yang tersisa pada website.
 
@@ -287,7 +305,7 @@ Tidak ada bug fungsional yang tersisa pada website.
 
 - Teks asli WordPress untuk Tentang Kami tidak dapat dipulihkan karena folder `references/` tidak ada. Teks Tentang Kami lengkap sudah disediakan pemesan pada revisi 06.
 - `docs/VISUAL-AUDIT.md` tidak tersedia di workspace.
-- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, dan `22-contact-social-icons`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp.
+- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, dan `23-galeri-dokumentasi`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp.
 - Folder khusus `assets/img/menu_catering/` berisi enam poster JPEG asli. Revisi 12.1 memakai salinan bernama deskriptif (`sampul_atau_awal.jpeg`, `1.jpeg`–`5.jpeg`) yang byte-nya identik dengan enam file asli `WhatsApp Image 2026-11-20 ...`; file asli tetap dipertahankan di folder dan tidak ada byte gambar yang diubah. Kartu "Catering & Nasi Box Acara" tidak lagi membuka detail `Paket Ayam Bakar`, melainkan scroll ke section tersebut.
 - `favicon-browser.png` adalah render aset favicon asli yang dimuat langsung oleh browser, bukan screenshot tab/chrome browser (Playwright headless tidak menangkap UI browser). Identifikasi logo landscape vs icon juga dibantu OCR Windows + analisis alpha/Pillow, bukan penglihatan langsung.
 
@@ -442,5 +460,9 @@ Tidak ada bug fungsional yang tersisa pada website.
 | `screenshots/22-contact-social-icons/` | `02-mobile-kontak.png` | 390×844 |
 | `screenshots/22-contact-social-icons/` | `03-desktop-faq.png` | 1440×1000 |
 | `screenshots/22-contact-social-icons/` | `04-mobile-faq.png` | 390×844 |
+| `screenshots/23-galeri-dokumentasi/` | `01-desktop-galeri.png` | 1440×1000 |
+| `screenshots/23-galeri-dokumentasi/` | `02-desktop-lightbox.png` | 1440×1000 |
+| `screenshots/23-galeri-dokumentasi/` | `03-mobile-galeri.png` | 390×844 |
+| `screenshots/23-galeri-dokumentasi/` | `04-mobile-lightbox.png` | 390×844 |
 
-Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami. Total 137 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
+Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami; folder `23` adalah kondisi setelah revisi 14 penggantian seluruh foto Galeri dengan dokumentasi asli. Total 141 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
