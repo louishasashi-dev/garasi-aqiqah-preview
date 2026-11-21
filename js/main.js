@@ -213,7 +213,7 @@
     const items = [...root.querySelectorAll('.coverflow-track > *')];
     const prev = root.querySelector('[data-coverflow-prev]');
     const next = root.querySelector('[data-coverflow-next]');
-    const counter = root.querySelector('[data-youtube-position]');
+    const counter = root.querySelector('[data-youtube-position], [data-carousel-position]');
     if (!viewport || items.length < 2) return;
 
     root.setAttribute('role', 'group');

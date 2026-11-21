@@ -1000,11 +1000,8 @@ p {
 #ulasan {
   scroll-margin-top: 94px;
 }
-.review-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
-  gap: 20px;
+.review-grid.coverflow-track {
+  width: 100%;
 }
 .review-card {
   display: flex;
@@ -1071,15 +1068,14 @@ p {
   overflow-wrap: anywhere;
 }
 .review-text.is-clamped {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
+  height: calc(1.65em * 6);
   overflow: hidden;
 }
 .review-text.is-clamped.is-expanded {
-  display: block;
-  -webkit-line-clamp: unset;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
 .review-toggle {
   align-self: flex-start;
@@ -1116,6 +1112,14 @@ p {
 .review-link:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 3px;
+}
+.review-position {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
 }
 
 .section-gallery {
@@ -1992,9 +1996,6 @@ p {
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
-  .review-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .gallery-grid {
     columns: 2;
   }
@@ -2014,9 +2015,6 @@ p {
   .price-gallery {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-  .review-grid {
-    grid-template-columns: minmax(0, 1fr);
   }
   #ulasan {
     scroll-margin-top: 84px;
