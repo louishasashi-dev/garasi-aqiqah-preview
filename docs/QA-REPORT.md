@@ -63,6 +63,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi SEO 01: optimasi performa gambar | Selesai: 5 turunan WebP lokal, file asli utuh, lightbox tetap asli; sumber `23.155.287` byte → turunan `689.922` byte, unduhan awal turun `504.815` byte; QA 19/19 pada 390 px dan 18/18 pada 1280 px PASS |
 | Revisi navbar Split desktop | Selesai: aktif hanya ≥1101 px, Split setelah scroll >80 px berupa floating logo container 180×64 px, klik logo kembali Normal, top otomatis Normal; QA 24/24 PASS |
 | Revisi animasi navbar Split | Selesai: transisi dua arah Normal↔Floating/Split di ≥1101 px, klik tanpa hash/scroll, siklus 3× berulang, scroll-to-top, reduced motion, dan regresi breakpoint; QA 27/27 PASS |
+| Audit W3C HTML Validator | Selesai: 0 error dan 88 info; 13 ARIA role, 28 URL gambar, promo `div[role=dialog]`, dan fallback heading lightbox diperbaiki tanpa perubahan visual; QA 11/11 + 6/6 + navbar 27/27 PASS |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -597,6 +598,25 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, `C:\Users\DELL\AppData
 | Batas verifikasi | Model QA tidak menerima input gambar, jadi screenshot tidak dinilai secara visual; kesimpulan didasarkan pada file screenshot nyata, dimensi file, geometri DOM, metadata, dan log browser. Penilaian estetika visual manusia tetap diperlukan. Validasi HTML bersifat struktural via parser/DOM, bukan validator W3C eksternal. |
 | Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF; validator canonical/robots/sitemap SEO 02 exit 0. Teks tubuh identik dengan `HEAD` (21.818 karakter). Tidak ada commit/push. |
 
+## Audit W3C HTML Validator
+
+Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, `C:\Users\DELL\AppData\Local\Temp\opencode\w3c-before.json`, `w3c-after.json`, `w3c-qa-before.json`, `w3c-qa-after.json`, `w3c-promo-before.json`, `w3c-promo-after.json`, dan `screenshots/04-final/` (validator W3C Nu + Playwright Python/Chrome headless, 22 November 2026). Tidak ada build step; `node --check` dan `git diff --check` dijalankan terpisah.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Baseline | W3C Nu mengembalikan HTTP 200 dengan **39 error** dan **89 info**. Error: 13 `div[aria-label]` tanpa `role` yang diizinkan, 25 `img[src]` dengan spasi, dan satu `aside[role=dialog]`. Empty `h3#lightbox-heading` muncul sebagai info, bukan warning. |
+| Akar masalah | Git archaeology menunjukkan perubahan SEO04 (`8594fce`) hanya menyentuh enam field `<head>`. Semua temuan W3C sudah ada sebelumnya, bukan regresi SEO04 atau navbar. |
+| Perubahan ARIA | `role="img"` ditambahkan pada `.slogan` dan 6 `.review-stars`; `role="group"` ditambahkan pada 6 `.coverflow-viewport`. Total 19 `div[aria-label]` di DOM kini memakai `img` atau `group`; tidak ada label ARIA yang dihapus. |
+| Perubahan URL | 25 `img[src]` dan 3 referensi `data-full-image`/`data-lightbox-image` dengan spasi diubah memakai `%20`. Nama file, folder, alt, dimensi, dan `loading` tidak diubah; tidak ada aset yang dipindahkan atau diganti. |
+| Perubahan promo | `<aside class="promo" id="promo-modal" role="dialog">` diganti `<div>` dengan `class`, `id`, `role`, `aria-labelledby`, `aria-describedby`, `tabindex`, dan `hidden` identik. CSS class-based dan JS id-based sehingga perilaku tidak berubah. |
+| Perubahan heading | `h3#lightbox-heading` diisi fallback `Tampilan gambar`, teks netral yang sudah dipakai heading tersembunyi di lightbox. JS tetap menimpa `textContent` saat lightbox info dibuka. |
+| W3C setelah perbaikan | HTTP 200, **0 error**, **0 warning**, **88 info**. Satu info empty heading hilang; 88 info tersisa adalah trailing slash pada elemen void dan tidak diubah karena bukan error/warning. |
+| QA browser | `w3c-qa.py` **11/11 PASS** di 1440/768/390 px: 0 broken image, 0 overflow, 0 console error, 19 labeled div valid, 6 rating labels utuh, carousel next/keyboard, anchor, lightbox, Escape, dan 0 referensi gambar berspasi. `w3c-promo-qa.py` **6/6 PASS**: promo muncul setelah jeda, `DIV[role=dialog]`, ARIA linkage utuh, CTA `6287896102009`, Escape menutup, 0 console error. |
+| Regresi navbar | `navbar-animation-qa.py` **27/27 PASS**, termasuk animasi Normal↔Floating, klik tanpa hash/scroll, breakpoint 1101/1100, tablet/mobile, reduced motion, dan 0 console/page error. |
+| Screenshot | Lima screenshot baru di `screenshots/04-final/` ada dengan ukuran > 0: desktop 1440×1000, tablet 768×1024, mobile 390×844, promo 1440×1000, dan lightbox 1440×1000. SHA-256 desktop/mobile/promo/lightbox before dan after identik, sehingga perbaikan markup tidak mengubah tampilan. |
+| Batas verifikasi | Validator melaporkan struktur HTML, bukan estetika. Model QA tidak menerima input gambar, jadi screenshot tidak dinilai visually; kesimpulan visual didasarkan pada perbandingan hash piksel dan file nyata. Penilaian manusia tetap diperlukan. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF. Diff ejaan alamat `Nerogtog`→`Neroktog` sudah ada sebelum audit ini dan sengaja tidak disentuh. Tidak ada commit/push. |
+
 ## Bug yang ditemukan dan diperbaiki
 
 1. **Skrip QA: tautan katalog dianggap CTA salah.** Pemeriksaan awal menganggap `https://wa.me/c/6287896102009` sebagai nomor CTA yang salah. Ini bukan bug website; skrip QA diperbaiki dengan memisahkan pola katalog.
@@ -676,6 +696,11 @@ Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh wor
 | `screenshots/03-responsive/` | `promo-modal-mobile.png` | 390×844 |
 | `screenshots/04-final/` | `final-fullpage-desktop.png` | 1440×10148 |
 | `screenshots/04-final/` | `final-fullpage-mobile.png` | 390×18097 |
+| `screenshots/04-final/` | `w3c-valid-desktop-1440.png` | 1440×1000 |
+| `screenshots/04-final/` | `w3c-valid-tablet-768.png` | 768×1024 |
+| `screenshots/04-final/` | `w3c-valid-mobile-390.png` | 390×844 |
+| `screenshots/04-final/` | `w3c-valid-promo-1440.png` | 1440×1000 |
+| `screenshots/04-final/` | `w3c-valid-lightbox-1440.png` | 1440×1000 |
 | `screenshots/06-content-mobile-revision/` | `why-garasi-desktop.png` | 1440×900 |
 | `screenshots/06-content-mobile-revision/` | `why-garasi-mobile.png` | 390×844 |
 | `screenshots/06-content-mobile-revision/` | `hero-desktop-updated.png` | 1440×900 |
