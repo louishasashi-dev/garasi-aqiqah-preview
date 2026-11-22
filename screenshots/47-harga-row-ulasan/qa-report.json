@@ -1,0 +1,1316 @@
+{
+  "base": "http://127.0.0.1:8126/index.html",
+  "summary": {
+    "total": 261,
+    "passed": 261,
+    "failed": 0
+  },
+  "failures": [],
+  "results": [
+    {
+      "name": "1440px screenshot exists",
+      "ok": true,
+      "detail": "8881706 bytes"
+    },
+    {
+      "name": "1440px no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px no broken images",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440px 4 price rows",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "1440px no old price wrappers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px each row has one copy and one poster",
+      "ok": true,
+      "detail": "[{'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}]"
+    },
+    {
+      "name": "1440px price headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px poster captions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px price CTAs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px price WA number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px price grid geometry",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '72px', 'rowColumns': 2, 'rowGap': '40px', 'posterWidth': 460, 'posterCenter': 1082, 'rowCenter': 720, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "1440px price row columns",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1440px price row gap",
+      "ok": true,
+      "detail": "40px"
+    },
+    {
+      "name": "1440px 5 review cards",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "1440px no Louis references",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px no ulasan-text-6",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px no review-photo-pair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px counter initial",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "1440px active index 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1440px next counter",
+      "ok": true,
+      "detail": "4 / 5"
+    },
+    {
+      "name": "1440px prev counter",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "1440px review toggle expands",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px review toggle collapses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px 4 price lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px price poster 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah; actual=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah"
+    },
+    {
+      "name": "1440px price poster 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah; actual=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah"
+    },
+    {
+      "name": "1440px price poster 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah; actual=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah"
+    },
+    {
+      "name": "1440px price poster 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah; actual=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah"
+    },
+    {
+      "name": "1440px 5 review lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px review photo 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps; actual=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps"
+    },
+    {
+      "name": "1440px review photo 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps; actual=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps"
+    },
+    {
+      "name": "1440px review photo 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps; actual=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps"
+    },
+    {
+      "name": "1440px review photo 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps; actual=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps"
+    },
+    {
+      "name": "1440px review photo 5: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps; actual=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps"
+    },
+    {
+      "name": "1440px 7 FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px Maps lazy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px all WA targets",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440px anchors resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440px no console errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440px no page errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1440px no local failed requests",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1024px screenshot exists",
+      "ok": true,
+      "detail": "6301670 bytes"
+    },
+    {
+      "name": "1024px no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px no broken images",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1024px 4 price rows",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "1024px no old price wrappers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px each row has one copy and one poster",
+      "ok": true,
+      "detail": "[{'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}]"
+    },
+    {
+      "name": "1024px price headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px poster captions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px price CTAs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px price WA number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px price grid geometry",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '72px', 'rowColumns': 2, 'rowGap': '40px', 'posterWidth': 406.546875, 'posterCenter': 792.7265625, 'rowCenter': 512, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "1024px price row columns",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1024px price row gap",
+      "ok": true,
+      "detail": "40px"
+    },
+    {
+      "name": "1024px 5 review cards",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "1024px no Louis references",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px no ulasan-text-6",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px no review-photo-pair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px counter initial",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "1024px active index 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "1024px next counter",
+      "ok": true,
+      "detail": "4 / 5"
+    },
+    {
+      "name": "1024px prev counter",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "1024px review toggle expands",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px review toggle collapses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px 4 price lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px price poster 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah; actual=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah"
+    },
+    {
+      "name": "1024px price poster 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah; actual=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah"
+    },
+    {
+      "name": "1024px price poster 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah; actual=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah"
+    },
+    {
+      "name": "1024px price poster 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah; actual=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah"
+    },
+    {
+      "name": "1024px 5 review lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px review photo 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps; actual=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps"
+    },
+    {
+      "name": "1024px review photo 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps; actual=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps"
+    },
+    {
+      "name": "1024px review photo 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps; actual=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps"
+    },
+    {
+      "name": "1024px review photo 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps; actual=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps"
+    },
+    {
+      "name": "1024px review photo 5: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps; actual=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps"
+    },
+    {
+      "name": "1024px 7 FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px Maps lazy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1024px all WA targets",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1024px anchors resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1024px no console errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1024px no page errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1024px no local failed requests",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "768px screenshot exists",
+      "ok": true,
+      "detail": "4924763 bytes"
+    },
+    {
+      "name": "768px no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px no broken images",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "768px 4 price rows",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "768px no old price wrappers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px each row has one copy and one poster",
+      "ok": true,
+      "detail": "[{'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}]"
+    },
+    {
+      "name": "768px price headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px poster captions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px price CTAs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px price WA number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px price grid geometry",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 460, 'posterCenter': 384, 'rowCenter': 384, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "768px price row columns",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "768px price row gap",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "768px poster centered",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 460, 'posterCenter': 384, 'rowCenter': 384, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "768px 5 review cards",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "768px no Louis references",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px no ulasan-text-6",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px no review-photo-pair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px counter initial",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "768px active index 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "768px arrow right counter",
+      "ok": true,
+      "detail": "4 / 5"
+    },
+    {
+      "name": "768px arrow left counter",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "768px review toggle expands",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px review toggle collapses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px 4 price lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px price poster 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah; actual=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah"
+    },
+    {
+      "name": "768px price poster 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah; actual=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah"
+    },
+    {
+      "name": "768px price poster 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah; actual=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah"
+    },
+    {
+      "name": "768px price poster 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah; actual=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah"
+    },
+    {
+      "name": "768px 5 review lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px review photo 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps; actual=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps"
+    },
+    {
+      "name": "768px review photo 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps; actual=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps"
+    },
+    {
+      "name": "768px review photo 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps; actual=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps"
+    },
+    {
+      "name": "768px review photo 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps; actual=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps"
+    },
+    {
+      "name": "768px review photo 5: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps; actual=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps"
+    },
+    {
+      "name": "768px 7 FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px Maps lazy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px all WA targets",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "768px anchors resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "768px mobile nav opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px mobile nav closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "768px no console errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "768px no page errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "768px no local failed requests",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375px screenshot exists",
+      "ok": true,
+      "detail": "2931882 bytes"
+    },
+    {
+      "name": "375px no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px no broken images",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375px 4 price rows",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "375px no old price wrappers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px each row has one copy and one poster",
+      "ok": true,
+      "detail": "[{'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}]"
+    },
+    {
+      "name": "375px price headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px poster captions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px price CTAs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px price WA number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px price grid geometry",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 339, 'posterCenter': 187.5, 'rowCenter': 187.5, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "375px price row columns",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "375px price row gap",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "375px poster centered",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 339, 'posterCenter': 187.5, 'rowCenter': 187.5, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "375px 5 review cards",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "375px no Louis references",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px no ulasan-text-6",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px no review-photo-pair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px counter initial",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "375px active index 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "375px arrow right counter",
+      "ok": true,
+      "detail": "4 / 5"
+    },
+    {
+      "name": "375px arrow left counter",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "375px review toggle expands",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px review toggle collapses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px 4 price lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px price poster 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah; actual=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah"
+    },
+    {
+      "name": "375px price poster 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah; actual=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah"
+    },
+    {
+      "name": "375px price poster 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah; actual=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah"
+    },
+    {
+      "name": "375px price poster 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah; actual=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah"
+    },
+    {
+      "name": "375px 5 review lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px review photo 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps; actual=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps"
+    },
+    {
+      "name": "375px review photo 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps; actual=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps"
+    },
+    {
+      "name": "375px review photo 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps; actual=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps"
+    },
+    {
+      "name": "375px review photo 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps; actual=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps"
+    },
+    {
+      "name": "375px review photo 5: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps; actual=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps"
+    },
+    {
+      "name": "375px 7 FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px Maps lazy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px all WA targets",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375px anchors resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375px mobile nav opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px mobile nav closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375px no console errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375px no page errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375px no local failed requests",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "390px no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px no broken images",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "390px 4 price rows",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "390px no old price wrappers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px each row has one copy and one poster",
+      "ok": true,
+      "detail": "[{'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}]"
+    },
+    {
+      "name": "390px price headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px poster captions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px price CTAs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px price WA number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px price grid geometry",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 157.078125, 'posterCenter': 194.9921875, 'rowCenter': 195, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "390px price row columns",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "390px price row gap",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "390px poster centered",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 157.078125, 'posterCenter': 194.9921875, 'rowCenter': 195, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "390px 5 review cards",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "390px no Louis references",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px no ulasan-text-6",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px no review-photo-pair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px counter initial",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "390px active index 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "390px arrow right counter",
+      "ok": true,
+      "detail": "4 / 5"
+    },
+    {
+      "name": "390px arrow left counter",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "390px review toggle expands",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px review toggle collapses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px 4 price lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px price poster 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah; actual=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah"
+    },
+    {
+      "name": "390px price poster 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah; actual=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah"
+    },
+    {
+      "name": "390px price poster 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah; actual=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah"
+    },
+    {
+      "name": "390px price poster 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah; actual=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah"
+    },
+    {
+      "name": "390px 5 review lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px review photo 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps; actual=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps"
+    },
+    {
+      "name": "390px review photo 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps; actual=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps"
+    },
+    {
+      "name": "390px review photo 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps; actual=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps"
+    },
+    {
+      "name": "390px review photo 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps; actual=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps"
+    },
+    {
+      "name": "390px review photo 5: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps; actual=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps"
+    },
+    {
+      "name": "390px 7 FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px Maps lazy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px all WA targets",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "390px anchors resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "390px mobile nav opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px mobile nav closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "390px no console errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "390px no page errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "390px no local failed requests",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360px no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px no broken images",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360px 4 price rows",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "360px no old price wrappers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px each row has one copy and one poster",
+      "ok": true,
+      "detail": "[{'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}, {'copy': 1, 'poster': 1}]"
+    },
+    {
+      "name": "360px price headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px poster captions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px price CTAs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px price WA number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px price grid geometry",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 157.078125, 'posterCenter': 179.9921875, 'rowCenter': 180, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "360px price row columns",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "360px price row gap",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "360px poster centered",
+      "ok": true,
+      "detail": "{'gridDisplay': 'flex', 'gridDirection': 'column', 'gridGap': '48px', 'rowColumns': 1, 'rowGap': '16px', 'posterWidth': 157.078125, 'posterCenter': 179.9921875, 'rowCenter': 180, 'posterMarginLeft': '0px', 'posterMarginRight': '0px'}"
+    },
+    {
+      "name": "360px 5 review cards",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "360px no Louis references",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px no ulasan-text-6",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px no review-photo-pair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px counter initial",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "360px active index 2",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "360px arrow right counter",
+      "ok": true,
+      "detail": "4 / 5"
+    },
+    {
+      "name": "360px arrow left counter",
+      "ok": true,
+      "detail": "3 / 5"
+    },
+    {
+      "name": "360px review toggle expands",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px review toggle collapses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px 4 price lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px price poster 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah; actual=garasi_pricelist_spesialiskambing_gratismasak&potong.jpg|Poster daftar harga kambing spesialis gratis masak dan potong Garasi Aqiqah"
+    },
+    {
+      "name": "360px price poster 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah; actual=garasi_paket_aqiqah_hemat.jpg|Poster price list Paket Hemat Garasi Aqiqah"
+    },
+    {
+      "name": "360px price poster 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah; actual=garasi_best_seller_list.jpg|Poster price list Paket Spesial Garasi Aqiqah"
+    },
+    {
+      "name": "360px price poster 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah; actual=garasi_paket_heboh_pricelist.jpg|Poster price list Paket Heboh Garasi Aqiqah"
+    },
+    {
+      "name": "360px 5 review lightbox triggers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px review photo 1: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps; actual=ululazmiulasan.png|Foto bukti ulasan Ulul Azmi di Google Maps"
+    },
+    {
+      "name": "360px review photo 2: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps; actual=ulasansivins.png|Foto bukti ulasan Vinz Cferdian S di Google Maps"
+    },
+    {
+      "name": "360px review photo 3: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps; actual=ulasanfarisaazzahra.png|Sertifikat aqiqah dalam ulasan Farisa Azzahra di Google Maps"
+    },
+    {
+      "name": "360px review photo 4: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps; actual=ulasancindyayusintia.png|Foto bukti ulasan Cindy ayu sintia di Google Maps"
+    },
+    {
+      "name": "360px review photo 5: lightbox src/alt",
+      "ok": true,
+      "detail": "expected=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps; actual=syifaandiniulasan.png|Foto bukti ulasan Syifa Andini di Google Maps"
+    },
+    {
+      "name": "360px 7 FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px Maps lazy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px all WA targets",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360px anchors resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360px mobile nav opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px mobile nav closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "360px no console errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360px no page errors",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "360px no local failed requests",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "promo 1440px  close: visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "promo 1440px close target",
+      "ok": true,
+      "detail": "{'x': 973, 'y': 841.578125, 'width': 44, 'height': 44}"
+    },
+    {
+      "name": "promo 1440px  close: dismissed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "promo 375px  Escape: visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "promo 375px  Escape: dismissed",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

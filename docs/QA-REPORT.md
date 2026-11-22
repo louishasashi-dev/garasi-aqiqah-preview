@@ -1,6 +1,6 @@
 # QA Report — Garasi Aqiqah & Catering
 
-Tanggal QA: 22 November 2026
+Tanggal QA: 23 November 2026
 Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + Chrome 157 headless (executable lokal, tanpa unduhan browser).
 
 ## Ringkasan
@@ -63,6 +63,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi SEO 01: optimasi performa gambar | Selesai: 5 turunan WebP lokal, file asli utuh, lightbox tetap asli; sumber `23.155.287` byte → turunan `689.922` byte, unduhan awal turun `504.815` byte; QA 19/19 pada 390 px dan 18/18 pada 1280 px PASS |
 | Revisi navbar Split desktop | Selesai: aktif hanya ≥1101 px, Split setelah scroll >80 px berupa floating logo container 180×64 px, klik logo kembali Normal, top otomatis Normal; QA 24/24 PASS |
 | Revisi animasi navbar Split | Selesai: transisi dua arah Normal↔Floating/Split di ≥1101 px, klik tanpa hash/scroll, siklus 3× berulang, scroll-to-top, reduced motion, dan regresi breakpoint; QA 27/27 PASS |
+| Revisi 47: baris harga & hapus ulasan Louis | Selesai: 4 `.price-row` berpasangan teks-poster, 5 kartu ulasan dengan indikator `3 / 5`, aset Louis tetap ada tetapi tidak dipakai; QA 261/261 PASS |
 | Audit W3C HTML Validator | Selesai: 0 error dan 88 info; 13 ARIA role, 28 URL gambar, promo `div[role=dialog]`, dan fallback heading lightbox diperbaiki tanpa perubahan visual; QA 11/11 + 6/6 + navbar 27/27 PASS |
 | Koreksi ejaan lokasi Neroktog | Selesai: tiga koreksi `Nerogtog` → `Neroktog` di `index.html:2800`, `index.html:2954`, dan `index.html:3272` dicatat terpisah dari perbaikan W3C; commit lokal `1dd6fdc` sudah dibuat, belum di-push |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
@@ -73,7 +74,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 2. Hero dengan banner hadits tunggal di atas, eyebrow "Welcome To", `<h1>` bold "Wujudkan Ibadah Aqiqah Penuh Berkah & Ketenangan", tagline "Jadikan Moment Anda Lebih Berharga", slogan Berkah/Hemat/Amanah/Bahagia, dua paragraf deskripsi revisi dengan "Garasi Aqiqah" bold, penutup italic "Berkah dalam ibadah, hangat dalam kebersamaan.", catatan "Dapur Berpengalaman lebih dari 15 tahun", tombol Pesan Aqiqah, Lihat Paket, container QR katalog terpisah di bawah CTA, tautan teks "Lihat Katalog WhatsApp Business", dan poster asli. Badge halal lama dan maskot tidak ada di hero; QR di dalam poster tetap dipertahankan.
 3. Tentang Kami lengkap: judul dan nama usaha, subbagian A Tentang Kami, B tiga logo sertifikasi terpisah, C lima alasan, dan D empat kartu layanan; foto sertifikat halal asli tetap tampil.
 4. Empat card Keunggulan (Berkah, Hemat, Amanah, Bahagia) dengan ikon SVG konsisten.
-5. Daftar harga kambing memakai poster asli `object-fit`-alami; tidak ada tabel hasil tebakan. Sejak revisi 23, deskripsi teks Hemat/Spesial/Heboh dari sumber dan CTA WhatsApp kontekstual memakai pola `.price-copy` yang sama, tanpa kartu atau class kustom per paket. Sejak revisi 35, keempat blok teks berada di kolom kiri dan keempat poster di kolom kanan pada desktop; di mobile seluruh teks tampil lebih dulu lalu poster, dengan CTA **Tanya Paket Heboh** sebagai tambahan.
+5. Daftar harga kambing memakai poster asli `object-fit`-alami; tidak ada tabel hasil tebakan. Sejak revisi 23, deskripsi teks Hemat/Spesial/Heboh dari sumber dan CTA WhatsApp kontekstual memakai pola `.price-copy` yang sama. Sejak revisi 47, keempat pasangan `.price-copy` dan poster berada dalam empat `.price-row` berurutan Harga Kambing → Hemat → Spesial → Heboh: dua kolom di >900 px dan satu kolom dengan poster rata tengah maksimal 460 px di ≤900 px. CTA **Tanya Paket Heboh**, teks, atribut poster, dan lightbox tidak berubah.
 6. Menu Aqiqah: 3 card Sate, Tengkleng, Gulai Kambing dalam satu baris 3 kolom di desktop; 2 poster (`garasi_kambing_grati_masak.jpg` dan `menu_garasi.jpeg`) berdampingan di bawahnya, masing-maksimal 420 px dan rata tengah; mobile 1 kolom dengan poster maksimal 460 px.
 7. Enam paket: Hemat, Spesial, Heboh, Ayam Bakar, Snack Box, dan Pilihan Aqiqah Terbaik; sejak revisi 09 tampil dalam carousel Coverflow dengan urutan dipertahankan; tiap kartu memakai poster asli dan CTA WhatsApp dengan nama paket di pesan otomatis.
 8. Lima card "Mengapa Memilih" sesuai teks revisi pemesan: Free Ongkir, Banyak Bonus Nya, Harga Kompetitif, Tepat Waktu, Garansi (ejaan asli dipertahankan).
@@ -102,7 +103,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 
 30. Revisi 21: kelima kartu `#ulasan` sekarang memakai avatar inisial UA/VS/FA/CS/SA di samping identitas, sementara foto PNG lokal asli menjadi foto bukti tersendiri dengan rasio 4:3 dan `object-fit: cover` (lightbox tetap menampilkan file asli utuh `contain`). Isi ulasan, waktu, bintang, dan short link tidak berubah; teks panjang dibatasi ±6 baris dengan tombol **Baca selengkapnya** yang muncul hanya saat terpotong, dapat dibuka/tutup, dan memakai `aria-expanded`/`aria-controls`. Heading seimbang, kontras teks AA, `scroll-margin-top` mengikuti header sticky, dan grid 3/2/1 kolom tetap rapi.
 
-31. Revisi 22: grid `#ulasan` diganti carousel Coverflow yang memakai `[data-coverflow]`, `.coverflow-viewport`, dan `.coverflow-track` seperti Galeri, tanpa mengubah lima carousel lama. Kelima kartu identik ukurannya per viewport dengan slide aktif di tengah dan tetangga tampak sebagian; tombol nav desktop, keyboard Arrow, dan swipe touch berpindah slide serta indikator `n / 5` sinkron dari `3 / 5`. Isi, urutan, foto, alt, rating, waktu, dan short link persis sumber. **Baca selengkapnya** kini menggulir teks penuh di dalam kotak 6 baris tetap sehingga tinggi kartu tidak berubah saat dibuka atau ditutup.
+31. Revisi 22: grid `#ulasan` diganti carousel Coverflow yang memakai `[data-coverflow]`, `.coverflow-viewport`, dan `.coverflow-track` seperti Galeri, tanpa mengubah lima carousel lama. Kelima kartu identik ukurannya per viewport dengan slide aktif di tengah dan tetangga tampak sebagian; tombol nav desktop, keyboard Arrow, dan swipe touch berpindah slide serta indikator `n / 5` sinkron dari `3 / 5`. Isi, urutan, foto, alt, rating, waktu, dan short link persis sumber. **Baca selengkapnya** kini menggulir teks penuh di dalam kotak 6 baris tetap sehingga tinggi kartu tidak berubah saat dibuka atau ditutup. Kartu Louis Hasashi yang ditambahkan revisi 38 dihapus pada revisi 47, sehingga jumlah kartu dan indikator kembali ke lima.
 
 32. Revisi 23: `#harga` memakai judul, pengantar, alasan, dan penutup baru dari `REVISION-PRICE-CONTENT.md` tanpa emoji atau marker Markdown. Deskripsi lengkap Paket Aqiqah Hemat, Spesial, dan Heboh mengikuti keempat poster asli; CTA lama **Tanya Harga Kambing** tetap ada dan ditambah **Tanya Paket Hemat** serta **Tanya Paket Spesial** ke nomor `6287896102009`. Keempat kartu Layanan & Pilihan Paket Kami menampilkan teks "Klik untuk melihat detail" dan panah kanan-atas di bagian bawah dengan `pointer-events: none`, sehingga tidak mengubah mouse/touch/keyboard, lightbox, atau scroll ke `#menu-catering`. Koreksi selanjutnya mengganti kartu grid paket dengan empat blok `.price-copy` yang identik polanya; rincian ada di bagian QA khusus di bawah.
 
@@ -497,7 +498,7 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\37-hero-poster-he
 | Screenshot | 8 file before/after 390/1024/1280/1440 px ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga ruang kosong dicek dari perbandingan `poster bottom` versus `image bottom`, computed style, dan dimensi file. |
 | Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `css/style.css` lolos. `git diff --check` global masih melaporkan baris kosong di EOF `docs/markdown-file/REVISION-PRICE-CONTENT.md:133` dari revisi sebelumnya. Tidak ada commit/push pada saat audit tersebut. |
 
-## Revisi 38: ulasan Google Louis Hasashi
+## Revisi 38: ulasan Google Louis Hasashi (historis; kartu dihapus revisi 47)
 
 Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\38-google-review-louis\qa-report.json`, `00-before-audit.json`, dan `01-after-audit.json` (Playwright Python + Chrome headless, delapan viewport 320/360/390/430/640/768/1024/1440 px). Screenshot hanya elemen `#ulasan`, bukan halaman penuh, di `screenshots/38-google-review-louis/`.
 
@@ -645,6 +646,22 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, `css/style.css`, `js/m
 | Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF yang sudah dikenal; W3C Nu HTTP 200 dengan 0 error, 0 warning, dan 88 info. Regression SEO02–SEO04 lolos: `<head>` identik dengan HEAD, canonical/robots/sitemap/JSON-LD tidak berubah, `addressLocality = Neroktog`, heading 1/17/34/18, dan 0 gambar tanpa alt. |
 | Screenshot | Empat screenshot baru dari website yang dijalankan: `accessibility-promo-360x800.png` 245956 byte, `accessibility-promo-390x844.png` 294032 byte, `accessibility-promo-768x1024.png` 424564 byte, dan `accessibility-promo-1440x1000.png` 559742 byte. |
 | Batas verifikasi | Tidak ada validasi manual dengan NVDA/JAWS/VoiceOver/TalkBack; pengumuman live region diverifikasi melalui atribut DOM dan status ARIA di browser, bukan pembacaan screen reader. Screenshot tidak dinilai estetika visual manusia. |
+
+## Revisi 47: baris pasangan harga & penghapusan ulasan Louis
+
+Sumber: `screenshots/47-harga-row-ulasan/qa-report.json`, empat screenshot full-page di folder yang sama, `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` (Playwright Python + Chrome headless, 23 November 2026, server lokal `python -m http.server 8126 --bind 127.0.0.1`). Tidak ada perubahan JS, aset, metadata SEO, atau commit/push.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Lingkup | `#harga` direfactor menjadi empat `.price-row`; `.price-text`, `.price-gallery`, dan override responsifnya dihapus. Aturan `.review-photo-pair` dihapus setelah kartu Louis dihapus. Dua JPG asli Louis beserta dua turunan WebP tetap ada di `assets/` tetapi tidak lagi dirender di halaman. |
+| Harga | 4/4 baris memuat tepat satu `.price-copy` dan satu `.price-poster`. Urutan heading dan caption tetap Harga Kambing → Hemat → Spesial → Heboh. Teks, empat CTA WhatsApp `6287896102009`, `src`/`alt`/`width`/`height`/`loading`/`decoding`, ID/ARIA, dan 4/4 lightbox poster tidak berubah. |
+| Geometri | `#harga .price-grid` `flex-direction: column` dengan gap 72 px di >900 px dan 48 px di ≤900 px. `.price-row` memakai 2 kolom dengan gap 40 px di desktop, lalu 1 kolom dengan gap 16 px dan poster rata tengah maksimal 460 px di ≤900 px. Tidak ada sticky/columns. |
+| Ulasan | 5/5 kartu lama tersisa; tidak ada "Louis", `ulasan-text-6`, `review-photo-pair`, atau short link Louis di DOM. Indikator awal `3 / 5` dengan aktif indeks 2; nav desktop, ArrowLeft/ArrowRight, toggle teks, dan 5/5 lightbox foto berfungsi. |
+| Regresi | **261/261 PASS** di 1440/1024/768/375/390/360 px: 0 overflow horizontal, 0 broken image, 0 console error, 0 page error, 0 request lokal gagal, 0 anchor internal rusak, seluruh WA/katalog memakai `6287896102009`, 7 FAQ, nav mobile, promo close/Escape, dan Maps iframe tetap `loading="lazy"`. |
+| Skrip QA | Tiga asumsi awal skrip dikoreksi tanpa mengubah website: caption dibaca dengan `textContent` karena CSS `text-transform: uppercase`, src lightbox dibandingkan berdasarkan nama file karena browser mengembalikan URL absolut, dan jeda ditambahkan setelah nav/keyboard carousel karena smooth scroll memperbarui indikator lewat event `scroll`. Uji ulang akhir 261/261 PASS. |
+| Screenshot | `01-desktop-1440-full.png` 1440×19525 (8.881.706 byte), `02-desktop-1024-full.png` 1024×19477 (6.301.670 byte), `03-tablet-768-full.png` 768×23943 (4.924.763 byte), dan `04-mobile-375-full.png` 375×27117 (2.931.882 byte), semuanya dari website yang dijalankan dan ukuran > 0. |
+| Pemeriksaan kode | `node --check js/main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF yang sudah dikenal. Tidak ada stage, commit, push, amend, reset, atau rewrite history. |
+| Batas verifikasi | Screenshot tidak dinilai estetika visual manusia; kesimpulan didasarkan pada DOM, computed style/geometri, log browser, dan file screenshot nyata. |
 
 ## Bug yang ditemukan dan diperbaiki
 
@@ -1110,8 +1127,14 @@ Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh wor
 | `screenshots/46-navbar-animated-modes/` | `05-desktop-1101-floating.png` | 1101×900 |
 | `screenshots/46-navbar-animated-modes/` | `06-tablet-768-scroll.png` | 768×1024 |
 | `screenshots/46-navbar-animated-modes/` | `07-mobile-390-scroll.png` | 390×844 |
+| `screenshots/47-harga-row-ulasan/` | `01-desktop-1440-full.png` | 1440×19525 |
+| `screenshots/47-harga-row-ulasan/` | `02-desktop-1024-full.png` | 1024×19477 |
+| `screenshots/47-harga-row-ulasan/` | `03-tablet-768-full.png` | 768×23943 |
+| `screenshots/47-harga-row-ulasan/` | `04-mobile-375-full.png` | 375×27117 |
 
 Folder `44` adalah bukti historis desain Split full-width lama (desktop 1440 normal/split/restored, batas 1101, tablet 768, mobile 390). Folder `45` adalah bukti revisi navbar Split floating (desktop 1440 normal/split/saat klik logo, batas 1101, tablet 768, mobile 390) sesuai hasil QA 24/24 PASS. Folder `46` adalah bukti revisi animasi navbar (desktop 1440 normal/floating/saat klik/siklus ke-3, batas 1101, tablet 768, mobile 390); ketujuh screenshot diambil dari website yang dijalankan dan state halaman sesuai hasil QA 27/27 PASS.
+
+Folder `47` adalah screenshot full-page after revisi pasangan baris harga dan penghapusan ulasan Louis pada 1440/1024/768/375 px.
 
 Folder `33` adalah before/after revisi 23 konten harga dan petunjuk kartu layanan (320/390/430/768/1440 px), dengan `01-after` menangkap halaman setelah teks baru, tiga deskripsi paket, tiga CTA harga, dan empat petunjuk "Klik untuk melihat detail" diterapkan. Folder `34` adalah before/after koreksi konsistensi `.price-copy` (delapan viewport 320–1440 px), dengan `00-before` dan `01-after` menangkap hanya elemen `#harga` tanpa mengubah section lain. Folder `35` adalah before/after revisi 35 layout Flexbox teks-kiri/poster-kanan dan CTA **Tanya Paket Heboh** (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `36` adalah before/after revisi 36 poster satu kolom dengan urutan Harga Kambing → Hemat → Spesial → Heboh (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `37` adalah before/after perbaikan tinggi `.hero-poster` desktop (390/1024/1280/1440 px) dengan pemotongan hanya elemen `#beranda`. Folder `38` adalah before/after penambahan kartu ulasan Louis Hasashi dengan dua foto lokal (delapan viewport 320–1440 px), dengan pemotongan hanya elemen `#ulasan`. Folder `39` adalah before/after kerapian footer (delapan viewport 360–1280 px) dengan pemotongan elemen `footer.site-footer`, ditambah screenshot halaman penuh 360/1280 px untuk perbandingan regresi. Folder `40` adalah before/after optimasi performa gambar (viewport 360/390/768/1280/1440 px serta full page 390/1280 px); turunan WebP dipakai sebagai thumbnail, file asli tetap dipertahankan untuk lightbox. Folder `41` adalah before/after technical SEO (viewport 360/390/768/1280/1440 px serta full page 390/1280 px); canonical, `robots.txt`, dan `sitemap.xml` tidak mengubah tampilan, sehingga kelima screenshot viewport identik piksel. Folder `42` adalah bukti after revisi SEO 03 (section `#kontak` pada 360/390/768/1440 px); JSON-LD tidak terlihat, perubahan yang terlihat hanya baris ikon sosial dan Katalog WA penuh lebar di ≤640 px. Folder `43` adalah bukti after revisi SEO 04 (viewport 360/390/768/1440 px); hanya metadata di `<head>` yang berubah, sehingga tampilan viewport identik dengan kondisi setelah SEO 03.
 
