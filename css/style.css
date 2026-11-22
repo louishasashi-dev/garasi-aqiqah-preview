@@ -2181,8 +2181,11 @@ p {
     height: 320px;
   }
   .social-row {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+  }
+  .social-row .social-link[href^="https://wa.me/c/"] {
+    width: 100%;
   }
   .footer-grid {
     grid-template-columns: 1fr;
