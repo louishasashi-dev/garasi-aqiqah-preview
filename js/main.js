@@ -405,6 +405,7 @@
 
   const promo = document.getElementById('promo-modal');
   const promoClose = document.getElementById('promo-close');
+  const promoAnnouncement = document.getElementById('promo-announcement');
   if (!promo || !promoClose) return;
 
   const storageKey = 'ga_promo_dismissed';
@@ -415,16 +416,47 @@
     try { sessionStorage.setItem(storageKey, '1'); } catch { return; }
   };
 
+  let focusBeforePromo = null;
+  let hadPromoInteraction = false;
+  const rememberFocus = (previous) => {
+    if (hadPromoInteraction) return;
+    hadPromoInteraction = true;
+    focusBeforePromo = previous && previous !== document.body && document.contains(previous) ? previous : null;
+  };
+  const restoreFocus = () => {
+    if (!hadPromoInteraction || !focusBeforePromo) return;
+    const active = document.activeElement;
+    if (
+      active && active !== document.body && active !== document.documentElement &&
+      !promo.contains(active) && document.contains(active) &&
+      !active.closest('[hidden]') && active.getClientRects().length
+    ) return;
+    if (promo.contains(focusBeforePromo) || !document.contains(focusBeforePromo)) return;
+    if (focusBeforePromo.closest('[hidden]') || !focusBeforePromo.getClientRects().length) return;
+    focusBeforePromo.focus();
+  };
+
+  promo.addEventListener('focusin', (event) => rememberFocus(event.relatedTarget));
+  promo.addEventListener('pointerdown', () => rememberFocus(document.activeElement), true);
+
   window.setTimeout(() => {
     if (wasDismissed() || document.hidden) return;
     promo.hidden = false;
+    if (promoAnnouncement) {
+      const kicker = promo.querySelector('.promo-kicker')?.textContent.trim();
+      const title = document.getElementById(promo.getAttribute('aria-labelledby'))?.textContent.trim();
+      promoAnnouncement.textContent = [kicker, title].filter(Boolean).join('. ');
+    }
     requestAnimationFrame(() => promo.classList.add('is-visible'));
   }, 2200);
 
   promoClose.addEventListener('click', () => {
     promo.classList.remove('is-visible');
     dismiss();
-    window.setTimeout(() => { promo.hidden = true; }, 450);
+    window.setTimeout(() => {
+      promo.hidden = true;
+      restoreFocus();
+    }, 450);
   });
 
   document.addEventListener('keydown', (event) => {

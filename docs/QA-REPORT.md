@@ -629,6 +629,23 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, commit lokal `1dd6fdc`
 | Status Git | Commit lokal `1dd6fdc` (`fix: resolve W3C HTML validation issues`) sudah dibuat dan memuat perbaikan W3C, koreksi ejaan ini, dokumentasi QA, dan lima screenshot. Berdasarkan pemeriksaan audit, commit belum di-push ke `origin/main`. |
 | Batas verifikasi | Nomor baris 2800, 2954, dan 3272 merujuk ke isi `index.html` pada commit `1dd6fdc`. Audit lanjutan ini tidak melakukan stage, commit, push, amend, reset, atau rewrite history. |
 
+## QA aksesibilitas popup promo
+
+Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, `css/style.css`, `js/main.js`, dan `screenshots/04-final/accessibility-promo-*.png` (Playwright Python + Chrome headless, 23 November 2026). Catatan ini sengaja dipisahkan dari "Audit W3C HTML Validator", "Koreksi ejaan lokasi Neroktog", dan SEO01–SEO04. Tidak ada stage, commit, push, amend, reset, atau rewrite history.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Lingkup | Perbaikan aksesibilitas popup promo tanpa perubahan copy, CTA, metadata, aset, dependency, atau struktur section. Promo tetap non-modal `role="dialog"` tanpa `aria-modal` dan tanpa focus trap; lightbox tetap dialog modal berlabel ARIA. |
+| Perubahan HTML/CSS | `#promo-announcement` memakai `aria-live="polite"` dan `aria-atomic="true"` di `index.html`; `.promo-close` menjadi 44×44 px; padding mobile `.promo` menjadi `16px 58px 16px 16px` agar tombol tidak menimpa teks. |
+| Perubahan JS | `js/main.js` menyimpan fokus sebelumnya hanya setelah ada interaksi nyata. Live region mengumumkan kicker + judul promo. Escape tanpa interaksi tetap menutup promo, tetapi restoreFocus() tidak memindahkan fokus bila belum ada interaksi. `restoreFocus` kini mengembalikan fokus hanya jika target masih ada, tidak tersembunyi, dan terlihat; fokus valid di luar promo tidak ditimpa. |
+| Prioritas Escape | Escape pertama menutup lightbox dan mempertahankan promo; Escape kedua menutup promo. Fokus kembali ke pemicu lightbox, lalu tetap di pemicu saat promo ditutup. |
+| Keyboard & mouse | 40/40 PASS pada 360×800, 390×844, 768×1024, dan 1440×1000: Escape tanpa interaksi, Tab+Escape, Tab+Enter, Tab+Space, klik tombol Tutup, lightbox lalu promo, target hidden, target detached, fokus valid di luar promo tidak ditimpa, dan fokus header tidak ditimpa. |
+| Layout & regresi | Tombol Tutup 44×44 px di keempat viewport; tombol tidak menimpa teks promo; tidak ada teks terpotong permanen; 0 overflow horizontal; 0 broken image; 7 FAQ toggle; nav mobile berfungsi; Maps tetap `loading="lazy"`; 25 tautan WA memakai `6287896102009` atau katalog resmi; 0 anchor internal rusak. |
+| Konsol & jaringan | Rerun akhir: 0 console error dan 0 page error di keempat viewport. Satu run awal mencatat `ERR_CONNECTION_REFUSED` transient; request gagal eksternal Google Maps dikecualikan seperti catatan QA sebelumnya, dan tidak ada request lokal yang gagal. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF yang sudah dikenal; W3C Nu HTTP 200 dengan 0 error, 0 warning, dan 88 info. Regression SEO02–SEO04 lolos: `<head>` identik dengan HEAD, canonical/robots/sitemap/JSON-LD tidak berubah, `addressLocality = Neroktog`, heading 1/17/34/18, dan 0 gambar tanpa alt. |
+| Screenshot | Empat screenshot baru dari website yang dijalankan: `accessibility-promo-360x800.png` 245956 byte, `accessibility-promo-390x844.png` 294032 byte, `accessibility-promo-768x1024.png` 424564 byte, dan `accessibility-promo-1440x1000.png` 559742 byte. |
+| Batas verifikasi | Tidak ada validasi manual dengan NVDA/JAWS/VoiceOver/TalkBack; pengumuman live region diverifikasi melalui atribut DOM dan status ARIA di browser, bukan pembacaan screen reader. Screenshot tidak dinilai estetika visual manusia. |
+
 ## Bug yang ditemukan dan diperbaiki
 
 1. **Skrip QA: tautan katalog dianggap CTA salah.** Pemeriksaan awal menganggap `https://wa.me/c/6287896102009` sebagai nomor CTA yang salah. Ini bukan bug website; skrip QA diperbaiki dengan memisahkan pola katalog.
@@ -713,6 +730,10 @@ Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh wor
 | `screenshots/04-final/` | `w3c-valid-mobile-390.png` | 390×844 |
 | `screenshots/04-final/` | `w3c-valid-promo-1440.png` | 1440×1000 |
 | `screenshots/04-final/` | `w3c-valid-lightbox-1440.png` | 1440×1000 |
+| `screenshots/04-final/` | `accessibility-promo-360x800.png` | 360×800 |
+| `screenshots/04-final/` | `accessibility-promo-390x844.png` | 390×844 |
+| `screenshots/04-final/` | `accessibility-promo-768x1024.png` | 768×1024 |
+| `screenshots/04-final/` | `accessibility-promo-1440x1000.png` | 1440×1000 |
 | `screenshots/06-content-mobile-revision/` | `why-garasi-desktop.png` | 1440×900 |
 | `screenshots/06-content-mobile-revision/` | `why-garasi-mobile.png` | 390×844 |
 | `screenshots/06-content-mobile-revision/` | `hero-desktop-updated.png` | 1440×900 |
