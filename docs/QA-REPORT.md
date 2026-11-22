@@ -13,7 +13,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Integrasi WhatsApp & katalog | Selesai (22 tautan: 17 CTA + 4 katalog + 1 CTA lightbox) |
 | SEO metadata & Open Graph | Selesai |
 | Aksesibilitas dasar | Selesai |
-| Screenshot tahapan (366 file) | Selesai |
+| Screenshot tahapan (378 file) | Selesai |
 | QA browser otomatis | Lolos di 10 viewport |
 | Revisi konten hero / alasan / FAQ / area pengiriman | Selesai |
 | Maskot dipindahkan Hero → FAQ | Selesai, tidak menutupi accordion |
@@ -61,6 +61,8 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi 36: poster `#harga` satu kolom | Selesai: 4 poster vertikal berurutan Harga Kambing → Hemat → Spesial → Heboh; teks, CTA, dan layout kolom utama tidak berubah; QA 1273/1273 PASS |
 | Revisi 39: kerapian footer | Selesai: 11 link footer seragam 44 px, garis bawah sejajar konten, brand footer tampil ≤420 px, tablet tanpa sel kosong; QA 239/239 PASS |
 | Revisi SEO 01: optimasi performa gambar | Selesai: 5 turunan WebP lokal, file asli utuh, lightbox tetap asli; sumber `23.155.287` byte → turunan `689.922` byte, unduhan awal turun `504.815` byte; QA 19/19 pada 390 px dan 18/18 pada 1280 px PASS |
+| Revisi navbar Split desktop | Selesai: aktif hanya ≥1101 px, Split setelah scroll >80 px berupa floating logo container 180×64 px, klik logo kembali Normal, top otomatis Normal; QA 24/24 PASS |
+| Revisi animasi navbar Split | Selesai: transisi dua arah Normal↔Floating/Split di ≥1101 px, klik tanpa hash/scroll, siklus 3× berulang, scroll-to-top, reduced motion, dan regresi breakpoint; QA 27/27 PASS |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -102,7 +104,25 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 
 32. Revisi 23: `#harga` memakai judul, pengantar, alasan, dan penutup baru dari `REVISION-PRICE-CONTENT.md` tanpa emoji atau marker Markdown. Deskripsi lengkap Paket Aqiqah Hemat, Spesial, dan Heboh mengikuti keempat poster asli; CTA lama **Tanya Harga Kambing** tetap ada dan ditambah **Tanya Paket Hemat** serta **Tanya Paket Spesial** ke nomor `6287896102009`. Keempat kartu Layanan & Pilihan Paket Kami menampilkan teks "Klik untuk melihat detail" dan panah kanan-atas di bagian bawah dengan `pointer-events: none`, sehingga tidak mengubah mouse/touch/keyboard, lightbox, atau scroll ke `#menu-catering`. Koreksi selanjutnya mengganti kartu grid paket dengan empat blok `.price-copy` yang identik polanya; rincian ada di bagian QA khusus di bawah.
 
+33. Revisi navbar Split desktop: pada viewport ≥1101 px, header Normal tetap seperti semula sampai halaman digulir lebih dari 80 px; setelah itu `.site-header.is-split` hanya menampilkan floating container logo fixed 180×64 px di `top: 20px`, sejajar dengan tepi kiri logo Normal (`max(28px, calc(50% - 592px))`), background putih 96%, border `var(--line)`, radius 14 px, dan shadow halus. Header transparan, `backdrop-filter: none`, serta `pointer-events: none` agar area kosong tidak menghalangi konten; nav/CTA disembunyikan tetapi tinggi layout 78 px tetap terjaga. Klik pada floating logo mengembalikan Normal dan state itu bertahan sampai perubahan scroll berikutnya; scroll ke posisi paling atas juga kembali Normal. Di 1100 px ke bawah (termasuk tablet/mobile) tidak ada perubahan. Perbaikan juga menahan scroll anchoring saat klik agar header tidak langsung Split lagi.
+
 ## Hasil QA otomatis (browser nyata)
+
+### QA khusus revisi navbar Split desktop
+
+- Sumber: Playwright + Chrome 157 headless memakai server lokal statis threading; 24 pemeriksaan otomatis, 24/24 PASS.
+- Viewport: 1440, 1101, 1100, 1024, 768, 390, dan 360 px.
+- Hasil: 0 console error, 0 page error, 0 response lokal ≥400, 0 broken image, 0 horizontal overflow.
+- Regresi minimum terpisah: 21/21 PASS (18/18 anchor/WA/FAQ/nav/gambar/overflow pada 360, 390, 1440 px + 3/3 promo/Escape/sessionStorage/Maps lazy).
+- State terverifikasi: Normal di top, tidak Split di 79 px, Split setelah >80 px dan tetap stabil saat scroll anchoring (`wheel 85`), header tetap `sticky` dengan tinggi 79 px dan `.header-inner` 78 px, area header kosong tidak menjadi target klik (`pointer-events: none`), floating logo `position: fixed` `top: 20px` `left` sama dengan Normal pada 1440 dan 1101 px, box 180×64 px dengan background/border/radius/shadow sesuai spesifikasi, gambar 178×180 px `object-fit: contain` `margin-top: -55px` tidak terpotong, nav/CTA tersembunyi, klik floating logo kembali Normal dan tetap Normal saat smooth scroll melewati >80 px, scroll/top berikutnya kembali Normal, resize 1440→1024→1440 benar, dan 1100 px/tablet/mobile tidak berubah.
+
+### QA khusus revisi animasi navbar Split desktop
+
+- Sumber: Playwright + Chrome 157 headless memakai server lokal statis threading; 27 pemeriksaan otomatis, 27/27 PASS.
+- Viewport: 1440, 1101, 1100, 1024, 768, 390, dan 360 px; reduced motion memakai konteks terpisah.
+- Hasil: 0 console error, 0 page error, 0 response lokal ≥400, 0 broken image, 0 horizontal overflow, dan tinggi header/`.header-inner` tidak berubah saat transisi.
+- State terverifikasi: sampel 120 ms saat Normal→Floating dan Split→Normal berada di antara nilai awal/akhir untuk `top`, tinggi brand, dan opacity nav; geometri akhir di 1440/1101 px sesuai spesifikasi dengan gambar 178×180 px `margin-top: -55px`, nav/CTA tersembunyi, dan latar header transparan.
+- Interaksi: klik logo tidak mengubah `location.hash` maupun `scrollY`; siklus scroll→klik diulang 3× tanpa hash; scroll ke top kembali Normal; resize 1440→1024→1440, 1101, 1100, tablet, dan mobile tidak regresi; `prefers-reduced-motion: reduce` memakai durasi 0 s dan tetap mencapai Split.
 
 | Pemeriksaan | Desktop 1440×1000 | Mobile 390×844 |
 | --- | --- | --- |
@@ -119,7 +139,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Promo tidak muncul setelah reload dalam sesi | Ya | — |
 | Google Maps embed | Dimuat 301 → 200 setelah section kontak terlihat (lazy); frame `pb` mengandung `-6.2025117,106.6895407` dan zoom 17 | sama |
 | Tombol "Buka di Maps" | `https://maps.app.goo.gl/VGqLYMEUFWWNDA3L8` → redirect 200 ke place "Garasi Aqiqah & Catering" dengan koordinat `-6.2025117,106.6895407` | sama |
-| Navbar logo landscape transparan | `src` tepat, `object-fit: contain`, natural 500×500; box 180×78 (desktop), 150×64 (tablet), 130×56 (mobile), 108×48 (≤360 px); tanpa teks brand; tidak overlap CTA/nav/hamburger | Ya |
+| Navbar logo landscape transparan | `src` tepat, `object-fit: contain`, natural 500×500; box Normal 180×78 (desktop), 150×64 (tablet), 130×56 (mobile), 108×48 (≤360 px); box Split desktop 180×64 fixed; tanpa teks brand; tidak overlap CTA/nav/hamburger | Ya |
 | Favicon ikon transparan | `<link rel="icon">` PNG transparan; favicon lama 0; request 200 `image/png`; browser memuat aset 2× | Ya |
 | Touch target hamburger | 44×44 px di 320/360/390/768 px | 44×44 px |
 | Identitas usaha | 0 NA Group, 0 "10 tahun", 5 kemunculan "Dapur Berpengalaman lebih dari 15 tahun" (meta, hero, tentang, keunggulan, footer) | sama |
@@ -1013,6 +1033,27 @@ Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh wor
 | `screenshots/43-on-page-seo/` | `02-tablet-768.png` | 768×1024 |
 | `screenshots/43-on-page-seo/` | `03-mobile-390.png` | 390×844 |
 | `screenshots/43-on-page-seo/` | `04-mobile-360.png` | 360×800 |
+| `screenshots/44-navbar-desktop-split/` | `01-desktop-1440-normal.png` | 1440×1000 |
+| `screenshots/44-navbar-desktop-split/` | `02-desktop-1440-split.png` | 1440×1000 |
+| `screenshots/44-navbar-desktop-split/` | `03-desktop-1440-restored.png` | 1440×1000 |
+| `screenshots/44-navbar-desktop-split/` | `04-desktop-1101-split.png` | 1101×900 |
+| `screenshots/44-navbar-desktop-split/` | `05-tablet-768-scroll.png` | 768×1024 |
+| `screenshots/44-navbar-desktop-split/` | `06-mobile-390-scroll.png` | 390×844 |
+| `screenshots/45-navbar-floating-logo/` | `01-desktop-1440-normal.png` | 1440×1000 |
+| `screenshots/45-navbar-floating-logo/` | `02-desktop-1440-split.png` | 1440×1000 |
+| `screenshots/45-navbar-floating-logo/` | `03-desktop-1440-click-normal.png` | 1440×1000 |
+| `screenshots/45-navbar-floating-logo/` | `04-desktop-1101-split.png` | 1101×900 |
+| `screenshots/45-navbar-floating-logo/` | `05-tablet-768-scroll.png` | 768×1024 |
+| `screenshots/45-navbar-floating-logo/` | `06-mobile-390-scroll.png` | 390×844 |
+| `screenshots/46-navbar-animated-modes/` | `01-desktop-1440-normal.png` | 1440×1000 |
+| `screenshots/46-navbar-animated-modes/` | `02-desktop-1440-floating.png` | 1440×1000 |
+| `screenshots/46-navbar-animated-modes/` | `03-desktop-1440-click-normal.png` | 1440×1000 |
+| `screenshots/46-navbar-animated-modes/` | `04-desktop-1440-cycle-split.png` | 1440×1000 |
+| `screenshots/46-navbar-animated-modes/` | `05-desktop-1101-floating.png` | 1101×900 |
+| `screenshots/46-navbar-animated-modes/` | `06-tablet-768-scroll.png` | 768×1024 |
+| `screenshots/46-navbar-animated-modes/` | `07-mobile-390-scroll.png` | 390×844 |
+
+Folder `44` adalah bukti historis desain Split full-width lama (desktop 1440 normal/split/restored, batas 1101, tablet 768, mobile 390). Folder `45` adalah bukti revisi navbar Split floating (desktop 1440 normal/split/saat klik logo, batas 1101, tablet 768, mobile 390) sesuai hasil QA 24/24 PASS. Folder `46` adalah bukti revisi animasi navbar (desktop 1440 normal/floating/saat klik/siklus ke-3, batas 1101, tablet 768, mobile 390); ketujuh screenshot diambil dari website yang dijalankan dan state halaman sesuai hasil QA 27/27 PASS.
 
 Folder `33` adalah before/after revisi 23 konten harga dan petunjuk kartu layanan (320/390/430/768/1440 px), dengan `01-after` menangkap halaman setelah teks baru, tiga deskripsi paket, tiga CTA harga, dan empat petunjuk "Klik untuk melihat detail" diterapkan. Folder `34` adalah before/after koreksi konsistensi `.price-copy` (delapan viewport 320–1440 px), dengan `00-before` dan `01-after` menangkap hanya elemen `#harga` tanpa mengubah section lain. Folder `35` adalah before/after revisi 35 layout Flexbox teks-kiri/poster-kanan dan CTA **Tanya Paket Heboh** (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `36` adalah before/after revisi 36 poster satu kolom dengan urutan Harga Kambing → Hemat → Spesial → Heboh (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `37` adalah before/after perbaikan tinggi `.hero-poster` desktop (390/1024/1280/1440 px) dengan pemotongan hanya elemen `#beranda`. Folder `38` adalah before/after penambahan kartu ulasan Louis Hasashi dengan dua foto lokal (delapan viewport 320–1440 px), dengan pemotongan hanya elemen `#ulasan`. Folder `39` adalah before/after kerapian footer (delapan viewport 360–1280 px) dengan pemotongan elemen `footer.site-footer`, ditambah screenshot halaman penuh 360/1280 px untuk perbandingan regresi. Folder `40` adalah before/after optimasi performa gambar (viewport 360/390/768/1280/1440 px serta full page 390/1280 px); turunan WebP dipakai sebagai thumbnail, file asli tetap dipertahankan untuk lightbox. Folder `41` adalah before/after technical SEO (viewport 360/390/768/1280/1440 px serta full page 390/1280 px); canonical, `robots.txt`, dan `sitemap.xml` tidak mengubah tampilan, sehingga kelima screenshot viewport identik piksel. Folder `42` adalah bukti after revisi SEO 03 (section `#kontak` pada 360/390/768/1440 px); JSON-LD tidak terlihat, perubahan yang terlihat hanya baris ikon sosial dan Katalog WA penuh lebar di ≤640 px. Folder `43` adalah bukti after revisi SEO 04 (viewport 360/390/768/1440 px); hanya metadata di `<head>` yang berubah, sehingga tampilan viewport identik dengan kondisi setelah SEO 03.
 

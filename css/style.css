@@ -159,6 +159,10 @@ p {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+  transition:
+    background-color 0.32s ease,
+    border-color 0.32s ease,
+    backdrop-filter 0.32s ease;
 }
 .header-inner {
   display: flex;
@@ -182,15 +186,37 @@ p {
   display: block;
   width: 180px;
   height: 78px;
+  padding: 0;
+  border: 0 solid transparent;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: blur(0px);
   overflow: hidden;
+  transition:
+    transform 0.32s cubic-bezier(0.2, 0.8, 0.25, 1),
+    width 0.32s ease,
+    height 0.32s ease,
+    padding 0.32s ease,
+    border-width 0.32s ease,
+    border-color 0.32s ease,
+    border-radius 0.32s ease,
+    background-color 0.32s ease,
+    box-shadow 0.32s ease,
+    backdrop-filter 0.32s ease;
 }
 .site-header .brand img {
   display: block;
   width: 180px;
   height: 180px;
+  max-width: none;
   object-fit: contain;
   border-radius: 0;
   margin-top: -50px;
+  transition:
+    width 0.32s ease,
+    height 0.32s ease,
+    margin-top 0.32s ease;
 }
 .brand-name {
   font-family: var(--serif);
@@ -210,6 +236,11 @@ p {
 }
 .site-nav {
   margin-left: auto;
+  visibility: visible;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0s;
 }
 .site-nav ul {
   display: flex;
@@ -244,6 +275,11 @@ p {
 }
 .header-cta {
   flex: 0 0 auto;
+  visibility: visible;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0s;
 }
 .nav-toggle {
   display: none;
@@ -2346,6 +2382,44 @@ p {
   }
   .youtube-position {
     display: block;
+  }
+}
+
+@media (min-width: 1101px) {
+  .site-header.is-split {
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    border-color: transparent;
+    pointer-events: none;
+  }
+  .site-header.is-split .brand {
+    transform: translateY(13px);
+    width: 180px;
+    height: 64px;
+    padding: 0 4px;
+    border-width: 1px;
+    border-color: var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 24px rgba(29, 23, 20, 0.12);
+    backdrop-filter: blur(10px);
+    pointer-events: auto;
+  }
+  .site-header.is-split .brand img {
+    width: 178px;
+    height: 180px;
+    margin-top: -55px;
+  }
+  .site-header.is-split .site-nav,
+  .site-header.is-split .header-cta {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s ease,
+      visibility 0s linear 0.28s;
   }
 }
 

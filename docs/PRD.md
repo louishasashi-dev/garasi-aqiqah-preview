@@ -137,6 +137,7 @@ Urutan section satu halaman, dengan anchor navigasi:
 ## 8. Functional Requirements
 
 - Navigasi anchor smooth scroll; nav mobile membuka/tutup dengan `aria-expanded`.
+- Navbar Split desktop: hanya pada viewport ≥1101 px, setelah scroll >80 px `.site-header.is-split` menampilkan satu floating container logo 180×64 px di `top: 20px`, sejajar dengan tepi kiri logo Normal, background putih 96%, border `var(--line)`, radius 14 px, dan shadow halus; header menjadi transparan/`pointer-events: none`, nav/CTA disembunyikan, tinggi layout tetap 78 px. Posisi, ukuran, padding, radius, background header, dan opacity nav/CTA bertransisi halus dua arah. Klik floating logo kembali Normal tanpa mengubah hash atau scroll, state Normal bertahan sampai perubahan scroll berikutnya, dan siklus Normal→Split→Normal→Split dapat diulang. `prefers-reduced-motion` memendekkan transisi menjadi instan. Di ≤1100 px tidak ada perubahan.
 - Semua tautan internal mengarah ke section yang ada.
 - Semua CTA pemesanan memakai `https://wa.me/6287896102009?text=<encoded>`.
 - Katalog WhatsApp Business memakai tautan terpisah `https://wa.me/c/6287896102009`.
