@@ -64,6 +64,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi navbar Split desktop | Selesai: aktif hanya ≥1101 px, Split setelah scroll >80 px berupa floating logo container 180×64 px, klik logo kembali Normal, top otomatis Normal; QA 24/24 PASS |
 | Revisi animasi navbar Split | Selesai: transisi dua arah Normal↔Floating/Split di ≥1101 px, klik tanpa hash/scroll, siklus 3× berulang, scroll-to-top, reduced motion, dan regresi breakpoint; QA 27/27 PASS |
 | Audit W3C HTML Validator | Selesai: 0 error dan 88 info; 13 ARIA role, 28 URL gambar, promo `div[role=dialog]`, dan fallback heading lightbox diperbaiki tanpa perubahan visual; QA 11/11 + 6/6 + navbar 27/27 PASS |
+| Koreksi ejaan lokasi Neroktog | Selesai: tiga koreksi `Nerogtog` → `Neroktog` di `index.html:2800`, `index.html:2954`, dan `index.html:3272` dicatat terpisah dari perbaikan W3C; commit lokal `1dd6fdc` sudah dibuat, belum di-push |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -494,7 +495,7 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\37-hero-poster-he
 | Regresi | **129/129 PASS**. 0 broken image, 0 console error, 10 tautan navbar, 25 CTA WhatsApp/katalog, 4 poster harga, 7 FAQ, dan 0 anchor rusak pada 320/360/390/430/640/768/1024/1280/1440 px. Tidak ada overflow horizontal pada viewport yang diminta maupun delapan viewport standar QA. |
 | Overflow 901 px | Overflow 33 px di 901/902 px bersifat bawaan dan identik saat tinggi lama 752 px disuntikkan kembali (33 px sebelum dan sesudah), berasal dari track carousel yang melebar tepat setelah breakpoint 900 px. Tidak diubah karena di luar ruang lingkup revisi ini. |
 | Screenshot | 8 file before/after 390/1024/1280/1440 px ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga ruang kosong dicek dari perbandingan `poster bottom` versus `image bottom`, computed style, dan dimensi file. |
-| Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `css/style.css` lolos. `git diff --check` global masih melaporkan baris kosong di EOF `docs/markdown-file/REVISION-PRICE-CONTENT.md:133` dari revisi sebelumnya. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `css/style.css` lolos. `git diff --check` global masih melaporkan baris kosong di EOF `docs/markdown-file/REVISION-PRICE-CONTENT.md:133` dari revisi sebelumnya. Tidak ada commit/push pada saat audit tersebut. |
 
 ## Revisi 38: ulasan Google Louis Hasashi
 
@@ -509,7 +510,7 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\38-google-review-
 | Lightbox & toggle | 2/2 foto Louis membuka `#package-lightbox` dengan `src` dan `alt` yang tepat, Escape menutup, fokus kembali ke trigger. Tombol **Baca selengkapnya** tampil karena teks terpotong 6 baris; klik mengubah ke **Tampilkan lebih sedikit**/`aria-expanded="true"`, klik lagi kembali. |
 | Carousel | Indikator awal `3 / 6` dan kartu aktif indeks 2 di delapan viewport. Nav desktop (next/prev), keyboard Arrow, dan perubahan `scrollLeft` yang dipakai swipe mobile semuanya menggeser slide aktif. Nav tersembunyi di ≤900 px. |
 | QA otomatis | **163/163 PASS**. 0 card ganda, 0 foto terpisah, 0 broken image, 0 console error, 0 page error, dan 0 overflow horizontal di delapan viewport. Screenshot before diambil ulang setelah server lokal kembali HTTP 200; audit akhir sebelum perubahan menunjukkan 0 broken image/console error. |
-| Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` lolos; `git diff --check` global juga lolos dengan exit 0. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` lolos; `git diff --check` global juga lolos dengan exit 0. Tidak ada commit/push pada saat audit tersebut. |
 | Screenshot | 16 file before/after delapan viewport ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga isi kartu, ukuran, dan interaksi dicek dari DOM/computed style serta dimensi file. |
 
 ## Revisi 39: kerapian footer
@@ -528,7 +529,7 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\39-footer-polish\
 | Regresi | **239/239 PASS**. 0 console error/warning, 0 page error, 0 broken image, dan 0 overflow horizontal pada viewport yang diuji maupun 320/390/430/1024/1440 px. Navbar 10 tautan, 25 CTA WhatsApp/katalog, 6 kartu ulasan, 7 FAQ, 4 poster harga, dan anchor internal tetap benar. Tidak ada perubahan pada konten footer, warna/padding `.site-footer`, rasio grid desktop, tautan sosial, maupun bagian lain. |
 | Full page | Crop piksel di atas footer identik sebelum/sesudah pada 1280 px dan 360 px. Posisi awal footer juga identik (18893 px dan 26368 px); perubahan tinggi halaman hanya berasal dari tinggi footer yang membesar. |
 | Screenshot | 20 file before/after ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga geometri, computed style, dan interaksi diperiksa secara programatis; tema warna/kontras mengikuti aturan existing yang tidak diubah. |
-| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` pada `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` exit 0; `git diff --check` global exit 0. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` pada `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` exit 0; `git diff --check` global exit 0. Tidak ada commit/push pada saat audit tersebut. |
 | Catatan QA | Tiga FAIL awal berasal dari skrip QA, bukan website: ekspektasi jumlah jarak link salah (9, bukan 10), inferensi posisi footer memakai tinggi screenshot after untuk before, dan `ERR_CONNECTION_REFUSED` sporadis karena `python -m http.server` menangani banyak permintaan gambar parallel. Skrip diperbaiki menjadi 9 jarak, tinggi before/after masing-masing, dan pemuatan gambar berurutan; uji ulang 239/239 PASS. |
 
 ## Revisi SEO 01: optimasi performa gambar
@@ -547,7 +548,7 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\40-image-performa
 | Screenshot | 14 file ada dengan ukuran > 0. Viewport 360/390/1280/1440 px identik piksel (`rms=0`, `changedPixelsOver8=0`). Viewport 768 px `rms=0.315` dan `changedPixelsOver8=0` di batas `[205,322,563,770]`. Full page 1280 px identik; full page 390 px `rms=15.887`, `changedPixelsOver8=81.070` atau `0,7682%`, terletak hanya di area banner dan poster paket. |
 | Investigasi diff | Dua band diff full page 390 px bertepatan dengan banner yang dioptimasi dan poster paket yang tidak diubah. Recapture after dua kali identik piksel; replay respons gambar asli di browser menghasilkan screenshot yang sama persis dengan after, sehingga perbedaan pada screenshot before awal adalah artefak capture, bukan pergeseran layout atau regresi konten. Tidak ada inspeksi visual manusia; kesimpulan berdasarkan piksel, DOM, dan geometri. |
 | QA interaksi | Skrip `verify-image-revision.py` exit 0; 390 px (19/19) dan 1280 px (18/18) keduanya `pass=true`, `failedChecks=[]`, promo `true`. Cakupan: 25 tautan WhatsApp/katalog, anchor internal, Maps lazy, FAQ, nav mobile, 5 thumbnail dan 5 lightbox asli, carousel ulasan, console bersih, dan sessionStorage promo. |
-| Pemeriksaan kode | `node --check js\main.js` lolos; `git diff --check` lolos dengan hanya warning LF→CRLF. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js\main.js` lolos; `git diff --check` lolos dengan hanya warning LF→CRLF. Tidak ada commit/push pada saat audit tersebut. |
 
 ## Revisi SEO 02: technical SEO
 
@@ -562,7 +563,7 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `README.md`, `.htaccess`, `index.htm
 | Audit browser | 73 URL lokal HTTP 200; 19 anchor internal tanpa target rusak; 72 gambar tanpa broken image; 25 tautan `wa.me` semuanya memakai `6287896102009` atau katalog `/c/6287896102009`; 10 tautan navbar; 7 FAQ; satu iframe Maps dengan `loading="lazy"`. 0 console error/warning, 0 page error, 0 failed request lokal, 0 response lokal ≥400, dan 0 overflow horizontal di 360/390/768/1280/1440 px. |
 | Regresi DOM | Perbandingan before/after menunjukkan semua metrik DOM selain canonical dan keberadaan `robots.txt`/`sitemap.xml` identik di kelima viewport: title, description, meta robots, `og:url`, heading, anchor, gambar, WA, navbar, FAQ, Maps, promo hidden, `scrollWidth`, dan `clientWidth`. Interaksi nav mobile (10 tautan, `aria-expanded=true`), FAQ (7 item, toggle bekerja), Maps lazy, dan promo (muncul setelah jeda, Escape menutup) identik. |
 | Screenshot | 14 file before/after ada dengan ukuran > 0. Lima screenshot viewport identik piksel (`rms=0`, `changedPixelsOver8=0`). Full page 390 px `rms=0,022313` dan 0 piksel >8; full page 1280 px `rms=0,057186` dan 198 piksel >8 dalam kolom 1 px di x=1044, y=14479–14733, pada kartu tetangga carousel YouTube di `#galeri`. Tidak ada perubahan geometri/DOM; perbedaan full page bersifat render carousel, bukan perubahan layout. Verifikasi visual manusia tidak tersedia. |
-| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan satu warning LF→CRLF pada `index.html`. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan satu warning LF→CRLF pada `index.html`. Tidak ada commit/push pada saat audit tersebut. |
 
 ## Revisi SEO 03: local SEO dan Kontak mobile
 
@@ -572,13 +573,13 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `docs/REVISION-REPORT-04.md`, `index
 | --- | --- |
 | Perubahan | Satu `<script type="application/ld+json">` ditambahkan tepat setelah canonical di `index.html`. Di blok `@media (max-width: 640px)` pada `css/style.css`, `.social-row` diubah dari `column` menjadi `row` dengan `align-items: center`, lalu `.social-row .social-link[href^="https://wa.me/c/"]` diberi `width: 100%`. Tidak ada perubahan pada footer, URL sosial, label, teks, section, aset, `robots.txt`, atau `sitemap.xml`. |
 | JSON-LD | Tepat satu script dan berhasil di-`JSON.parse`. Isinya `@type: LocalBusiness`, nama `Garasi Aqiqah & Catering`, telepon `+6287896102009`, `url`/canonical `https://garasiaqiqah.com/`, `address.addressLocality: "Neroktog"`, `areaServed: ["Tangerang","Jakarta"]`, dan `hasMap: https://maps.app.goo.gl/VGqLYMEUFWWNDA3L8`. Tidak ada field jam buka, rating, ulasan, alamat lengkap, postal code, geo, atau email. |
-| Ejaan lokal | JSON-LD memakai `Neroktog` sesuai instruksi. Teks lama di `index.html` yang masih memakai `Nerogtog` tidak diubah karena di luar scope revisi ini. |
+| Ejaan lokal | JSON-LD memakai `Neroktog` sesuai instruksi. Saat audit SEO 03, teks lama di `index.html` yang masih memakai `Nerogtog` tidak diubah karena di luar scope revisi tersebut. Koreksi tiga lokasi itu kemudian disetujui dan dicatat terpisah pada bagian "Koreksi ejaan lokasi Neroktog". |
 | Kontak ≤640 px | `flexDirection=row`, `flexWrap=wrap`. Empat ikon (IG/FB/YouTube/TikTok) berada di satu baris dengan lebar 52×44 px, tanpa teks label yang terlihat. Tautan Katalog WA turun ke baris berikutnya dengan lebar sama dengan `.social-row` (354 px di 390 px dan 324 px di 360 px). |
 | Desktop/tablet >640 px | `flexDirection=row`, Katalog WA tetap auto (135,39 px) dan tidak memenuhi row (560 px di 1440 px; 712 px di 768 px). Footer dan aturan `.footer-links` tidak tersentuh. |
 | Regresi browser | 4/4 viewport `all_pass=true`: 360×800, 390×844, 768×1024, dan 1440×1000. `overflow=0`, `brokenImages=[]`, `console=[]`, `page_errors=[]`, `local_failed=[]`, `mapsLoading=lazy`, 5 tautan sosial di `.social-row`, 5 referensi WebP, 7 FAQ, dan semua tautan WA/katalog memakai `6287896102009`. |
 | Screenshot | Empat file di `screenshots/42-local-seo-contact/` ada dengan ukuran > 0 dan dimensi sesuai viewport/section: 1440×949, 768×1375, 390×1390, 360×1389. Screenshot diambil setelah scroll ke `#kontak` dan jeda 3,5 detik untuk iframe Maps lazy. |
 | Batas verifikasi | Model QA tidak menerima input gambar, jadi isi screenshot tidak dinilai secara visual; kesimpulan didasarkan pada file screenshot nyata, dimensi file, geometri DOM, dan log browser. Penilaian estetika visual manusia tetap diperlukan. |
-| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF. Tidak ada commit/push pada saat audit tersebut. |
 
 ## Revisi SEO 04: on-page SEO
 
@@ -596,7 +597,7 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, `C:\Users\DELL\AppData
 | Regresi browser | 4/4 viewport `all_pass=true` di 1440×1000, 768×1024, 390×844, dan 360×800. `overflow=0`, `brokenImages=[]`, `console=[]`, `page_errors=[]`, `local_failed=[]`, `mapsLoading=lazy`, 5 referensi WebP, 7 FAQ, semua tautan WA/katalog memakai `6287896102009`, dan 72 gambar tanpa alt kosong. |
 | Screenshot | Empat file di `screenshots/43-on-page-seo/` ada dengan ukuran > 0: 1440×1000 (588.395 byte), 768×1024 (416.704 byte), 390×844 (305.806 byte), dan 360×800 (293.221 byte). Karena perubahan hanya di `<head>`, tampilan tidak berubah secara visual. |
 | Batas verifikasi | Model QA tidak menerima input gambar, jadi screenshot tidak dinilai secara visual; kesimpulan didasarkan pada file screenshot nyata, dimensi file, geometri DOM, metadata, dan log browser. Penilaian estetika visual manusia tetap diperlukan. Validasi HTML bersifat struktural via parser/DOM, bukan validator W3C eksternal. |
-| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF; validator canonical/robots/sitemap SEO 02 exit 0. Teks tubuh identik dengan `HEAD` (21.818 karakter). Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF; validator canonical/robots/sitemap SEO 02 exit 0. Teks tubuh identik dengan `HEAD` (21.818 karakter). Tidak ada commit/push pada saat audit tersebut. |
 
 ## Audit W3C HTML Validator
 
@@ -615,7 +616,18 @@ Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, `C:\Users\DELL\AppData
 | Regresi navbar | `navbar-animation-qa.py` **27/27 PASS**, termasuk animasi Normal↔Floating, klik tanpa hash/scroll, breakpoint 1101/1100, tablet/mobile, reduced motion, dan 0 console/page error. |
 | Screenshot | Lima screenshot baru di `screenshots/04-final/` ada dengan ukuran > 0: desktop 1440×1000, tablet 768×1024, mobile 390×844, promo 1440×1000, dan lightbox 1440×1000. SHA-256 desktop/mobile/promo/lightbox before dan after identik, sehingga perbaikan markup tidak mengubah tampilan. |
 | Batas verifikasi | Validator melaporkan struktur HTML, bukan estetika. Model QA tidak menerima input gambar, jadi screenshot tidak dinilai visually; kesimpulan visual didasarkan pada perbandingan hash piksel dan file nyata. Penilaian manusia tetap diperlukan. |
-| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF. Diff ejaan alamat `Nerogtog`→`Neroktog` sudah ada sebelum audit ini dan sengaja tidak disentuh. Tidak ada commit/push. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` exit 0 dengan warning LF→CRLF. Tiga koreksi ejaan alamat `Nerogtog`→`Neroktog` di `index.html:2800`, `index.html:2954`, dan `index.html:3272` adalah perubahan terpisah yang sudah disetujui, bukan bagian dari perbaikan teknis W3C; lihat bagian "Koreksi ejaan lokasi Neroktog". Commit lokal `1dd6fdc` sudah dibuat dan belum di-push berdasarkan pemeriksaan audit. |
+
+## Koreksi ejaan lokasi Neroktog
+
+Sumber: `docs/PRD.md`, `docs/QA-REPORT.md`, `index.html`, commit lokal `1dd6fdc`, dan hasil `git status`/`git log` pada audit pasca-commit. Catatan ini sengaja dipisahkan dari "Audit W3C HTML Validator" di atas.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Lingkup | Tiga koreksi ejaan lokasi di `index.html:2800`, `index.html:2954`, dan `index.html:3272`: `Nerogtog` → `Neroktog`. Tidak ada teks lain yang diubah dalam koreksi ini. |
+| Sifat perubahan | Koreksi ejaan lokasi yang sudah disetujui, bukan bagian dari perbaikan teknis W3C. Perbaikan W3C hanya mencakup ARIA, URL gambar, `div[role=dialog]` pada promo, dan fallback heading lightbox. |
+| Status Git | Commit lokal `1dd6fdc` (`fix: resolve W3C HTML validation issues`) sudah dibuat dan memuat perbaikan W3C, koreksi ejaan ini, dokumentasi QA, dan lima screenshot. Berdasarkan pemeriksaan audit, commit belum di-push ke `origin/main`. |
+| Batas verifikasi | Nomor baris 2800, 2954, dan 3272 merujuk ke isi `index.html` pada commit `1dd6fdc`. Audit lanjutan ini tidak melakukan stage, commit, push, amend, reset, atau rewrite history. |
 
 ## Bug yang ditemukan dan diperbaiki
 
