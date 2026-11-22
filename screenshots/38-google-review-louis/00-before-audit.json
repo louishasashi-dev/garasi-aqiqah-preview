@@ -1,0 +1,386 @@
+[
+  {
+    "viewport": 320,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 360,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 390,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 430,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 640,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 768,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 1024,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  },
+  {
+    "viewport": 1440,
+    "cards": 5,
+    "names": [
+      "Ulul Azmi",
+      "Vinz Cferdian S",
+      "Farisa Azzahra",
+      "Cindy ayu sintia",
+      "Syifa Andini"
+    ],
+    "images": [
+      [
+        {
+          "src": "assets/img/ulasan/ululazmiulasan.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasansivins.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasanfarisaazzahra.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/ulasancindyayusintia.png",
+          "loaded": true
+        }
+      ],
+      [
+        {
+          "src": "assets/img/ulasan/syifaandiniulasan.png",
+          "loaded": true
+        }
+      ]
+    ],
+    "counter": "3 / 5",
+    "active": 2,
+    "overflow": 0,
+    "brokenImages": 0,
+    "consoleErrors": []
+  }
+]

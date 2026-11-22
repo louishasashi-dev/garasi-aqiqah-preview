@@ -1,0 +1,817 @@
+[
+  {
+    "name": "320 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "320 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "320 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "320 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "320 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "320 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "320 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "320 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "320 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "320 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': False, 'next': False}"
+  },
+  {
+    "name": "320 uniform_card_height",
+    "passed": true,
+    "detail": "[524, 524, 524, 524, 524, 524]"
+  },
+  {
+    "name": "320 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "320 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "320 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "360 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "360 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "360 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "360 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "360 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "360 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "360 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "360 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "360 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "360 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': False, 'next': False}"
+  },
+  {
+    "name": "360 uniform_card_height",
+    "passed": true,
+    "detail": "[525, 525, 525, 525, 525, 525]"
+  },
+  {
+    "name": "360 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "360 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "360 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "390 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "390 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "390 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "390 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "390 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "390 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "390 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "390 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "390 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "390 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': False, 'next': False}"
+  },
+  {
+    "name": "390 uniform_card_height",
+    "passed": true,
+    "detail": "[538, 538, 538, 538, 538, 538]"
+  },
+  {
+    "name": "390 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "390 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "430 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "430 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "430 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "430 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "430 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "430 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "430 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "430 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "430 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "430 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': False, 'next': False}"
+  },
+  {
+    "name": "430 uniform_card_height",
+    "passed": true,
+    "detail": "[557, 557, 557, 557, 557, 557]"
+  },
+  {
+    "name": "430 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "430 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "430 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "640 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "640 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "640 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "640 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "640 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "640 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "640 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "640 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "640 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "640 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': False, 'next': False}"
+  },
+  {
+    "name": "640 uniform_card_height",
+    "passed": true,
+    "detail": "[658, 658, 658, 658, 658, 658]"
+  },
+  {
+    "name": "640 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "640 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "640 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "768 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "768 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "768 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "768 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "768 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "768 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "768 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "768 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "768 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "768 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': False, 'next': False}"
+  },
+  {
+    "name": "768 uniform_card_height",
+    "passed": true,
+    "detail": "[593, 593, 593, 593, 593, 593]"
+  },
+  {
+    "name": "768 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "768 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "768 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1024 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "1024 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "1024 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "1024 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "1024 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "1024 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "1024 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "1024 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "1024 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "1024 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': True, 'next': True}"
+  },
+  {
+    "name": "1024 uniform_card_height",
+    "passed": true,
+    "detail": "[598, 598, 598, 598, 598, 598]"
+  },
+  {
+    "name": "1024 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1024 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1024 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1440 card_count",
+    "passed": true,
+    "detail": "got 6"
+  },
+  {
+    "name": "1440 names_order",
+    "passed": true,
+    "detail": "['Ulul Azmi', 'Vinz Cferdian S', 'Farisa Azzahra', 'Cindy ayu sintia', 'Syifa Andini', 'Louis Hasashi']"
+  },
+  {
+    "name": "1440 old_names_unchanged",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 five_stars",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 single_photo_container",
+    "passed": true,
+    "detail": "got 1"
+  },
+  {
+    "name": "1440 photo_srcs",
+    "passed": true,
+    "detail": "['assets/img/ulasan/fotoulasanlouis_01.jpg', 'assets/img/ulasan/fotoulasanlouis_02.jpg']"
+  },
+  {
+    "name": "1440 photos_loaded",
+    "passed": true,
+    "detail": "['9000x12000', '2160x3840']"
+  },
+  {
+    "name": "1440 photos_zoomable",
+    "passed": true,
+    "detail": "['Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1', 'Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2']"
+  },
+  {
+    "name": "1440 text_exact",
+    "passed": true,
+    "detail": "Nasi box dari Garasi Aqiqah & Catering enak banget! Mulai dari gulainya, satenya, sampai acar-nya semuanya pas di lidah."
+  },
+  {
+    "name": "1440 toggle_visible",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 link_exact",
+    "passed": true,
+    "detail": "{'href': 'https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac', 'target': '_blank', 'rel': 'noopener noreferrer', 'aria': 'Lihat ulasan Louis Hasashi di Google Maps'}"
+  },
+  {
+    "name": "1440 carousel_initial",
+    "passed": true,
+    "detail": "3 / 6 active=2"
+  },
+  {
+    "name": "1440 nav_visibility",
+    "passed": true,
+    "detail": "{'prev': True, 'next': True}"
+  },
+  {
+    "name": "1440 uniform_card_height",
+    "passed": true,
+    "detail": "[623, 623, 623, 623, 623, 623]"
+  },
+  {
+    "name": "1440 no_overflow",
+    "passed": true,
+    "detail": "overflow=0"
+  },
+  {
+    "name": "1440 no_broken_images",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 no_console_or_page_errors",
+    "passed": true,
+    "detail": "[]"
+  },
+  {
+    "name": "1440 next_button",
+    "passed": true,
+    "detail": "4 / 6"
+  },
+  {
+    "name": "1440 prev_button",
+    "passed": true,
+    "detail": "3 / 6"
+  },
+  {
+    "name": "1440 arrow_right",
+    "passed": true,
+    "detail": "4 / 6"
+  },
+  {
+    "name": "1440 arrow_left",
+    "passed": true,
+    "detail": "3 / 6"
+  },
+  {
+    "name": "1440 lightbox_1_open",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 lightbox_1_src",
+    "passed": true,
+    "detail": "http://127.0.0.1:8000/assets/img/ulasan/fotoulasanlouis_01.jpg"
+  },
+  {
+    "name": "1440 lightbox_1_alt",
+    "passed": true,
+    "detail": "Foto bukti ulasan Louis Hasashi di Google Maps 1"
+  },
+  {
+    "name": "1440 lightbox_1_closed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 lightbox_1_focus_return",
+    "passed": true,
+    "detail": "Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1"
+  },
+  {
+    "name": "1440 lightbox_2_open",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 lightbox_2_src",
+    "passed": true,
+    "detail": "http://127.0.0.1:8000/assets/img/ulasan/fotoulasanlouis_02.jpg"
+  },
+  {
+    "name": "1440 lightbox_2_alt",
+    "passed": true,
+    "detail": "Foto bukti ulasan Louis Hasashi di Google Maps 2"
+  },
+  {
+    "name": "1440 lightbox_2_closed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "1440 lightbox_2_focus_return",
+    "passed": true,
+    "detail": "Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2"
+  },
+  {
+    "name": "390 scroll_updates_active",
+    "passed": true,
+    "detail": "4 / 6"
+  },
+  {
+    "name": "390 toggle_expand",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 toggle_collapse",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 lightbox_1_open",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 lightbox_1_src",
+    "passed": true,
+    "detail": "http://127.0.0.1:8000/assets/img/ulasan/fotoulasanlouis_01.jpg"
+  },
+  {
+    "name": "390 lightbox_1_alt",
+    "passed": true,
+    "detail": "Foto bukti ulasan Louis Hasashi di Google Maps 1"
+  },
+  {
+    "name": "390 lightbox_1_closed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 lightbox_1_focus_return",
+    "passed": true,
+    "detail": "Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 1"
+  },
+  {
+    "name": "390 lightbox_2_open",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 lightbox_2_src",
+    "passed": true,
+    "detail": "http://127.0.0.1:8000/assets/img/ulasan/fotoulasanlouis_02.jpg"
+  },
+  {
+    "name": "390 lightbox_2_alt",
+    "passed": true,
+    "detail": "Foto bukti ulasan Louis Hasashi di Google Maps 2"
+  },
+  {
+    "name": "390 lightbox_2_closed",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "name": "390 lightbox_2_focus_return",
+    "passed": true,
+    "detail": "Perbesar Foto bukti ulasan Louis Hasashi di Google Maps 2"
+  }
+]

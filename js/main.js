@@ -83,7 +83,7 @@
     const openLightbox = (trigger, img, focusTarget = trigger, imageSrc = '', altText = '') => {
       lastTrigger = focusTarget;
       const info = imageSrc ? {} : infoFor(img);
-      lightboxImage.src = imageSrc || img.currentSrc || img.src;
+      lightboxImage.src = imageSrc || img.dataset.fullImage || img.currentSrc || img.src;
       lightboxImage.alt = altText || img.alt;
       lightboxTitle.textContent = info.title || '';
       lightboxKicker.textContent = info.kicker || '';

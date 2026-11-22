@@ -1,6 +1,6 @@
 # QA Report — Garasi Aqiqah & Catering
 
-Tanggal QA: 20 November 2026
+Tanggal QA: 22 November 2026
 Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + Chrome 157 headless (executable lokal, tanpa unduhan browser).
 
 ## Ringkasan
@@ -13,7 +13,7 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Integrasi WhatsApp & katalog | Selesai (22 tautan: 17 CTA + 4 katalog + 1 CTA lightbox) |
 | SEO metadata & Open Graph | Selesai |
 | Aksesibilitas dasar | Selesai |
-| Screenshot tahapan (210 file) | Selesai |
+| Screenshot tahapan (351 file) | Selesai |
 | QA browser otomatis | Lolos di 10 viewport |
 | Revisi konten hero / alasan / FAQ / area pengiriman | Selesai |
 | Maskot dipindahkan Hero → FAQ | Selesai, tidak menutupi accordion |
@@ -59,6 +59,8 @@ Lingkungan: `python -m http.server 8000 --bind 127.0.0.1`, Playwright Python + C
 | Revisi 23: konten harga & konsistensi `.price-copy` | Selesai; 4 wrapper `.price-copy`, 7 list `check-list check-list-light`, 4 poster utuh; QA awal 1177/1183 PASS dengan 6 FAIL ekspektasi navbar lama |
 | Revisi 35: layout Flexbox & CTA Heboh `#harga` | Selesai: teks kiri/poster kanan di >900 px, teks lalu poster di ≤900 px, 4 CTA harga ke nomor utama, 10 tautan navbar aktif didokumentasikan; QA 1225/1225 PASS |
 | Revisi 36: poster `#harga` satu kolom | Selesai: 4 poster vertikal berurutan Harga Kambing → Hemat → Spesial → Heboh; teks, CTA, dan layout kolom utama tidak berubah; QA 1273/1273 PASS |
+| Revisi 39: kerapian footer | Selesai: 11 link footer seragam 44 px, garis bawah sejajar konten, brand footer tampil ≤420 px, tablet tanpa sel kosong; QA 239/239 PASS |
+| Revisi SEO 01: optimasi performa gambar | Selesai: 5 turunan WebP lokal, file asli utuh, lightbox tetap asli; sumber `23.155.287` byte → turunan `689.922` byte, unduhan awal turun `504.815` byte; QA 19/19 pada 390 px dan 18/18 pada 1280 px PASS |
 | Informasi yang perlu konfirmasi pemilik bisnis | 6 item (lihat bawah) |
 
 ## Fitur yang selesai
@@ -473,6 +475,59 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\37-hero-poster-he
 | Screenshot | 8 file before/after 390/1024/1280/1440 px ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga ruang kosong dicek dari perbandingan `poster bottom` versus `image bottom`, computed style, dan dimensi file. |
 | Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `css/style.css` lolos. `git diff --check` global masih melaporkan baris kosong di EOF `docs/markdown-file/REVISION-PRICE-CONTENT.md:133` dari revisi sebelumnya. Tidak ada commit/push. |
 
+## Revisi 38: ulasan Google Louis Hasashi
+
+Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\38-google-review-louis\qa-report.json`, `00-before-audit.json`, dan `01-after-audit.json` (Playwright Python + Chrome headless, delapan viewport 320/360/390/430/640/768/1024/1440 px). Screenshot hanya elemen `#ulasan`, bukan halaman penuh, di `screenshots/38-google-review-louis/`.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Aset | Dua file asli ditemukan tanpa diubah: `assets/img/ulasan/fotoulasanlouis_01.jpg` (JPEG 9000×12000) dan `fotoulasanlouis_02.jpg` (JPEG 2160×3840). Keduanya dipakai langsung dengan atribut width/height sesuai dimensi asli. |
+| Perubahan | Tepat satu `<article class="review-card">` ditambahkan di akhir `.review-grid`, sehingga jumlah kartu 5 → 6. Lima kartu lama, urutan, teks, foto, dan tautannya tidak diubah. Indikator sumber diperbarui `3 / 5` → `3 / 6`; JS sudah menghitung indeks awal secara dinamis sehingga tetap indeks 2. |
+| Kartu Louis | Nama **Louis Hasashi**, 5 bintang (`aria-label="5 dari 5 bintang"`), isi ulasan persis sumber dengan `&amp;` hanya sebagai escape HTML, dan tautan persis `https://goo.gl/maps/jE39sGCzBV4N8HDLA?g_st=ac` dengan `target="_blank"` dan `rel="noopener noreferrer"`. Waktu relatif tidak diberikan pada source sehingga sengaja tidak dibuat-buat. |
+| Dua foto | Kedua gambar berada dalam satu `.review-photo` pada kartu yang sama. Aturan baru `.review-photo-pair` membagi kotak 4:3 menjadi dua kolom; tinggi kartu semua slide tetap seragam per viewport. Kedua gambar dimuat dari path lokal asli dan dibungkus otomatis oleh tombol `.image-zoom` existing. |
+| Lightbox & toggle | 2/2 foto Louis membuka `#package-lightbox` dengan `src` dan `alt` yang tepat, Escape menutup, fokus kembali ke trigger. Tombol **Baca selengkapnya** tampil karena teks terpotong 6 baris; klik mengubah ke **Tampilkan lebih sedikit**/`aria-expanded="true"`, klik lagi kembali. |
+| Carousel | Indikator awal `3 / 6` dan kartu aktif indeks 2 di delapan viewport. Nav desktop (next/prev), keyboard Arrow, dan perubahan `scrollLeft` yang dipakai swipe mobile semuanya menggeser slide aktif. Nav tersembunyi di ≤900 px. |
+| QA otomatis | **163/163 PASS**. 0 card ganda, 0 foto terpisah, 0 broken image, 0 console error, 0 page error, dan 0 overflow horizontal di delapan viewport. Screenshot before diambil ulang setelah server lokal kembali HTTP 200; audit akhir sebelum perubahan menunjukkan 0 broken image/console error. |
+| Pemeriksaan kode | `node --check js/main.js` lolos; `git diff --check` pada `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` lolos; `git diff --check` global juga lolos dengan exit 0. Tidak ada commit/push. |
+| Screenshot | 16 file before/after delapan viewport ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga isi kartu, ukuran, dan interaksi dicek dari DOM/computed style serta dimensi file. |
+
+## Revisi 39: kerapian footer
+
+Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\39-footer-polish\` (Playwright Python + Chrome headless). Screenshot khusus elemen `footer.site-footer` diambil pada 360/420/640/641/768/900/1100/1280 px, dengan screenshot halaman penuh tambahan pada 360/1280 px.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Konflik aturan | `AGENTS.md:20` mewajibkan target sentuh minimal 44 px, sementara permintaan awal memakai 40 px. Konflik dihentikan dan diputuskan oleh pemesan: seluruh link footer memakai **44 px**. Tidak ada file yang diubah sebelum keputusan tersebut. |
+| Perubahan | `css/style.css`: `.footer-links li` `margin-bottom: 0`; `.footer-links a` `display: inline-flex`, `align-items: center`, `min-height: 44px`; deklarasi `display`/`align-items`/`min-height` dihapus dari `.footer-links a.footer-social-link` sehingga hanya `gap: 8px` yang tersisa; `.brand-footer .brand-name` `display: block`; aturan `.footer-grid > :first-child { grid-column: 1 / -1; }` ditambahkan di blok `@media (max-width: 900px)`. `index.html`: `.footer-bottom` dibungkus `<div class="container">` dengan isi identik. JS tidak diubah. |
+| Ritme link | Sebelum: 7 link navigasi tinggi 20 px dan 4 link sosial 44 px; jarak antarlink 15,6 px/12,6 px/10 px. Sesudah: 11/11 link tinggi 44 px, `min-height: 44px`, `display: inline-flex`, `align-items: center`, `margin-bottom: 0`, dan 9/9 jarak antarlink 0 px pada delapan viewport. Font `0.91rem`, `gap: 8px`, warna hover emas, ikon 16 px, aria-label, href, target, dan rel tidak berubah. |
+| Garis bawah | Sebelum tepi kiri border `.footer-bottom` berada di 20/0 px, sementara tepi teks grid berada di 48/28 px (18 px di ≤640 px). Sesudah kiri dan kanan border sama persis dengan tepi teks grid pada semua viewport. Jarak vertikal grid→border tetap 52 px (36 px di ≤640 px), diverifikasi dengan membandingkan DOM bersampul dan simulasi DOM lama tanpa sampul. |
+| Brand footer | Sebelum `.brand-footer .brand-name` `display: none` di 420/360 px; sesudah `block` di semua viewport. Header tidak memiliki `.brand-name` dan tidak berubah; `.brand-name` global ≤420 px tidak dihapus. |
+| Tablet | Uji injeksi CSS pada 900/768/641 px menunjukkan blok pertama memenuhi dua kolom, blok Navigasi/Hubungi sejajar di baris kedua, dan tinggi grid turun 585,03 px → 493,31 px tanpa sel kanan kosong. Aturan ini tidak berpengaruh pada 640/420/360 px: geometri identik saat `grid-column` ditimpa ke `auto`. |
+| Interaksi | Tab focus menampilkan outline 2 px dengan offset 3 px; hover link berubah ke `var(--gold-light)`; anchor footer `#tentang` berfungsi; nav mobile 10 tautan; FAQ 7 item; promo tetap muncul setelah 2,2 detik, tertutup tombol, dan tersimpan di sessionStorage; Maps iframe `loading="lazy"` tetap dimuat saat kontak terlihat. |
+| Regresi | **239/239 PASS**. 0 console error/warning, 0 page error, 0 broken image, dan 0 overflow horizontal pada viewport yang diuji maupun 320/390/430/1024/1440 px. Navbar 10 tautan, 25 CTA WhatsApp/katalog, 6 kartu ulasan, 7 FAQ, 4 poster harga, dan anchor internal tetap benar. Tidak ada perubahan pada konten footer, warna/padding `.site-footer`, rasio grid desktop, tautan sosial, maupun bagian lain. |
+| Full page | Crop piksel di atas footer identik sebelum/sesudah pada 1280 px dan 360 px. Posisi awal footer juga identik (18893 px dan 26368 px); perubahan tinggi halaman hanya berasal dari tinggi footer yang membesar. |
+| Screenshot | 20 file before/after ada dengan ukuran > 0. Verifikasi visual manual tidak tersedia pada model QA, sehingga geometri, computed style, dan interaksi diperiksa secara programatis; tema warna/kontras mengikuti aturan existing yang tidak diubah. |
+| Pemeriksaan kode | `node --check js\main.js` exit 0; `git diff --check` pada `index.html`, `css/style.css`, `docs/PRD.md`, dan `docs/QA-REPORT.md` exit 0; `git diff --check` global exit 0. Tidak ada commit/push. |
+| Catatan QA | Tiga FAIL awal berasal dari skrip QA, bukan website: ekspektasi jumlah jarak link salah (9, bukan 10), inferensi posisi footer memakai tinggi screenshot after untuk before, dan `ERR_CONNECTION_REFUSED` sporadis karena `python -m http.server` menangani banyak permintaan gambar parallel. Skrip diperbaiki menjadi 9 jarak, tinggi before/after masing-masing, dan pemuatan gambar berurutan; uji ulang 239/239 PASS. |
+
+## Revisi SEO 01: optimasi performa gambar
+
+Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\40-image-performance\` (Playwright Python + Chrome headless). Screenshot before/after diambil pada viewport 360/390/768/1280/1440 px dan halaman penuh 390/1280 px dengan server statis lokal yang sama.
+
+| Pemeriksaan | Hasil |
+| --- | --- |
+| Ruang lingkup | Lima gambar besar dipilih secara selektif: banner `banner_01_baru.jpg`, dua foto dokumentasi `12.49.46.jpeg`/`12.49.47.jpeg`, dan dua foto ulasan Louis. Tidak ada gambar lain yang diubah. |
+| Turunan | `fotoulasanlouis_01_preview.webp` `18.275.454 → 105.470` byte (9000×12000 → 720×960), `fotoulasanlouis_02_preview.webp` `2.528.464 → 72.386` byte (2160×3840 → 540×960), `dokumentasi_12-49-46_preview.webp` `862.610 → 168.184` byte (4096×3072 → 960×720), `dokumentasi_12-49-47_preview.webp` `792.468 → 152.406` byte (4096×3072 → 960×720), dan `banner_01_baru_preview.webp` `696.291 → 191.476` byte (1777×592 tetap). Total sumber `23.155.287` byte menjadi `689.922` byte; penghematan `22.465.365` byte. |
+| File asli | Kelima file sumber tetap di lokasi asal, tidak ditimpa/dihapus/dinamai ulang. Skrip konversi mencatat `sourceUnchanged=true` dari verifikasi SHA-256; dua hash Louis: `39fa1ff92af07522336dd5b1f1795bce84316fa04fd500e77f33bedd8a3ac70f` dan `412030cc4811d19d5e7188543b268a7f2c96cce3e8cd4343b1c3b6e7497d6494`. |
+| Perubahan kode | `index.html`: lima `src` thumbnail mengarah ke turunan WebP dan mendapat atribut `data-full-image` berisi path asli. `js/main.js:86`: `lightboxImage.src = imageSrc || img.dataset.fullImage || img.currentSrc || img.src;`. `css/style.css` tidak diubah; tidak ada teks, metadata SEO, atau struktur section yang berubah. |
+| Lightbox | 5/5 thumbnail membuka `#package-lightbox` dengan `src`, `alt`, dan dimensi natural file asli, bukan WebP. Escape, backdrop/close, fokus kembali, dan scroll lock tetap berfungsi. |
+| Transfer | Initial image bytes turun `2.862.602 → 2.357.787` pada 360/390/768 px dan `2.972.303 → 2.467.488` pada 1280/1440 px (hemat `504.815` byte). After-scroll turun ke `3.037.829` (360/768), `3.578.791` (390), dan `4.207.662` (1280/1440). All-forced turun `4.189.911` (360/1280), `7.236.739` (390), `2.552.730` (768), dan `24.783.445` byte (1440); angka all-forced bervariasi karena lazy/carousel, jadi primary metric adalah ukuran file. |
+| Geometri | `docOverflow=0`, `broken=[]`, `console=[]`, dan `failed=[]` pada kelima viewport sebelum/sesudah. Lebar/tinggi, `object-fit`, dan `object-position` kelima target identik; banner tetap `contain`, foto tetap `cover`. |
+| Screenshot | 14 file ada dengan ukuran > 0. Viewport 360/390/1280/1440 px identik piksel (`rms=0`, `changedPixelsOver8=0`). Viewport 768 px `rms=0.315` dan `changedPixelsOver8=0` di batas `[205,322,563,770]`. Full page 1280 px identik; full page 390 px `rms=15.887`, `changedPixelsOver8=81.070` atau `0,7682%`, terletak hanya di area banner dan poster paket. |
+| Investigasi diff | Dua band diff full page 390 px bertepatan dengan banner yang dioptimasi dan poster paket yang tidak diubah. Recapture after dua kali identik piksel; replay respons gambar asli di browser menghasilkan screenshot yang sama persis dengan after, sehingga perbedaan pada screenshot before awal adalah artefak capture, bukan pergeseran layout atau regresi konten. Tidak ada inspeksi visual manusia; kesimpulan berdasarkan piksel, DOM, dan geometri. |
+| QA interaksi | Skrip `verify-image-revision.py` exit 0; 390 px (19/19) dan 1280 px (18/18) keduanya `pass=true`, `failedChecks=[]`, promo `true`. Cakupan: 25 tautan WhatsApp/katalog, anchor internal, Maps lazy, FAQ, nav mobile, 5 thumbnail dan 5 lightbox asli, carousel ulasan, console bersih, dan sessionStorage promo. |
+| Pemeriksaan kode | `node --check js\main.js` lolos; `git diff --check` lolos dengan hanya warning LF→CRLF. Tidak ada commit/push. |
+
 ## Bug yang ditemukan dan diperbaiki
 
 1. **Skrip QA: tautan katalog dianggap CTA salah.** Pemeriksaan awal menganggap `https://wa.me/c/6287896102009` sebagai nomor CTA yang salah. Ini bukan bug website; skrip QA diperbaiki dengan memisahkan pola katalog.
@@ -519,13 +574,13 @@ Sumber: `C:\laragon\www\garasi_aqiqah_and_catering\screenshots\37-hero-poster-he
 
 Tidak ada bug fungsional yang tersisa pada scope `#harga`; seluruh 1225 pemeriksaan Revisi 35 lolos.
 
-Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh working tree masih exit 2 karena `docs/markdown-file/REVISION-PRICE-CONTENT.md` memiliki baris kosong di akhir file. File sumber tersebut sudah dalam kondisi tersebut saat dibaca dan sengaja tidak diubah agar teks pemesan tetap utuh. Pemeriksaan yang dibatasi pada `css/style.css`, `index.html`, `docs/PRD.md`, dan `docs/QA-REPORT.md` exit 0; `node --check js\main.js` juga exit 0. Pemeriksaan ulang final Revisi 35 menghasilkan 1225/1225 PASS, scoped `git diff --check` exit 0, dan global `git diff --check` masih exit 2 hanya pada baris kosong EOF file sumber tersebut.
+Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh working tree saat itu exit 2 karena `docs/markdown-file/REVISION-PRICE-CONTENT.md` memiliki baris kosong di akhir file. File sumber tersebut sudah dalam kondisi tersebut saat dibaca dan sengaja tidak diubah agar teks pemesan tetap utuh. Pemeriksaan yang dibatasi pada `css/style.css`, `index.html`, `docs/PRD.md`, dan `docs/QA-REPORT.md` exit 0; `node --check js\main.js` juga exit 0. Pemeriksaan ulang final Revisi 35 menghasilkan 1225/1225 PASS, scoped `git diff --check` exit 0, dan global `git diff --check` saat itu exit 2 hanya pada baris kosong EOF file sumber tersebut; verifikasi Revisi 38 menunjukkan global exit 0.
 
 ## Fitur yang belum selesai / tidak tersedia
 
 - Teks asli WordPress untuk Tentang Kami tidak dapat dipulihkan karena folder `references/` tidak ada. Teks Tentang Kami lengkap sudah disediakan pemesan pada revisi 06.
 - `docs/VISUAL-AUDIT.md` tidak tersedia di workspace.
-- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, `23-galeri-dokumentasi`, `24-galeri-dua-kategori`, `25-dokumentasi-video-youtube`, `26-optimasi-mobile-youtube`, `27-service-photo-preview` (interpretasi interim), dan `28-koreksi-hyperlink-layanan`, serta `29-tambah-video-youtube`, `30-ulasan-google-maps`, `31-perbaikan-layout-ulasan`, `32-carousel-ulasan-google-maps`, `33-revisi-konten-harga`, `34-konsistensi-price-copy`, `35-layout-cta-harga`, dan `36-poster-satu-kolom`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp. Pada revisi 17, OCR Windows hanya mengenali teks 4/6 thumbnail pada crop DPR 2; dua lainnya juga gagal dikenali dari file asli sehingga keterbacaan teks tersebut tidak dapat dipastikan secara OCR, hanya dipastikan tidak terpotong oleh layout.
+- Screenshot tidak dapat dinilai secara visual oleh model yang menjalankan QA (tanpa dukungan input gambar), termasuk folder `16-image-lightbox-coverflow`, `17-service-card-carousel`, `18-price-list-package-image`, `19-menu-catering-section`, `20-menu-catering-social-footer`, `21-mobile-ui-ux-revision`, `22-contact-social-icons`, `23-galeri-dokumentasi`, `24-galeri-dua-kategori`, `25-dokumentasi-video-youtube`, `26-optimasi-mobile-youtube`, `27-service-photo-preview` (interpretasi interim), dan `28-koreksi-hyperlink-layanan`, serta `29-tambah-video-youtube`, `30-ulasan-google-maps`, `31-perbaikan-layout-ulasan`, `32-carousel-ulasan-google-maps`, `33-revisi-konten-harga`, `34-konsistensi-price-copy`, `35-layout-cta-harga`, `36-poster-satu-kolom`, dan `39-footer-polish`, serta `40-image-performance`. Validasi dilakukan secara programatis: file ada, ukuran > 0, geometri elemen diverifikasi melalui Playwright, dan dimensi screenshot dicek dengan Pillow; OCR Windows dipakai pada folder lama bila teks kunci perlu dicek, dan QR di-decode dengan zxing-cpp. Pada revisi 17, OCR Windows hanya mengenali teks 4/6 thumbnail pada crop DPR 2; dua lainnya juga gagal dikenali dari file asli sehingga keterbacaan teks tersebut tidak dapat dipastikan secara OCR, hanya dipastikan tidak terpotong oleh layout.
 - Folder khusus `assets/img/menu_catering/` berisi enam poster JPEG asli. Revisi 12.1 memakai salinan bernama deskriptif (`sampul_atau_awal.jpeg`, `1.jpeg`–`5.jpeg`) yang byte-nya identik dengan enam file asli `WhatsApp Image 2026-11-20 ...`; file asli tetap dipertahankan di folder dan tidak ada byte gambar yang diubah. Kartu "Catering & Nasi Box Acara" tidak lagi membuka detail `Paket Ayam Bakar`, melainkan scroll ke section tersebut.
 - `favicon-browser.png` adalah render aset favicon asli yang dimuat langsung oleh browser, bukan screenshot tab/chrome browser (Playwright headless tidak menangkap UI browser). Identifikasi logo landscape vs icon juga dibantu OCR Windows + analisis alpha/Pillow, bukan penglihatan langsung.
 
@@ -837,7 +892,57 @@ Catatan verifikasi Revisi 23 dan koreksinya: `git diff --check` pada seluruh wor
 | `screenshots/37-hero-poster-height/` | `after-hero-1024px.png` | 1024×1392 |
 | `screenshots/37-hero-poster-height/` | `after-hero-1280px.png` | 1280×1368 |
 | `screenshots/37-hero-poster-height/` | `after-hero-1440px.png` | 1440×1386 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-320px.png` | 320×998 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-360px.png` | 360×971 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-390px.png` | 390×948 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-430px.png` | 430×966 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-640px.png` | 640×1003 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-768px.png` | 768×1010 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-1024px.png` | 1024×1032 |
+| `screenshots/38-google-review-louis/` | `00-before-ulasan-1440px.png` | 1440×1122 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-320px.png` | 320×998 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-360px.png` | 360×971 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-390px.png` | 390×948 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-430px.png` | 430×966 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-640px.png` | 640×1003 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-768px.png` | 768×1010 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-1024px.png` | 1024×1032 |
+| `screenshots/38-google-review-louis/` | `01-after-ulasan-1440px.png` | 1440×1122 |
+| `screenshots/39-footer-polish/` | `before-footer-1280px.png` | 1280×511 |
+| `screenshots/39-footer-polish/` | `before-footer-1100px.png` | 1100×511 |
+| `screenshots/39-footer-polish/` | `before-footer-900px.png` | 900×773 |
+| `screenshots/39-footer-polish/` | `before-footer-768px.png` | 768×773 |
+| `screenshots/39-footer-polish/` | `before-footer-641px.png` | 641×806 |
+| `screenshots/39-footer-polish/` | `before-footer-640px.png` | 640×908 |
+| `screenshots/39-footer-polish/` | `before-footer-420px.png` | 420×908 |
+| `screenshots/39-footer-polish/` | `before-footer-360px.png` | 360×930 |
+| `screenshots/39-footer-polish/` | `before-fullpage-1280px.png` | 1280×19404 |
+| `screenshots/39-footer-polish/` | `before-fullpage-360px.png` | 360×27298 |
+| `screenshots/39-footer-polish/` | `after-footer-1280px.png` | 1280×488 |
+| `screenshots/39-footer-polish/` | `after-footer-1100px.png` | 1100×488 |
+| `screenshots/39-footer-polish/` | `after-footer-900px.png` | 900×658 |
+| `screenshots/39-footer-polish/` | `after-footer-768px.png` | 768×658 |
+| `screenshots/39-footer-polish/` | `after-footer-641px.png` | 641×691 |
+| `screenshots/39-footer-polish/` | `after-footer-640px.png` | 640×947 |
+| `screenshots/39-footer-polish/` | `after-footer-420px.png` | 420×947 |
+| `screenshots/39-footer-polish/` | `after-footer-360px.png` | 360×969 |
+| `screenshots/39-footer-polish/` | `after-fullpage-1280px.png` | 1280×19381 |
+| `screenshots/39-footer-polish/` | `after-fullpage-360px.png` | 360×27337 |
+| `screenshots/40-image-performance/before/` | `before-viewport-360x800.png` | 360×800 |
+| `screenshots/40-image-performance/before/` | `before-viewport-390x844.png` | 390×844 |
+| `screenshots/40-image-performance/before/` | `before-viewport-768x1024.png` | 768×1024 |
+| `screenshots/40-image-performance/before/` | `before-viewport-1280x900.png` | 1280×900 |
+| `screenshots/40-image-performance/before/` | `before-viewport-1440x1000.png` | 1440×1000 |
+| `screenshots/40-image-performance/before/` | `before-fullpage-390px.png` | 390×27058 |
+| `screenshots/40-image-performance/before/` | `before-fullpage-1280px.png` | 1280×19381 |
+| `screenshots/40-image-performance/after/` | `after-viewport-360x800.png` | 360×800 |
+| `screenshots/40-image-performance/after/` | `after-viewport-390x844.png` | 390×844 |
+| `screenshots/40-image-performance/after/` | `after-viewport-768x1024.png` | 768×1024 |
+| `screenshots/40-image-performance/after/` | `after-viewport-1280x900.png` | 1280×900 |
+| `screenshots/40-image-performance/after/` | `after-viewport-1440x1000.png` | 1440×1000 |
+| `screenshots/40-image-performance/after/` | `after-fullpage-390px.png` | 390×27058 |
+| `screenshots/40-image-performance/after/` | `after-fullpage-1280px.png` | 1280×19381 |
 
-Folder `33` adalah before/after revisi 23 konten harga dan petunjuk kartu layanan (320/390/430/768/1440 px), dengan `01-after` menangkap halaman setelah teks baru, tiga deskripsi paket, tiga CTA harga, dan empat petunjuk "Klik untuk melihat detail" diterapkan. Folder `34` adalah before/after koreksi konsistensi `.price-copy` (delapan viewport 320–1440 px), dengan `00-before` dan `01-after` menangkap hanya elemen `#harga` tanpa mengubah section lain. Folder `35` adalah before/after revisi 35 layout Flexbox teks-kiri/poster-kanan dan CTA **Tanya Paket Heboh** (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `36` adalah before/after revisi 36 poster satu kolom dengan urutan Harga Kambing → Hemat → Spesial → Heboh (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `37` adalah before/after perbaikan tinggi `.hero-poster` desktop (390/1024/1280/1440 px) dengan pemotongan hanya elemen `#beranda`.
+Folder `33` adalah before/after revisi 23 konten harga dan petunjuk kartu layanan (320/390/430/768/1440 px), dengan `01-after` menangkap halaman setelah teks baru, tiga deskripsi paket, tiga CTA harga, dan empat petunjuk "Klik untuk melihat detail" diterapkan. Folder `34` adalah before/after koreksi konsistensi `.price-copy` (delapan viewport 320–1440 px), dengan `00-before` dan `01-after` menangkap hanya elemen `#harga` tanpa mengubah section lain. Folder `35` adalah before/after revisi 35 layout Flexbox teks-kiri/poster-kanan dan CTA **Tanya Paket Heboh** (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `36` adalah before/after revisi 36 poster satu kolom dengan urutan Harga Kambing → Hemat → Spesial → Heboh (delapan viewport 320–1440 px), juga hanya memotong elemen `#harga`. Folder `37` adalah before/after perbaikan tinggi `.hero-poster` desktop (390/1024/1280/1440 px) dengan pemotongan hanya elemen `#beranda`. Folder `38` adalah before/after penambahan kartu ulasan Louis Hasashi dengan dua foto lokal (delapan viewport 320–1440 px), dengan pemotongan hanya elemen `#ulasan`. Folder `39` adalah before/after kerapian footer (delapan viewport 360–1280 px) dengan pemotongan elemen `footer.site-footer`, ditambah screenshot halaman penuh 360/1280 px untuk perbandingan regresi. Folder `40` adalah before/after optimasi performa gambar (viewport 360/390/768/1280/1440 px serta full page 390/1280 px); turunan WebP dipakai sebagai thumbnail, file asli tetap dipertahankan untuk lightbox.
 
 Semua file diverifikasi ada dengan ukuran > 0 dan dihasilkan dari browser sungguhan via Playwright + Chrome headless. Folder `30` adalah before/after revisi 20 Ulasan Pelanggan Google Maps (320/390/430/1440 px), dengan `02-after` menangkap section `#ulasan` secara penuh. Folder `31` adalah before/after revisi 21 perbaikan layout `#ulasan` (320/390/430/1440 px), dengan `02-after` menangkap section setelah avatar inisial, foto bukti 4:3, dan toggle diterapkan. Folder `32` adalah before/after revisi 22 carousel `#ulasan` (320/390/430/768/1440 px), dengan `02-after` menangkap halaman setelah kelima kartu memakai Coverflow, indikator `3 / 5`, dan teks toggle yang menggulir di dalam kartu. Folder `06` adalah bukti historis sebelum maskot dipindahkan; folder `07` setelah pemindahan; folder `08` setelah badge halal dan QR terpisah di hero dihapus; folder `09` setelah Maps, navbar, dan favicon direvisi; folder `10` adalah presentation set dari GitHub Pages sebelum revisi copy ini; folder `12` adalah kondisi setelah revisi identitas usaha, copy hero, dan posisi banner hadits; folder `13` adalah kondisi setelah revisi 06 Tentang Kami, banner, produk, dan QR katalog; folder `14` adalah kondisi setelah revisi 07 layout Menu, card Paket ke-6, dan lightbox; folder `15` adalah kondisi setelah revisi 08 hardening lightbox; folder `16` adalah kondisi setelah revisi 09 lightbox global dan carousel Coverflow; folder `17` adalah kondisi setelah revisi 10 carousel terpusat dan kartu layanan terhubung ke detail; folder `18` adalah kondisi setelah revisi 11 price list dan gambar Paket Hemat; folder `19` adalah kondisi setelah revisi 12 Menu Catering; folder `20` adalah kondisi setelah revisi 12.1 koreksi 6 gambar Menu Catering dan sosial media footer; folder `21` adalah kondisi setelah revisi 13 kerapian hero mobile dan card Paket; folder `22` adalah kondisi setelah koreksi pemindahan ikon YouTube/TikTok dari FAQ ke Kontak Kami; folder `23` adalah kondisi setelah revisi 14 penggantian seluruh foto Galeri dengan dokumentasi asli; folder `24` adalah kondisi setelah revisi 15 penambahan kategori penyembelihan dan thumbnail 4:3 `cover`; folder `25` adalah kondisi setelah revisi 16 penambahan kategori video YouTube dengan card landscape dan deskripsi expandable; folder `26` adalah before/after revisi 17 optimasi mobile kategori video YouTube (320/390/430/1440 px); folder `27` adalah bukti historis interpretasi interim revisi 18 berupa foto kartu layanan (320/390/768/1024/1440 px) dan preview lightbox 390/1440 px; folder `28` adalah before/after koreksi final revisi 18 untuk dua hyperlink teks layanan (320/390/768/1024/1440 px) serta preview lightbox tanpa info/CTA 390/1440 px; folder `29` adalah before/after revisi 19 penambahan 3 video YouTube (320/390/430/1440 px). Total 202 screenshot. QA revisi ini dijalankan di `http://127.0.0.1:8000/index.html` karena perubahan belum dipublikasikan ke GitHub Pages.
