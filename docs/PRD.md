@@ -207,6 +207,7 @@ Urutan section satu halaman, dengan anchor navigasi:
 - `width`/`height` mencegah layout shift.
 - CSS dan JS lokal, satu file masing-masing, tanpa build step.
 - Tidak ada request ke internet kecuali embed Google Maps (dimuat `lazy` via iframe `loading="lazy"`).
+- Revisi 48: 15 tag gambar pada hero, dua banner, dua galeri utama, empat poster harga, poster paket, dan lima foto ulasan memakai `srcset`/`sizes` WebP lokal dengan varian proporsional 360/720/1080/1600 px sesuai lebar natural. 45 file turunan (~3,96 MB) ditambahkan di `assets/img/optimized/responsive/`; semua file asli tetap utuh dan `data-full-image` terus mengarah ke original. Tiga foto ulasan dan gambar lightbox tersembunyi diubah `eager` → `lazy`. Payload awal lokal turun `2.738.548 → 541.940` byte (80,2%) dan byte gambar awal `2.357.787 → 155.763` byte (93,4%) pada 390×844. Tidak ada perubahan teks, section, desain, WA, Maps, atau JS lightbox.
 
 ## 14. Testing Requirements
 
