@@ -3,6 +3,7 @@
   --ink-2: #2b211b;
   --gold: #c9a24a;
   --gold-dark: #a87f2e;
+  --gold-text: #866625;
   --gold-light: #e8cd8d;
   --cream: #f7f2e8;
   --paper: #ffffff;
@@ -143,7 +144,7 @@ p {
 }
 .btn-outline-dark {
   border-color: var(--gold-dark);
-  color: var(--gold-dark);
+  color: var(--gold-text);
   background: transparent;
 }
 .btn-outline-dark:hover {
@@ -321,7 +322,7 @@ p {
   color: var(--gold);
 }
 .eyebrow-dark {
-  color: var(--gold-dark);
+  color: var(--gold-text);
 }
 .section {
   padding: 96px 0;
@@ -715,7 +716,7 @@ p {
   gap: 6px;
   margin: auto 0 0;
   padding-top: 14px;
-  color: var(--gold-dark);
+  color: var(--gold-text);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -992,7 +993,7 @@ p {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold-dark);
+  color: var(--gold-text);
   background: rgba(201, 162, 74, 0.14);
   border-radius: 999px;
   padding: 5px 11px;
@@ -1188,7 +1189,7 @@ p {
 }
 .gallery-category-title {
   margin: 34px 0 12px;
-  color: var(--gold-dark);
+  color: var(--gold-text);
   font-size: 1.12rem;
   text-align: center;
 }
@@ -1275,7 +1276,7 @@ p {
   margin: 0;
 }
 .faq-list a {
-  color: var(--gold-dark);
+  color: var(--gold-text);
   font-weight: 700;
   text-decoration: underline;
 }
@@ -1332,7 +1333,7 @@ p {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold-dark);
+  color: var(--gold-text);
 }
 .contact-list a,
 .contact-list p {

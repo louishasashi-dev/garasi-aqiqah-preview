@@ -438,16 +438,36 @@
 
   promo.addEventListener('focusin', (event) => rememberFocus(event.relatedTarget));
   promo.addEventListener('pointerdown', () => rememberFocus(document.activeElement), true);
+  promo.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab' || promo.hidden) return;
+    const focusable = Array.from(promo.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+      .filter((el) => !el.closest('[hidden]') && el.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (event.shiftKey && (active === first || !promo.contains(active))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (active === last || !promo.contains(active))) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
   window.setTimeout(() => {
     if (wasDismissed() || document.hidden) return;
+    rememberFocus(document.activeElement);
     promo.hidden = false;
     if (promoAnnouncement) {
       const kicker = promo.querySelector('.promo-kicker')?.textContent.trim();
       const title = document.getElementById(promo.getAttribute('aria-labelledby'))?.textContent.trim();
       promoAnnouncement.textContent = [kicker, title].filter(Boolean).join('. ');
     }
-    requestAnimationFrame(() => promo.classList.add('is-visible'));
+    requestAnimationFrame(() => {
+      promo.classList.add('is-visible');
+      promoClose.focus({ preventScroll: true });
+    });
   }, 2200);
 
   promoClose.addEventListener('click', () => {
