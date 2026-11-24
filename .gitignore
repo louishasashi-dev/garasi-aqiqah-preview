@@ -1,0 +1,11 @@
+docs/
+screenshots/
+references/
+AGENTS.md
+README.md
+deployment-manifest*.csv
+*.zip
+assets/img/ulasan/fotoulasanlouis_01.jpg
+assets/img/ulasan/fotoulasanlouis_02.jpg
+assets/img/optimized/fotoulasanlouis_01_preview.webp
+assets/img/optimized/fotoulasanlouis_02_preview.webp
