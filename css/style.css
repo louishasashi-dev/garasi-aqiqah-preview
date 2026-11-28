@@ -1163,7 +1163,8 @@ p {
   margin: 0;
 }
 
-#ulasan {
+#ulasan,
+#menu {
   scroll-margin-top: 94px;
 }
 .review-grid.coverflow-track {
@@ -2238,6 +2239,9 @@ p {
   .faq-grid {
     grid-template-columns: 1fr;
   }
+  .social-row {
+    justify-content: space-between;
+  }
   .faq-mascot {
     width: min(58%, 180px);
     margin: 18px auto 0;
@@ -2282,7 +2286,8 @@ p {
   .container {
     padding: 0 18px;
   }
-  #ulasan {
+  #ulasan,
+  #menu {
     scroll-margin-top: 84px;
   }
   .review-card {
@@ -2532,6 +2537,16 @@ p {
   }
 }
 
+@media (min-width: 768px) and (max-width: 900px) {
+  .menu-card-carousel .menu-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .menu-card-carousel .menu-grid > .coverflow-item {
+    transform: none;
+    opacity: 1;
+  }
+}
+
 @media (max-width: 640px) {
   .coverflow-track {
     --coverflow-slide: 64vw;
@@ -2599,6 +2614,16 @@ p {
   .reason-carousel .reason-grid {
     --coverflow-slide: 78vw;
     gap: 10px;
+  }
+  .about-reason-carousel .coverflow-prev,
+  .menu-card-carousel .coverflow-prev,
+  .reason-carousel .coverflow-prev {
+    left: -16px;
+  }
+  .about-reason-carousel .coverflow-next,
+  .menu-card-carousel .coverflow-next,
+  .reason-carousel .coverflow-next {
+    right: -18px;
   }
   .lightbox {
     padding: 12px;
