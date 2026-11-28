@@ -78,6 +78,64 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
+  const waktuRelatif = (tanggal, sekarang = new Date()) => {
+    const [y, m, d] = tanggal.split('-').map(Number);
+    const hari = Math.max(
+      0,
+      Math.round(
+        (Date.UTC(sekarang.getFullYear(), sekarang.getMonth(), sekarang.getDate()) -
+          Date.UTC(y, m - 1, d)) /
+          86400000,
+      ),
+    );
+    let bulan = (sekarang.getFullYear() - y) * 12 + sekarang.getMonth() - (m - 1);
+    const hariTerakhir = new Date(
+      sekarang.getFullYear(),
+      sekarang.getMonth() + 1,
+      0,
+    ).getDate();
+    if (sekarang.getDate() < Math.min(d, hariTerakhir)) bulan--;
+
+    if (hari === 0) return 'hari ini';
+    if (hari === 1) return 'kemarin';
+    if (hari < 7) return `${hari} hari lalu`;
+    if (bulan < 1) {
+      const minggu = Math.floor(hari / 7);
+      return minggu === 1 ? 'seminggu lalu' : `${minggu} minggu lalu`;
+    }
+    if (bulan < 12) return bulan === 1 ? 'sebulan lalu' : `${bulan} bulan lalu`;
+    const tahun = Math.floor(bulan / 12);
+    return tahun === 1 ? 'setahun lalu' : `${tahun} tahun lalu`;
+  };
+
+  const perbaruiWaktu = () => {
+    const sekarang = new Date();
+    document.querySelectorAll('.waktu-ulasan[data-tanggal]').forEach((el) => {
+      el.textContent = waktuRelatif(el.dataset.tanggal, sekarang);
+    });
+  };
+
+  perbaruiWaktu();
+  setInterval(perbaruiWaktu, 60 * 60 * 1000);
+
+  const autoplayControllers = [];
+  const autoplayByRoot = new WeakMap();
+  const autoplayMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let autoplaySuspended = false;
+  let keyboardMode = false;
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab' || event.key.startsWith('Arrow')) keyboardMode = true;
+  }, true);
+  document.addEventListener('pointerdown', () => {
+    keyboardMode = false;
+  }, true);
+
+  const setAutoplaySuspended = (suspended) => {
+    autoplaySuspended = suspended;
+    autoplayControllers.forEach((controller) => controller.sync());
+  };
+
   const lightbox = document.getElementById('package-lightbox');
   const lightboxPanel = lightbox && lightbox.querySelector('.lightbox-panel');
   const lightboxImage = document.getElementById('lightbox-image');
@@ -110,6 +168,24 @@
           text: parts.join(' · '),
           waHref: card.querySelector('.btn')?.getAttribute('href') || '',
           waLabel: 'Tanyakan terkait paket ini',
+        };
+      }
+      const priceFigure = img.closest('#harga figure');
+      if (priceFigure) {
+        const copy = priceFigure.parentElement?.querySelector('.price-preview-copy');
+        const parts = copy
+          ? [...copy.querySelectorAll('h2, p, li')]
+              .map((el) => el.textContent.trim())
+              .filter(Boolean)
+          : [];
+        const caption = priceFigure.querySelector('figcaption')?.textContent.trim() || img.alt;
+        return {
+          kicker: 'Harga',
+          title: caption,
+          heading: copy?.querySelector('h2')?.textContent.trim() || caption,
+          text: parts.join('\n'),
+          waHref: priceFigure.querySelector('.btn')?.getAttribute('href') || '',
+          waLabel: 'Tanya terkait harga ini',
         };
       }
       const cateringFigure = img.closest('#menu-catering figure');
@@ -157,6 +233,7 @@
       }
       previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+      setAutoplaySuspended(true);
       lightbox.hidden = false;
       lightboxClose.focus();
     };
@@ -164,6 +241,7 @@
     const closeLightbox = () => {
       lightbox.hidden = true;
       document.body.style.overflow = previousOverflow;
+      setAutoplaySuspended(false);
       if (lastTrigger) lastTrigger.focus();
     };
 
@@ -285,9 +363,9 @@
       item.setAttribute('aria-label', `${i + 1} dari ${items.length}`);
     });
 
-    let index = root.closest('#menu-catering') ? 0 : Math.floor((items.length - 1) / 2);
+    let index = root.closest('#menu-catering, #harga') ? 0 : Math.floor((items.length - 1) / 2);
     let frame = 0;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMotion = autoplayMotion.matches;
 
     const setActive = (nextIndex) => {
       index = Math.max(0, Math.min(items.length - 1, nextIndex));
@@ -319,26 +397,128 @@
       }, { i: index, distance: Infinity }).i;
     };
 
+    let timer = 0;
+    let inView = false;
+    let hovered = false;
+    let pressed = false;
+    let keyboardFocused = false;
+
+    const stopAutoplay = () => {
+      window.clearTimeout(timer);
+      timer = 0;
+    };
+
+    const canAutoplay = () =>
+      viewport.scrollWidth > viewport.clientWidth + 1 &&
+      !autoplayMotion.matches &&
+      !autoplaySuspended &&
+      document.visibilityState === 'visible' &&
+      inView &&
+      !hovered &&
+      !pressed &&
+      !keyboardFocused;
+
+    const scheduleAutoplay = () => {
+      stopAutoplay();
+      if (!canAutoplay()) return;
+      timer = window.setTimeout(() => {
+        timer = 0;
+        if (!canAutoplay()) return;
+        centerOn((index + 1) % items.length, true);
+        scheduleAutoplay();
+      }, 5000);
+    };
+
+    const setInView = (value) => {
+      inView = value;
+      scheduleAutoplay();
+    };
+    autoplayControllers.push({ sync: scheduleAutoplay });
+    autoplayByRoot.set(root, { setInView });
+
     viewport.addEventListener('scroll', () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => setActive(nearest()));
     }, { passive: true });
-    if (prev) prev.addEventListener('click', () => centerOn(index - 1, true));
-    if (next) next.addEventListener('click', () => centerOn(index + 1, true));
+    if (prev) prev.addEventListener('click', () => {
+      centerOn(index - 1, true);
+      scheduleAutoplay();
+    });
+    if (next) next.addEventListener('click', () => {
+      centerOn(index + 1, true);
+      scheduleAutoplay();
+    });
     viewport.addEventListener('keydown', (event) => {
       if (event.key === 'ArrowRight') {
         event.preventDefault();
         centerOn(index + 1, true);
+        scheduleAutoplay();
       } else if (event.key === 'ArrowLeft') {
         event.preventDefault();
         centerOn(index - 1, true);
+        scheduleAutoplay();
       }
     });
-    window.addEventListener('resize', () => centerOn(index, false));
+    root.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'touch') return;
+      hovered = true;
+      stopAutoplay();
+    });
+    root.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'touch') return;
+      hovered = false;
+      scheduleAutoplay();
+    });
+    root.addEventListener('pointerdown', () => {
+      pressed = true;
+      stopAutoplay();
+    });
+    const releasePointer = () => {
+      if (!pressed) return;
+      pressed = false;
+      scheduleAutoplay();
+    };
+    root.addEventListener('pointerup', releasePointer);
+    root.addEventListener('pointercancel', releasePointer);
+    root.addEventListener('wheel', scheduleAutoplay, { passive: true });
+    root.addEventListener('focusin', () => {
+      if (!keyboardMode) return;
+      keyboardFocused = true;
+      stopAutoplay();
+    });
+    root.addEventListener('focusout', (event) => {
+      if (!keyboardFocused || root.contains(event.relatedTarget)) return;
+      keyboardFocused = false;
+      scheduleAutoplay();
+    });
+    window.addEventListener('resize', () => {
+      centerOn(index, false);
+      scheduleAutoplay();
+    });
     setActive(index);
     centerOn(index, false);
     requestAnimationFrame(() => centerOn(index, false));
+    scheduleAutoplay();
   });
+
+  if (autoplayControllers.length) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          autoplayByRoot.get(entry.target)?.setInView(entry.isIntersecting);
+        });
+      }, { threshold: 0.01 });
+      document.querySelectorAll('[data-coverflow]').forEach((root) => {
+        if (autoplayByRoot.has(root)) observer.observe(root);
+      });
+    }
+    document.addEventListener('visibilitychange', () => {
+      autoplayControllers.forEach((controller) => controller.sync());
+    });
+    autoplayMotion.addEventListener('change', () => {
+      autoplayControllers.forEach((controller) => controller.sync());
+    });
+  }
 
   const youtubeCards = [...document.querySelectorAll('.youtube-card')];
   const syncYoutubeDescriptions = () => {
